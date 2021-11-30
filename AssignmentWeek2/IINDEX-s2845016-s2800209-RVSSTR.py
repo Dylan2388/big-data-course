@@ -44,4 +44,4 @@ rdd5 = rdd4.filter(lambda (key, value): len(value) >= 13)
 # sort rdd by key, then return list of key
 rdd6 = rdd5.sortByKey().keys()
 # merge and print
-print(' '.join(rdd6.take(1000)), flush=True)
+' '.join(rdd6.take(1000))
