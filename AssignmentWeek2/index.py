@@ -1,7 +1,7 @@
 from pyspark import SparkContext
 
-# sc = SparkContext(appName="IINDEX")
-# sc.setLogLevel("ERROR")
+sc = SparkContext(appName="IINDEX")
+sc.setLogLevel("ERROR")
 
 
 def separate((path, contents)):
