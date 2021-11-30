@@ -36,7 +36,7 @@ rdd = sc.wholeTextFiles("/data/doina/Gutenberg-EBooks")
 # split the contents of file into words (after convert to lower case and remove punctuation)
 rdd2 = rdd.map(lambda (path, contents): (path, remove_punctuation(contents).lower().split()))
 # seperate. i.e: {(key, [value1, value2])} --> {(value1, key), (value2, key)}
-rdd3 = rdd2.flatMap(separate())
+rdd3 = rdd2.flatMap(separate)
 # combine records with same key. i.e: {(key, value1), (key, value2)} --> {(key, [value1, value2])}
 rdd4 = rdd3.combineByKey(to_list, append, extend).map(lambda (key, value): (key, set(value)))
 # filter records with lengths of value at least 13
