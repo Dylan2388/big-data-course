@@ -2,13 +2,14 @@
 Pham Nguyen Hoang Dung - s2845016
 Silvi - s2800209
 
-Run time:
-real	0m9.883s
-user	0m14.648s
-sys	    0m1.354s
+Run time: time spark-submit IINDEX-s2845016-s2800209-RVSSTR.py > logfile.txt 2>&1 /dev/null
+real	0m9.605s
+user	0m14.651s
+sys	    0m1.428s
 """
 
 from pyspark import SparkContext
+# please install regex package if needed: pip install regex
 import regex as re
 
 sc = SparkContext(appName="IINDEX")
@@ -45,3 +46,4 @@ rdd5 = rdd4.filter(lambda (key, value): len(value) >= 13)
 rdd6 = rdd5.sortByKey().keys()
 # merge and print
 ' '.join(rdd6.take(1000))
+
