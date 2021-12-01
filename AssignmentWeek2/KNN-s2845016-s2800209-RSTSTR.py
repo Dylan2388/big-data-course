@@ -24,6 +24,7 @@ For each input, we have to recompute Step 2 and 3, which make the time complexit
 """
 
 # Import packages
+from pyspark import SparkContext
 from math import sqrt
 import numpy as np
 
