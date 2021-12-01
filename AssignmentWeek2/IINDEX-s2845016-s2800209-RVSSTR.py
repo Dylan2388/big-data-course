@@ -1,6 +1,6 @@
 """
 Pham Nguyen Hoang Dung - s2845016
-Silvi - s2800209
+Silvi Fitria - s2800209
 
 Run time: time spark-submit IINDEX-s2845016-s2800209-RVSSTR.py > logfile.txt 2>&1 /dev/null
 real	0m9.605s
