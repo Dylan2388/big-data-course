@@ -1,4 +1,5 @@
 """
+Group 17
 Pham Nguyen Hoang Dung - s2845016
 Silvi Fitria - s2800209
 
@@ -45,5 +46,4 @@ rdd5 = final_result.filter(lambda (key, value): len(value) >= 13)
 # sort rdd by key, then return list of key
 rdd6 = rdd5.sortByKey().keys()
 # merge and print
-' '.join(rdd6.take(1000))
-
+print(str(' '.join(rdd6.take(1000))))
