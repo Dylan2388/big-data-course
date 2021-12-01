@@ -4,9 +4,9 @@ Pham Nguyen Hoang Dung - s2845016
 Silvi Fitria - s2800209
 
 Run time: time spark-submit KNN-s2845016-s2800209-RSTSTR.py > logfile.txt 2>&1 /dev/null
-real	0m1.070s
-user	0m1.652s
-sys	    0m0.258s  
+real	0m1.956s
+user	0m3.513s
+sys	    0m0.399s
 
 Notation:
 n - number of data points
