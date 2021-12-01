@@ -3,9 +3,9 @@ Group 17
 Pham Nguyen Hoang Dung - s2845016
 Silvi Fitria - s2800209
 Run time: time spark-submit KNN-s2845016-s2800209-RSTSTR.py > logfile.txt 2>&1 /dev/null
-real	
-user	
-sys	    
+real	0m1.070s
+user	0m1.652s
+sys	    0m0.258s  
 """
 
 # Import packages
@@ -22,7 +22,7 @@ data = [map(float, i.split(",")) for i in rdd.take(100)[0][1].split("\n")[:-1]]
 # Calculate the Euclidean distance between two vectors
 def euclidean_distance(x, y):
     distance = 0.0
-    for i in range(len(x)-1):
+    for i in range(len(x)-2):
         distance += (x[i] - y[i])**2
     return sqrt(distance)
 
@@ -45,4 +45,5 @@ def predict(train, test_row, num_neighbors):
     prediction = np.mean(output_values)
     return prediction
 
-prediction = predict(data, data[0], 100)
+prediction = predict(data, (100,100), 3)
+print(prediction)
