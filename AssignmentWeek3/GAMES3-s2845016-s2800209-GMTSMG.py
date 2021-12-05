@@ -6,7 +6,7 @@ Silvi Fitria - s2800209
 Runs with Python3:
 pyspark --conf "spark.pyspark.python=/usr/bin/python3.6" --conf "spark.pyspark.driver.python=/usr/bin/python3.6"
 
-Run time: time spark-submit --conf "spark.pyspark.python=/usr/bin/python3.6" --conf "spark.pyspark.driver.python=/usr/bin/python3.6" GAMES-s2845016-s2800209-GMTSMG.py > logfile.txt 2>&1 /dev/null
+Run time: time spark-submit --conf "spark.pyspark.python=/usr/bin/python3.6" --conf "spark.pyspark.driver.python=/usr/bin/python3.6" GAMES3-s2845016-s2800209-GMTSMG.py > logfile.txt 2>&1 /dev/null
 real	0m17.383s
 user	0m51.084s
 sys	    0m2.547s
