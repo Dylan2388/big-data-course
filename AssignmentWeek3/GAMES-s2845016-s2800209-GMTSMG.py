@@ -1,6 +1,6 @@
 import pyspark.sql.functions as F
 from pyspark.sql import SparkSession
-from pyspark.sql.types import StringType
+import json
 spark = SparkSession.builder.appName('GAMES').getOrCreate()
 
 ### Runs with Python3:
@@ -14,12 +14,10 @@ df4 = df3.groupby('item').count()
 df5 = df4.sort('count', ascending=False)
 record_id = df5.take(1)[0]['item']
 record = df.filter(df['asin'] == record_id)
+record_json = json.loads(record.toJSON().collect()[0])
+
+print(json.dumps(record_json, indent=4))
 
 
-
-## Step 1: Skim through all data
-## Step 2: Count
-## Step 3: Count number of product.asin
-## Step 4: Find max record
 
 
