@@ -6,10 +6,10 @@ Silvi Fitria - s2800209
 Runs with Python3:
 pyspark --conf "spark.pyspark.python=/usr/bin/python3.6" --conf "spark.pyspark.driver.python=/usr/bin/python3.6"
 
-Run time: time spark-submit --conf "spark.pyspark.python=/usr/bin/python3.6" --conf "spark.pyspark.driver.python=/usr/bin/python3.6" DSORT-s2845016-s2800209-DSKDRT.py > logfile.txt 2>&1 /dev/null
-real	0m17.383s
-user	0m51.084s
-sys	    0m2.547s
+Run time: time spark-submit --conf "spark.pyspark.python=/usr/bin/python3.6" --conf "spark.pyspark.driver.python=/usr/bin/python3.6" DSORT3-s2845016-s2800209-DSKDRT.py > logfile.txt 2>&1 /dev/null
+real	0m15.582s
+user	0m56.130s
+sys	    0m2.879s
 
 Result HDFS path: /user/s2845016/DSORT
 Remove folder: hdfs dfs -rm -r /user/s2845016/DSORT
@@ -26,6 +26,6 @@ df4 = df3.select(df3['value'].cast("int")).sort('value', ascending=True)
 df5 = df4.repartitionByRange(10, "value")
 rdd = df5.rdd.map(lambda x: x[0])
 rdd.saveAsTextFile("/user/s2845016/DSORT")
-print(rdd.take(1)[0])
+
 
 
