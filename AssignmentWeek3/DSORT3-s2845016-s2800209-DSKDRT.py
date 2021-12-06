@@ -26,6 +26,6 @@ df4 = df3.select(df3['value'].cast("int")).sort('value', ascending=True)
 df5 = df4.repartitionByRange(10, "value")
 rdd = df5.rdd.map(lambda x: x[0])
 rdd.saveAsTextFile("/user/s2845016/DSORT")
-rdd.take(1)[0]
+print(rdd.take(1)[0])
 
 
