@@ -1,0 +1,163 @@
+# -------------------------------------------------------------------------------------------------
+
+# LOG IN
+
+# You need a working terminal application with an SSH client 
+#      (on Windows: putty or similar; Macs and Linuxes have this built in).
+
+# Replace the teacher's username with your s1234567 everywhere. 
+# Log in with your regular UT credentials.
+
+from-your-computer$ ssh bucurd@ctit007.ewi.utwente.nl
+Welcome to Ubuntu 18.04.5 LTS 
+[..]
+
+# If you installed authentication keys, then you really need to type "kinit" and then your password:
+bucurd@ctit007:~$ kinit
+Password for bucurd@AD.UTWENTE.NL: 
+
+# -------------------------------------------------------------------------------------------------
+
+# TWO FILESYSTEMS, TWO COMMAND-LINE INTERFACES ON THE SAME COMMAND LINE
+
+# Once logged in, you are in the usual /home folder on the "local" filesystem.
+# Here, the local filesystem is NFS https://en.wikipedia.org/wiki/Network_File_System .
+
+# The Hadoop commands start in "hadoop fs" or "hdfs dfs" (they are synonyms). 
+# I use the latter because it's slightly shorter.
+
+bucurd@ctit007:~$ pwd
+/home/bucurd
+
+# But the HDFS is also there:
+bucurd@ctit007:~$ hdfs version
+Hadoop 3.0.0-cdh6.3.2
+[..]
+
+# The chunk or block size (in bytes) is:
+bucurd@ctit007:~$ hdfs getconf -confKey dfs.blocksize
+134217728
+
+# How much space is there on these file systems?
+
+# The "disk free" command on the NFS, [https://en.wikipedia.org/wiki/Df_(Unix)]
+# shows the disk size for the NFS (55 TB):
+bucurd@ctit007:~$ df -h
+Filesystem                                  Size  Used Avail Use% Mounted on
+udev                                         32G     0   32G   0% /dev
+tmpfs                                       6.3G  1.3M  6.3G   1% /run
+/dev/sda1                                    92G   29G   59G  33% /
+brecklenkamp:/exports/home/db/bucurd         55T   34T   22T  62% /home/bucurd
+[... many other entries here ...]
+
+# The same on the HDFS looks very different (disk size: 520 TB):
+bucurd@ctit007:~$ hdfs dfs -df -h
+Filesystem                        Size     Used  Available  Use%
+hdfs://ctit048.ewi.utwente.nl  520.1 T  155.1 T    337.3 T   30%
+
+# The root directory on the NFS:
+bucurd@ctit007:~$ ls /
+bin  dev  home  initrd.img.old  lib64  local_home  media  opt  root  sbin   srv  tmp  var      vmlinuz.old boot  etc  initrd.img  lib local  lost+found  mnt  proc  run   software  sys  usr  vmlinuz
+
+# ...versus the root directory on the HDFS:
+bucurd@ctit007:~$ hdfs dfs -ls /
+Found 6 items
+drwxr-xr-x   - hdfs  supergroup          0 2017-10-17 14:27 /data
+drwx--x--x   - hbase supergroup          0 2020-08-20 08:51 /hbase
+drwxr-xr-x   - hdfs  supergroup          0 2021-05-21 09:50 /system
+drwxrwxrwt   - hdfs  supergroup          0 2020-11-19 16:29 /tmp
+drwxr-xr-x   - hdfs  supergroup          0 2021-11-03 22:19 /user
+drwxr-xr-x   - hdfs  supergroup          0 2016-06-24 12:23 /var
+
+# These commands list my NFS home directory (they're all synonyms):
+bucurd@ctit007:~$ ls
+bucurd@ctit007:~$ ls ~
+bucurd@ctit007:~$ ls /home/bucurd
+[..]
+
+# Now for my HDFS directory (yours will be completely empty at the beginning):
+bucurd@ctit007:~$ hdfs dfs -ls
+bucurd@ctit007:~$ hdfs dfs -ls /user/bucurd
+[..]
+
+# You will notice eventually that there's no autocompletion by tab in the command line for HDFS,
+# but there is for NFS. It's thus good to keep a text file with your frequently used HDFS commands.
+
+# -------------------------------------------------------------------------------------------------
+
+# HDFS FILESYSTEMS COMMANDS
+
+# Manual at:
+#     https://hadoop.apache.org/docs/r3.0.0/hadoop-project-dist/hadoop-common/FileSystemShell.html
+
+# Displays the same help as on the webpage above, but the webpage is nicer to read:
+bucurd@ctit007:~$ hdfs dfs -help ls
+-ls [-C] [-d] [-h] [-q] [-R] [-t] [-S] [-r] [-u] [-e] [<path> ...] :
+  List the contents that match the specified file pattern. If path is not
+  specified, the contents of /user/<currentUser> will be listed. For a directory a
+  list of its direct children is returned (unless -d option is specified).
+  
+    -d  Directories are listed as plain files.
+    -h  Formats the sizes of files in a human-readable fashion
+        rather than a number of bytes.
+    -R  Recursively list the contents of directories.
+
+# So, this command lists files and folders recursively in a more human-readable way 
+#     (add -R only if you're sure there are NOT TOO MANY files there):
+bucurd@ctit007:~$ hdfs dfs -ls -h -R
+[..]
+
+# Explore the HDFS folder /data, which is in the root folder /:
+bucurd@ctit007:~$ hdfs dfs -ls /data
+Found 11 items
+drwxr-xr-x   - hdfs     supergroup          0 2016-07-04 10:27 /data/aisUT
+drwxr-xr-x   - hdfs     supergroup          0 2016-07-04 10:27 /data/aisUT.sample
+-rw-r--r--   3 hdfs     supergroup      27812 2016-07-04 10:27 /data/aisUTReadme.md
+drwxrwxr-x+  - hdfs     supergroup          0 2016-12-06 12:16 /data/alyr
+drwxrwxr-x+  - hdfs     supergroup          0 2016-07-05 13:18 /data/cbs
+drwxr-xr-x   - alyr     supergroup          0 2016-12-06 14:39 /data/commoncrawl
+drwxr-xr-x   - bucurd   supergroup          0 2021-03-10 18:29 /data/doina
+drwxr-xr-x   - hiemstra supergroup          0 2017-02-07 10:04 /data/hiemstra
+drwxr-x---+  - hiemstra supergroup          0 2016-08-16 08:39 /data/scopus
+drwxr-xr-x+  - hdfs     supergroup          0 2017-01-18 16:03 /data/twitterNL
+drwxr-xr-x   - alyr     supergroup          0 2016-12-03 07:42 /data/volkskrant
+
+bucurd@ctit007:~$ hdfs dfs -ls -h /data/doina/UCSD-Amazon-Data
+Found 39 items
+-rw-r--r--   3 bucurd supergroup    178.2 K 2018-12-18 16:06 /data/doina/UCSD-Amazon-Data/meta_Amazon_Instant_Video.json.gz
+-rw-r--r--   3 bucurd supergroup     15.7 M 2018-12-18 16:06 /data/doina/UCSD-Amazon-Data/meta_Apps_for_Android.json.gz
+-rw-r--r--   3 bucurd supergroup     87.8 M 2017-12-15 16:02 /data/doina/UCSD-Amazon-Data/meta_Automotive.json.gz
+-rw-r--r--   3 bucurd supergroup    787.5 M 2017-10-26 18:28 /data/doina/UCSD-Amazon-Data/meta_Books.json.gz
+[..]
+
+# Or the nice "disk usage" command [https://en.wikipedia.org/wiki/Du_(Unix)] below.
+
+# Why do you see 2 columns of file sizes here?
+bucurd@ctit007:~$ hdfs dfs -du -h /data/doina/UCSD-Amazon-Data
+178.2 K  534.5 K  /data/doina/UCSD-Amazon-Data/meta_Amazon_Instant_Video.json.gz
+15.7 M   47.0 M   /data/doina/UCSD-Amazon-Data/meta_Apps_for_Android.json.gz
+87.8 M   263.3 M  /data/doina/UCSD-Amazon-Data/meta_Automotive.json.gz
+787.5 M  2.3 G    /data/doina/UCSD-Amazon-Data/meta_Books.json.gz
+
+# See https://hadoop.apache.org/docs/r3.0.0/hadoop-project-dist/hadoop-common/FileSystemShell.html#text for what the HDFS command "text" does:
+
+bucurd@ctit007:~$ hdfs dfs -text /data/doina/UCSD-Amazon-Data/reviews_Kindle_Store.json.gz | head -1
+{"reviewerID": "A2GZ9GFZV1LWB0", "asin": "1603420304", "helpful": [0, 0], "reviewText": "I am well out of college but love this book.  I am always on the go and don't have a lot of time to plan menu's or shop for recipes during the week.  This has a ton of classic, yummy and EASY (did I say EASY!) recipes.  A lot of the times I can use staples from my pantry and just pick up a handful of items.  And it's great for singles/couples.", "overall": 4.0, "summary": "Good solid recipes", "unixReviewTime": 1405209600, "reviewTime": "07 13, 2014"}
+text: Unable to write to output stream.
+
+# Note in the command above: the zip .gz (which can be big data) is unzipped and sequentially dumped into the pipe |,  which then dumps the first 3 lines into the stdout (a very small file), and closes the pipe and the entire process (hence the "Unable to write to output stream" message). 
+# This is fine only because I took care to limit what is really dumped into the pipe with the "head" command.
+# Never read big data to the stdout! You'll lose your SSH connection.
+
+# This runs quite slowly:
+bucurd@ctit007:~$ time hdfs dfs -text /data/doina/UCSD-Amazon-Data/meta_Movies_and_TV.json.gz | grep vampire | wc -l
+961
+
+real  0m11.182s
+
+# This runs faster although it's almost the same command; why?
+bucurd@ctit007:~$ time hdfs dfs -text /data/doina/UCSD-Amazon-Data/meta_Movies_and_TV.json.gz | grep vampire | head -1 
+{'asin': '0764009877', 'description': "As daylight fades from the earth, the creatures of the night awaken.  These are beings from the darkest of nightmares, and their reign of terror begins.  InThe World of Hammer, this is the time of its greatest triumph.  This is the time ofDracula and the Undead.For generations of moviegoers, Hammer Films defined the legend of Dracula. As portrayed by the magnificent Christopher Lee, the Count was brilliantly reborn as a seductive icon of forbidden desire and everlasting evil. Later, the studio would broaden their bloody palette of the undead to further redefine the entire vampire genre.  Today, these movies remain among the most visually stunning and thematically provocative vampire films in all of movie history.Explore Hammer's greatest legacy with clips from such classic films asThe Horror of Dracula, Brides of Dracula, Captain Kronos - Vampire Hunter, Vampire Circus, Dracula - Prince of Darkness, Legend of the Seven Golden Vampires, Scars of Dracula, Kiss of the Vampireand more.Narrated by Oliver Reed.", 'title': 'The World of Hammer - Dracula and the Undead [VHS]', 'price': 9.75, 'salesRank': {'Movies & TV': 659829}, 'imUrl': 'http://ecx.images-amazon.com/images/I/41XYQC69KAL._SY300_.jpg', 'brand': '', 'categories': [['Movies & TV', 'Movies']]}
+text: Unable to write to output stream.
+
+real  0m2.642s

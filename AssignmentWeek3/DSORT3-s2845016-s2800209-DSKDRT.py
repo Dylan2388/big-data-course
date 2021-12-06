@@ -10,22 +10,21 @@ Run time: time spark-submit --conf "spark.pyspark.python=/usr/bin/python3.6" --c
 real	0m17.383s
 user	0m51.084s
 sys	    0m2.547s
+
+Result HDFS path: /user/s2845016/DSORT
+Remove folder: hdfs dfs -rm -r /user/s2845016/DSORT
 """
 ## Import packages and initiate session
 import pyspark.sql.functions as F
-from pyspark.sql.types import ArrayType
 from pyspark.sql import SparkSession
-spark = SparkSession.builder.appName('GAMES').getOrCreate()
+spark = SparkSession.builder.appName('DSORT').getOrCreate()
 
-def chunks(lst, n):
-    """Yield successive n-sized chunks from lst."""
-    for i in range(0, len(lst), n):
-        yield lst[i:i + n]
-
-my_udf = F.udf(chunks, ArrayType())
-df = spark.read.option("inferSchema", True).text("/data/doina/integers.txt")
+df = spark.read.text("/data/doina/integers.txt")
 df2 = df.select(F.split(df['value'], ",").alias('value'))
 df3 = df2.select(F.explode(df2['value']).alias('value'))
 df4 = df3.select(df3['value'].cast("int")).sort('value', ascending=True)
-df5 = df4.select(F.collect_list('value').alias('value'))
-df6 = df5.select(my_udf('value'))
+df5 = df4.repartitionByRange(10, "value")
+rdd = df5.rdd.map(lambda x: x[0])
+rdd.saveAsTextFile("/user/s2845016/DSORT")
+
+
