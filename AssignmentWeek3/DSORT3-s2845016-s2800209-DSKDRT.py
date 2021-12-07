@@ -8,9 +8,9 @@ pyspark --conf "spark.pyspark.python=/usr/bin/python3.6" --conf "spark.pyspark.d
 
 Run time: time spark-submit --conf "spark.pyspark.python=/usr/bin/python3.6" --conf "spark.pyspark.driver.python=/usr/bin/python3.6" DSORT3-s2845016-s2800209-DSKDRT.py > logfile.txt 2>&1 /dev/null
 SPARK SQL:
-real	0m14.214s
-user	0m56.497s
-sys	    0m2.591s
+real	0m12.917s
+user	0m36.076s
+sys	    0m1.979s
 
 RDD:
 real	0m15.294s
@@ -32,9 +32,8 @@ df = spark.read.text("/data/doina/integers.txt")
 df2 = df.select(F.split(df['value'], ",").alias('value'))
 ## Explode all array into 1 column
 df3 = df2.select(F.explode(df2['value']).alias('value'))
-# Sort the column (using spark sql)
+# SORT USING SPARK SQL
 df4 = df3.select(df3['value'].cast("int")).repartitionByRange(10, "value").sort('value', ascending=True)
-## Map back to rdd then save to files
 rdd = df4.rdd.map(lambda x: x[0])
 rdd.saveAsTextFile("/user/s2845016/DSORT")
 
