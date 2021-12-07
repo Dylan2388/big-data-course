@@ -10,6 +10,8 @@ Run time: time spark-submit --conf "spark.pyspark.python=/usr/bin/python3.6" --c
 real	0m17.383s
 user	0m51.084s
 sys	    0m2.547s
+
+It seems like the product with exact ASIN ID is no longer on Amazon anymore, since I couldn't find it.
 """
 
 ## Import packages and initiate session
