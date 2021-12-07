@@ -3,16 +3,20 @@ Group 17
 Pham Nguyen Hoang Dung - s2845016
 Silvi Fitria - s2800209
 Run time: time spark-submit HASHTAGS-s2845016-s2800209-HSTGSS.py 2> /dev/null
-real	0m15.897s
-user	1m22.547s
-sys	    0m2.577s    
+real	0m16.987s
+user	1m22.623s
+sys	    0m3.014s 
 """
 
 # Import packages
 from pyspark import SparkContext
 from pyspark.sql import SparkSession
 from pyspark.sql.functions import col, explode, split
+import sys
+reload(sys)
+sys.setdefaultencoding('utf8')
 sc = SparkContext()
+sc.setLogLevel("ERROR")
 spark = SparkSession.builder.getOrCreate()
 
 # Load data
