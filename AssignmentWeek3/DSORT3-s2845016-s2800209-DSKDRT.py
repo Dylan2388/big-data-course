@@ -13,6 +13,9 @@ user	0m56.497s
 sys	    0m2.591s
 
 RDD:
+real	0m15.294s
+user	0m33.583s
+sys	    0m2.024s
 
 Result HDFS path: /user/s2845016/DSORT
 Remove folder: hdfs dfs -rm -r /user/s2845016/DSORT
@@ -29,18 +32,16 @@ df = spark.read.text("/data/doina/integers.txt")
 df2 = df.select(F.split(df['value'], ",").alias('value'))
 ## Explode all array into 1 column
 df3 = df2.select(F.explode(df2['value']).alias('value'))
-## Sort the column (using spark sql)
-# df4 = df3.select(df3['value'].cast("int")).sort('value', ascending=True)
-# ## Repartition base on column
-# df5 = df4.repartitionByRange(10, "value")
-# ## Map back to rdd then save to files
-# rdd = df5.rdd.map(lambda x: x[0])
-# rdd.saveAsTextFile("/user/s2845016/DSORT")
+# Sort the column (using spark sql)
+df4 = df3.select(df3['value'].cast("int")).repartitionByRange(10, "value").sort('value', ascending=True)
+## Map back to rdd then save to files
+rdd = df4.rdd.map(lambda x: x[0])
+rdd.saveAsTextFile("/user/s2845016/DSORT")
 
 
 ### SORT USING RDD
-rdd_1 = df3.rdd.map(lambda x: int(x[0])).repartition(10)
-rdd_2 = rdd_1.sortBy(lambda x: x)
-rdd_2.saveAsTextFile("/user/s2845016/DSORT_RDD")
+# rdd_1 = df3.rdd.map(lambda x: int(x[0])).repartition(10)
+# rdd_2 = rdd_1.sortBy(lambda x: x)
+# rdd_2.saveAsTextFile("/user/s2845016/DSORT_RDD")
 
 
