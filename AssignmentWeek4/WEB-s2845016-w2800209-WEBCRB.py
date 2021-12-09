@@ -27,7 +27,12 @@ big_input_2 = "/data/doina/WebInsight/2020-09-14"
 df1_1 = spark.read.json(small_input_1)
 df2_1 = spark.read.json(small_input_2)
 
+df1_2 = df1_1.select([df1_1["url"], df1_1["fetch"]["textSize"].alias("textSize1")])
+df2_2 = df2_1.select([df2_1["url"], df2_1["fetch"]["textSize"].alias("textSize2")])
 
-df1_2 = df1_1.select([df1_1["url"], df1_1["fetch"]["textSize"].alias["textSize"]])
-df2_2 = df2_1.select([df2_1["url"], df2_1["fetch"]["textSize"].alias["textSize"]])
+df = df1_2.join(df2_2, on="url", how="inner")
+df1 = df.filter((F.col("textSize1") != 0) | (F.col("textSize2") != 0))
+df2 = df1.select([F.col("url"), 
+                  (F.col("textSize1") - F.col("textSize2")).alias("sizediff")])
 
+print()
