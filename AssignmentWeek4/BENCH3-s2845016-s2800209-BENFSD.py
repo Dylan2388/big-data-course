@@ -22,7 +22,9 @@ Requirements:
 2. Increase the data size or executors (big data size). What size match the number of executor?
 
 Output: A graphical plot showing 2 variables of either
-1. 
+1. Size of the input data
+2. Number of executors
+3. Runtime of the program
 
 
 """
