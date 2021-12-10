@@ -2,7 +2,7 @@
 Group 17
 Pham Nguyen Hoang Dung - s2845016
 Silvi Fitria - s2800209
-Run time: time spark-submit WEB-s2845016-w2800209-WEBCRB.py 2> /dev/null
+Run time: time spark-submit WEB-s2845016-s2800209-WEBCRB.py 2> /dev/null
 
 """
 
