@@ -2,7 +2,16 @@
 Group 17
 Pham Nguyen Hoang Dung - s2845016
 Silvi Fitria - s2800209
-Run time: time spark-submit --master yarn --deploy-mode cluster --conf spark.dynamicAllocation.maxExecutors=10 --num-executors 2 --executor-cores 2 --executor-memory 2G  WEB-s2845016-s2800209-WEBCRB.py > logfile_WEB.txt 2>&1 /dev/null
+Run time: time spark-submit --master yarn --deploy-mode cluster --conf spark.dynamicAllocation.maxExecutors=10 --num-executors 2 --executor-cores 4 --executor-memory 4G  WEB-s2845016-s2800209-WEBCRB.py > logfile_WEB.txt 2>&1 /dev/null
+--num-executors 2 --executor-cores 2 --executor-memory 2G
+real	2m44.510s
+user	0m11.648s
+sys	    0m2.388s
+
+--num-executors 2 --executor-cores 4 --executor-memory 4G
+real	2m35.079s
+user	0m12.188s
+sys	    0m2.343s
 
 DASHBOARD at http://ctit048.ewi.utwente.nl:8088/cluster .
 
