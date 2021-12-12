@@ -2,9 +2,9 @@
 Group 17
 Pham Nguyen Hoang Dung - s2845016
 Silvi Fitria - s2800209
-Run time: time spark-submit --master yarn --deploy-mode cluster --conf spark.dynamicAllocation.maxExecutors=10 WEB-s2845016-s2800209-WEBCRB.py > logfile_WEB.txt 2>&1 /dev/null
+Run time: time spark-submit --master yarn --deploy-mode cluster --conf spark.dynamicAllocation.maxExecutors=10 --num-executors 2 --executor-cores 2 --executor-memory 2G  WEB-s2845016-s2800209-WEBCRB.py > logfile_WEB.txt 2>&1 /dev/null
 
-
+DASHBOARD at http://ctit048.ewi.utwente.nl:8088/cluster .
 
 Result HDFS path: /user/s2845016/WEB
 Remove folder: hdfs dfs -rm -r /user/s2845016/WEB
@@ -12,15 +12,10 @@ Check folder exist: hdfs dfs -ls /user/s2845016
 """
 
 # Import packages and initiate session
-from pyspark import SparkContext
 from pyspark.sql import SparkSession
 import pyspark.sql.functions as F
 
 spark = SparkSession.builder.appName("WEB").getOrCreate()
-sc = SparkContext(appName="WEB")
-sc.setLogLevel("ERROR")
-
-
 
 ### Small input
 small_input_1 = "/data/doina/WebInsight/2020-07-13/1M.2020-07-13-aa.gz"
