@@ -39,10 +39,6 @@ df = df1_2.join(df2_2, on="url", how="inner")
 df1 = df.filter((F.col("textSize1") != 0) | (F.col("textSize2") != 0))
 df2 = df1.select([F.col("url"), 
                   (F.col("textSize1") - F.col("textSize2")).alias("sizediff")])
-<<<<<<< HEAD:AssignmentWeek4/WEB-s2845016-w2800209-WEBCRB.py
 df3 = df2.sort('sizediff', ascending=True).coalesce(5)
 df3.write.json("/user/s2845016/WEB")
-=======
 
-print()
->>>>>>> 0f213f3073737ad85a1f7370ba8b819fdd1cc183:AssignmentWeek4/WEB-s2845016-s2800209-WEBCRB.py
