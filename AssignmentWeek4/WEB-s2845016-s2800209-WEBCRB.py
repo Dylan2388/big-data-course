@@ -2,11 +2,7 @@
 Group 17
 Pham Nguyen Hoang Dung - s2845016
 Silvi Fitria - s2800209
-<<<<<<< HEAD:AssignmentWeek4/WEB-s2845016-w2800209-WEBCRB.py
-Run time: time spark-submit --master yarn --deploy-mode cluster --conf spark.dynamicAllocation.maxExecutors=10 tweet_selection.py > logfile_WEB.txt 2>&1 /dev/null
-=======
-Run time: time spark-submit WEB-s2845016-s2800209-WEBCRB.py 2> /dev/null
->>>>>>> 0f213f3073737ad85a1f7370ba8b819fdd1cc183:AssignmentWeek4/WEB-s2845016-s2800209-WEBCRB.py
+Run time: time spark-submit --master yarn --deploy-mode cluster --conf spark.dynamicAllocation.maxExecutors=10 WEB-s2845016-s2800209-WEBCRB.py > logfile_WEB.txt 2>&1 /dev/null
 
 
 
