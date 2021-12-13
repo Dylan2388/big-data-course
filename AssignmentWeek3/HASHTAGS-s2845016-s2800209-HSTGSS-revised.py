@@ -4,9 +4,9 @@ Group 17
 Pham Nguyen Hoang Dung - s2845016
 Silvi Fitria - s2800209
 Run time: time spark-submit HASHTAGS-s2845016-s2800209-HSTGSS.py 2> /dev/null
-real	0m15.441s
-user	1m21.362s
-sys	    0m2.647s
+real	0m15.989s
+user	1m30.506s
+sys	  0m2.789s
 """
 
 # Import packages
