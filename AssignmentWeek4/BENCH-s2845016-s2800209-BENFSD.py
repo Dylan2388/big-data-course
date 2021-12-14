@@ -33,9 +33,9 @@ from pyspark.sql.functions import col
 
 spark = SparkSession.builder.getOrCreate()
 
-### Fix number of executors: 10, executor memory: 2G. Overall, the total capacity of executors is 20GB.
+### Fix number of executors: 10, executor memory: 2G. Overall, the total capacity of executors is 20GB. (32768MB)
 ### A day of tweets is ~1.44 GB compressed (in 1440 files). We assume after extracting, the amount of data is double or tripled (assume 3-4.5GB)
-### 1-day data: 3-4.5GB
+### 1-day data: 3-4.5GB  
 PATH_1_DAY = "/data/doina/Twitter-Archive.org/2017-01/1[0-0]/*/*.json.bz2"
 ### 2-day data: 6-9GB
 PATH_2_DAY = "/data/doina/Twitter-Archive.org/2017-01/1[0-1]/*/*.json.bz2"
@@ -62,7 +62,7 @@ KEYWORDS = "(inauguration)|(whitehouse)|(washington)|(president)|(obama)|(trump)
 # always creates a new folder to write in (clean up your old folders though)
 now = datetime.now().strftime("%Y-%m-%d-%H-%M-%S")
 
-tweets = spark.read.json(PATH_2_DAY) \
+tweets = spark.read.json(PATH_3_DAY) \
     .filter(col("text").isNotNull()) \
     .select(col("text")) \
     .filter(col("text").rlike(KEYWORDS).alias("text")) \

@@ -2,8 +2,10 @@
 real	2m31.435s
 user	0m12.182s
 sys	    0m2.218s
-2Day
-
+2Day:
+real	3m44.822s
+user	0m12.063s
+sys	    0m2.416s
 3Day:
 
 4Day:
