@@ -10,14 +10,11 @@ sys	  0m2.789s
 """
 
 # Import packages
-from pyspark import SparkContext
 from pyspark.sql import SparkSession
 from pyspark.sql.functions import col, explode, split
 import sys
 reload(sys)
 sys.setdefaultencoding('utf8')
-sc = SparkContext()
-sc.setLogLevel("ERROR")
 spark = SparkSession.builder.getOrCreate()
 
 # Load data
