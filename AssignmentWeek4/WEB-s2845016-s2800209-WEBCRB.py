@@ -33,16 +33,23 @@ small_input_2 = "/data/doina/WebInsight/2020-09-14/1M.2020-09-14-aa.gz"
 big_input_1 = "/data/doina/WebInsight/2020-07-13/*.gz"
 big_input_2 = "/data/doina/WebInsight/2020-09-14/*.gz"
 
+### Read data from input
 df1_1 = spark.read.json(big_input_1)
 df2_1 = spark.read.json(big_input_2)
 
+### Select url and textSize column
 df1_2 = df1_1.select([df1_1["url"], df1_1["fetch"]["textSize"].alias("textSize1")])
 df2_2 = df2_1.select([df2_1["url"], df2_1["fetch"]["textSize"].alias("textSize2")])
 
+### Innner Join (Filter urls that appear in both dataframe)
 df = df1_2.join(df2_2, on="url", how="inner")
+### Filter urls that have at least 1 textSize different than 0
 df1 = df.filter((F.col("textSize1") != 0) | (F.col("textSize2") != 0))
+### Compute size diff
 df2 = df1.select([F.col("url"), 
                   (F.col("textSize1") - F.col("textSize2")).alias("sizediff")])
+### Sort and redistribute
 df3 = df2.sort('sizediff', ascending=True).coalesce(5)
+### Save to disk
 df3.write.json("/user/s2845016/WEB")
 

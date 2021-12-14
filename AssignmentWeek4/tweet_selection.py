@@ -39,5 +39,6 @@ now = datetime.now().strftime("%Y-%m-%d-%H-%M-%S")
 tweets = spark.read.json(PATH) \
     .filter(col("text").isNotNull()) \
     .select(col("text")) \
-    .filter(col("text").rlike(KEYWORDS).alias("text")) \
-    .write.text("tweet_selection-"+now)
+    .filter(col("text").rlike(KEYWORDS).alias("text"))
+    
+# tweets.write.text("tweet_selection-"+now)
