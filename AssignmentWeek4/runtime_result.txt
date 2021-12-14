@@ -1,5 +1,7 @@
 1Day:
-
+real	2m31.435s
+user	0m12.182s
+sys	    0m2.218s
 2Day
 
 3Day:

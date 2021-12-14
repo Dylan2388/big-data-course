@@ -62,7 +62,7 @@ KEYWORDS = "(inauguration)|(whitehouse)|(washington)|(president)|(obama)|(trump)
 # always creates a new folder to write in (clean up your old folders though)
 now = datetime.now().strftime("%Y-%m-%d-%H-%M-%S")
 
-tweets = spark.read.json(PATH_1_DAY) \
+tweets = spark.read.json(PATH_2_DAY) \
     .filter(col("text").isNotNull()) \
     .select(col("text")) \
     .filter(col("text").rlike(KEYWORDS).alias("text")) \
