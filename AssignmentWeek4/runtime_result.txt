@@ -11,7 +11,9 @@ real	5m15.252s
 user	0m11.990s
 sys	    0m2.399s
 4Day:
-
+real	5m34.728s
+user	0m12.092s
+sys	    0m2.356s
 5Day:
 
 6Day:
