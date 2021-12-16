@@ -4,25 +4,16 @@ Pham Nguyen Hoang Dung - s2845016
 Silvi Fitria - s2800209
 
 Run time: time spark-submit --master yarn --deploy-mode cluster --conf spark.dynamicAllocation.maxExecutors=10 --executor-memory 2G  BENCH-s2845016-s2800209-BENFSD.py > logfile_BENCH.txt 2>&1 /dev/null
-
-Variable of interest:
-1. How much data you put in? (MB, or number of files)
-2. How much compute you use? (number of executors) (2, 5, 10)
-3. Runtime of the program? (Dash board: http://ctit048.ewi.utwente.nl:8088/cluster) 
-
-Fix (1) or (2)
-Vary the other
-Measure (3)
-
-Requirements:
-1. At least 5 measurement times
-2. Increase the data size or executors (big data size). What size match the number of executor?
-
-Output: A graphical plot showing 2 variables of either
-1. Size of the input data
-2. Number of executors
-3. Runtime of the program
-
+1 Day:  real    2m31.435s
+2 Day:  real	3m44.822s
+3 Day:  real	5m15.252s
+4 Day:  real	5m34.728s
+5 Day:  real	7m44.655s
+6 Day:  real	7m44.600s
+7 Day:  real	9m54.563s
+8 Day:  real	8m44.928s
+9 Day:  real	13m15.318s
+10 Day: real	12m9.633s
 
 """
 
@@ -33,7 +24,7 @@ from pyspark.sql.functions import col
 
 spark = SparkSession.builder.getOrCreate()
 
-### Fix number of executors: 10, executor memory: 2G. Overall, the total capacity of executors is 20GB. (Actual allocated memory: 32768MB)
+### Fix number of executors: 10, executor memory: 2G. Overall, the total capacity of executors is 20GB. (Actual allocated memory: 32GB)
 ### A day of tweets is ~1.6 GB compressed. We assume after extracting, the amount of data is double or tripled (assume 3-4.5GB)
 ### 1-day data: 3-4.5GB  
 PATH_1_DAY = "/data/doina/Twitter-Archive.org/2017-01/1[0-0]/*/*.json.bz2"
