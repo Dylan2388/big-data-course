@@ -33,8 +33,8 @@ from pyspark.sql.functions import col
 
 spark = SparkSession.builder.getOrCreate()
 
-### Fix number of executors: 10, executor memory: 2G. Overall, the total capacity of executors is 20GB. (32768MB)
-### A day of tweets is ~1.44 GB compressed (in 1440 files). We assume after extracting, the amount of data is double or tripled (assume 3-4.5GB)
+### Fix number of executors: 10, executor memory: 2G. Overall, the total capacity of executors is 20GB. (Actual allocated memory: 32768MB)
+### A day of tweets is ~1.6 GB compressed. We assume after extracting, the amount of data is double or tripled (assume 3-4.5GB)
 ### 1-day data: 3-4.5GB  
 PATH_1_DAY = "/data/doina/Twitter-Archive.org/2017-01/1[0-0]/*/*.json.bz2"
 ### 2-day data: 6-9GB
@@ -43,7 +43,7 @@ PATH_2_DAY = "/data/doina/Twitter-Archive.org/2017-01/1[0-1]/*/*.json.bz2"
 PATH_3_DAY = "/data/doina/Twitter-Archive.org/2017-01/1[0-2]/*/*.json.bz2"
 ### 4-day data: 12-18GB
 PATH_4_DAY = "/data/doina/Twitter-Archive.org/2017-01/1[0-3]/*/*.json.bz2"
-### 5-day data: 15-22.5GB (Assumption: The plot should be bumped at this point or onward.)
+### 5-day data: 15-22.5GB (Assumption: The plot should be bumped at this point or onward)
 PATH_5_DAY = "/data/doina/Twitter-Archive.org/2017-01/1[0-4]/*/*.json.bz2"
 ### 6-day data: 18-27GB 
 PATH_6_DAY = "/data/doina/Twitter-Archive.org/2017-01/1[0-5]/*/*.json.bz2"
@@ -55,6 +55,8 @@ PATH_8_DAY = "/data/doina/Twitter-Archive.org/2017-01/1[0-7]/*/*.json.bz2"
 PATH_9_DAY = "/data/doina/Twitter-Archive.org/2017-01/1[0-8]/*/*.json.bz2"
 ### 10-day data: 30-45GB
 PATH_10_DAY = "/data/doina/Twitter-Archive.org/2017-01/1[0-9]/*/*.json.bz2"
+
+######## Change the date: E.g: to test the system
 
 # a regexp, case-insensitive matching; this was a topic of interest on those dates (Jan 2017)
 KEYWORDS = "(inauguration)|(whitehouse)|(washington)|(president)|(obama)|(trump)"
