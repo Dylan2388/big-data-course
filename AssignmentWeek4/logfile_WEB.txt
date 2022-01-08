@@ -1,0 +1,78 @@
+2021-12-12 21:52:45,052 INFO [main] org.apache.hadoop.yarn.client.RMProxy: Connecting to ResourceManager at ctit048.ewi.utwente.nl/130.89.6.234:8032
+2021-12-12 21:52:45,425 INFO [main] org.apache.spark.deploy.yarn.Client: Requesting a new application from cluster with 55 NodeManagers
+2021-12-12 21:52:45,518 INFO [main] org.apache.hadoop.conf.Configuration: resource-types.xml not found
+2021-12-12 21:52:45,518 INFO [main] org.apache.hadoop.yarn.util.resource.ResourceUtils: Unable to find 'resource-types.xml'.
+2021-12-12 21:52:45,549 INFO [main] org.apache.spark.deploy.yarn.Client: Verifying our application has not requested more than the maximum memory capability of the cluster (8192 MB per container)
+2021-12-12 21:52:45,550 INFO [main] org.apache.spark.deploy.yarn.Client: Will allocate AM container, with 1408 MB memory including 384 MB overhead
+2021-12-12 21:52:45,551 INFO [main] org.apache.spark.deploy.yarn.Client: Setting up container launch context for our AM
+2021-12-12 21:52:45,556 INFO [main] org.apache.spark.deploy.yarn.Client: Setting up the launch environment for our AM container
+2021-12-12 21:52:45,567 INFO [main] org.apache.spark.deploy.yarn.Client: Preparing resources for our AM container
+2021-12-12 21:52:45,711 WARN [main] org.apache.spark.deploy.yarn.Client: Neither spark.yarn.jars nor spark.yarn.archive is set, falling back to uploading libraries under SPARK_HOME.
+2021-12-12 21:52:47,790 INFO [main] org.apache.spark.deploy.yarn.Client: Uploading resource file:/tmp/spark-6b890d52-7cab-4098-acad-ae62a04694a2/__spark_libs__5043996641168442514.zip -> hdfs://ctit048.ewi.utwente.nl/user/s2845016/.sparkStaging/application_1635880893505_0484/__spark_libs__5043996641168442514.zip
+2021-12-12 21:52:49,932 INFO [main] org.apache.spark.deploy.yarn.Client: Uploading resource file:/home/s2845016/BigDataCourse/big-data-course/AssignmentWeek4/WEB-s2845016-s2800209-WEBCRB.py -> hdfs://ctit048.ewi.utwente.nl/user/s2845016/.sparkStaging/application_1635880893505_0484/WEB-s2845016-s2800209-WEBCRB.py
+2021-12-12 21:52:49,996 INFO [main] org.apache.spark.deploy.yarn.Client: Uploading resource file:/usr/lib/spark/python/lib/pyspark.zip -> hdfs://ctit048.ewi.utwente.nl/user/s2845016/.sparkStaging/application_1635880893505_0484/pyspark.zip
+2021-12-12 21:52:50,078 INFO [main] org.apache.spark.deploy.yarn.Client: Uploading resource file:/usr/lib/spark/python/lib/py4j-0.10.7-src.zip -> hdfs://ctit048.ewi.utwente.nl/user/s2845016/.sparkStaging/application_1635880893505_0484/py4j-0.10.7-src.zip
+2021-12-12 21:52:50,347 INFO [main] org.apache.spark.deploy.yarn.Client: Uploading resource file:/tmp/spark-6b890d52-7cab-4098-acad-ae62a04694a2/__spark_conf__8278004514804938649.zip -> hdfs://ctit048.ewi.utwente.nl/user/s2845016/.sparkStaging/application_1635880893505_0484/__spark_conf__.zip
+2021-12-12 21:52:50,515 INFO [main] org.apache.spark.deploy.security.HadoopFSDelegationTokenProvider: getting token for: DFS[DFSClient[clientName=DFSClient_NONMAPREDUCE_-1295793945_1, ugi=s2845016@AD.UTWENTE.NL (auth:KERBEROS)]]
+2021-12-12 21:52:50,529 INFO [main] org.apache.hadoop.hdfs.DFSClient: Created token for s2845016: HDFS_DELEGATION_TOKEN owner=s2845016@AD.UTWENTE.NL, renewer=yarn, realUser=, issueDate=1639342370517, maxDate=1639947170517, sequenceNumber=94657, masterKeyId=2021 on 130.89.6.234:8020
+2021-12-12 21:52:51,532 INFO [main] org.apache.spark.deploy.yarn.Client: Submitting application application_1635880893505_0484 to ResourceManager
+2021-12-12 21:52:51,984 INFO [main] org.apache.hadoop.yarn.client.api.impl.YarnClientImpl: Submitted application application_1635880893505_0484
+2021-12-12 21:52:56,986 INFO [main] org.apache.spark.deploy.yarn.Client: Application report for application_1635880893505_0484 (state: ACCEPTED)
+2021-12-12 21:52:56,990 INFO [main] org.apache.spark.deploy.yarn.Client: 
+	 client token: Token { kind: YARN_CLIENT_TOKEN, service:  }
+	 diagnostics: AM container is launched, waiting for AM container to Register with RM
+	 ApplicationMaster host: N/A
+	 ApplicationMaster RPC port: -1
+	 queue: root.s2845016
+	 start time: 1639342371550
+	 final status: UNDEFINED
+	 tracking URL: http://ctit048.ewi.utwente.nl:8088/proxy/application_1635880893505_0484/
+	 user: s2845016
+2021-12-12 21:53:01,992 INFO [main] org.apache.spark.deploy.yarn.Client: Application report for application_1635880893505_0484 (state: RUNNING)
+2021-12-12 21:53:01,992 INFO [main] org.apache.spark.deploy.yarn.Client: 
+	 client token: Token { kind: YARN_CLIENT_TOKEN, service:  }
+	 diagnostics: N/A
+	 ApplicationMaster host: ctit046.ewi.utwente.nl
+	 ApplicationMaster RPC port: 34201
+	 queue: root.s2845016
+	 start time: 1639342371550
+	 final status: UNDEFINED
+	 tracking URL: http://ctit048.ewi.utwente.nl:8088/proxy/application_1635880893505_0484/
+	 user: s2845016
+2021-12-12 21:53:06,994 INFO [main] org.apache.spark.deploy.yarn.Client: Application report for application_1635880893505_0484 (state: RUNNING)
+2021-12-12 21:53:11,995 INFO [main] org.apache.spark.deploy.yarn.Client: Application report for application_1635880893505_0484 (state: RUNNING)
+2021-12-12 21:53:16,996 INFO [main] org.apache.spark.deploy.yarn.Client: Application report for application_1635880893505_0484 (state: RUNNING)
+2021-12-12 21:53:21,998 INFO [main] org.apache.spark.deploy.yarn.Client: Application report for application_1635880893505_0484 (state: RUNNING)
+2021-12-12 21:53:26,999 INFO [main] org.apache.spark.deploy.yarn.Client: Application report for application_1635880893505_0484 (state: RUNNING)
+2021-12-12 21:53:32,000 INFO [main] org.apache.spark.deploy.yarn.Client: Application report for application_1635880893505_0484 (state: RUNNING)
+2021-12-12 21:53:37,002 INFO [main] org.apache.spark.deploy.yarn.Client: Application report for application_1635880893505_0484 (state: RUNNING)
+2021-12-12 21:53:42,003 INFO [main] org.apache.spark.deploy.yarn.Client: Application report for application_1635880893505_0484 (state: RUNNING)
+2021-12-12 21:53:47,004 INFO [main] org.apache.spark.deploy.yarn.Client: Application report for application_1635880893505_0484 (state: RUNNING)
+2021-12-12 21:53:52,006 INFO [main] org.apache.spark.deploy.yarn.Client: Application report for application_1635880893505_0484 (state: RUNNING)
+2021-12-12 21:53:57,009 INFO [main] org.apache.spark.deploy.yarn.Client: Application report for application_1635880893505_0484 (state: RUNNING)
+2021-12-12 21:54:02,010 INFO [main] org.apache.spark.deploy.yarn.Client: Application report for application_1635880893505_0484 (state: RUNNING)
+2021-12-12 21:54:07,011 INFO [main] org.apache.spark.deploy.yarn.Client: Application report for application_1635880893505_0484 (state: RUNNING)
+2021-12-12 21:54:12,013 INFO [main] org.apache.spark.deploy.yarn.Client: Application report for application_1635880893505_0484 (state: RUNNING)
+2021-12-12 21:54:17,014 INFO [main] org.apache.spark.deploy.yarn.Client: Application report for application_1635880893505_0484 (state: RUNNING)
+2021-12-12 21:54:22,015 INFO [main] org.apache.spark.deploy.yarn.Client: Application report for application_1635880893505_0484 (state: RUNNING)
+2021-12-12 21:54:27,017 INFO [main] org.apache.spark.deploy.yarn.Client: Application report for application_1635880893505_0484 (state: RUNNING)
+2021-12-12 21:54:32,018 INFO [main] org.apache.spark.deploy.yarn.Client: Application report for application_1635880893505_0484 (state: RUNNING)
+2021-12-12 21:54:37,019 INFO [main] org.apache.spark.deploy.yarn.Client: Application report for application_1635880893505_0484 (state: RUNNING)
+2021-12-12 21:54:42,021 INFO [main] org.apache.spark.deploy.yarn.Client: Application report for application_1635880893505_0484 (state: RUNNING)
+2021-12-12 21:54:47,022 INFO [main] org.apache.spark.deploy.yarn.Client: Application report for application_1635880893505_0484 (state: RUNNING)
+2021-12-12 21:54:52,023 INFO [main] org.apache.spark.deploy.yarn.Client: Application report for application_1635880893505_0484 (state: RUNNING)
+2021-12-12 21:54:57,025 INFO [main] org.apache.spark.deploy.yarn.Client: Application report for application_1635880893505_0484 (state: RUNNING)
+2021-12-12 21:55:02,026 INFO [main] org.apache.spark.deploy.yarn.Client: Application report for application_1635880893505_0484 (state: RUNNING)
+2021-12-12 21:55:07,027 INFO [main] org.apache.spark.deploy.yarn.Client: Application report for application_1635880893505_0484 (state: RUNNING)
+2021-12-12 21:55:12,028 INFO [main] org.apache.spark.deploy.yarn.Client: Application report for application_1635880893505_0484 (state: RUNNING)
+2021-12-12 21:55:17,030 INFO [main] org.apache.spark.deploy.yarn.Client: Application report for application_1635880893505_0484 (state: FINISHED)
+2021-12-12 21:55:17,030 INFO [main] org.apache.spark.deploy.yarn.Client: 
+	 client token: N/A
+	 diagnostics: N/A
+	 ApplicationMaster host: ctit046.ewi.utwente.nl
+	 ApplicationMaster RPC port: 34201
+	 queue: root.s2845016
+	 start time: 1639342371550
+	 final status: SUCCEEDED
+	 tracking URL: http://ctit048.ewi.utwente.nl:8088/proxy/application_1635880893505_0484/
+	 user: s2845016

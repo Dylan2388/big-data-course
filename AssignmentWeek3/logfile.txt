@@ -1,0 +1,305 @@
+2021-12-07 19:04:53,632 INFO [Thread-6] org.apache.spark.SparkContext: Running Spark version 2.4.7
+2021-12-07 19:04:53,653 INFO [Thread-6] org.apache.spark.SparkContext: Submitted application: DSORT
+2021-12-07 19:04:53,960 INFO [Thread-6] org.apache.spark.util.Utils: Successfully started service 'sparkDriver' on port 38325.
+2021-12-07 19:04:53,984 INFO [Thread-6] org.apache.spark.SparkEnv: Registering MapOutputTracker
+2021-12-07 19:04:53,999 INFO [Thread-6] org.apache.spark.SparkEnv: Registering BlockManagerMaster
+2021-12-07 19:04:54,002 INFO [Thread-6] org.apache.spark.storage.BlockManagerMasterEndpoint: Using org.apache.spark.storage.DefaultTopologyMapper for getting topology information
+2021-12-07 19:04:54,002 INFO [Thread-6] org.apache.spark.storage.BlockManagerMasterEndpoint: BlockManagerMasterEndpoint up
+2021-12-07 19:04:54,011 INFO [Thread-6] org.apache.spark.storage.DiskBlockManager: Created local directory at /tmp/blockmgr-82e3c7ae-593a-45b9-882a-3ecaf02c6bc7
+2021-12-07 19:04:54,025 INFO [Thread-6] org.apache.spark.storage.memory.MemoryStore: MemoryStore started with capacity 366.3 MB
+2021-12-07 19:04:54,038 INFO [Thread-6] org.apache.spark.SparkEnv: Registering OutputCommitCoordinator
+2021-12-07 19:04:54,108 INFO [Thread-6] org.spark_project.jetty.util.log: Logging initialized @2452ms
+2021-12-07 19:04:54,164 INFO [Thread-6] org.spark_project.jetty.server.Server: jetty-9.3.z-SNAPSHOT, build timestamp: 2018-09-04T23:11:46+02:00, git hash: 3ce520221d0240229c862b122d2b06c12a625732
+2021-12-07 19:04:54,179 INFO [Thread-6] org.spark_project.jetty.server.Server: Started @2524ms
+2021-12-07 19:04:54,194 INFO [Thread-6] org.spark_project.jetty.server.AbstractConnector: Started ServerConnector@69f842f5{HTTP/1.1,[http/1.1]}{0.0.0.0:4040}
+2021-12-07 19:04:54,194 INFO [Thread-6] org.apache.spark.util.Utils: Successfully started service 'SparkUI' on port 4040.
+2021-12-07 19:04:54,217 INFO [Thread-6] org.spark_project.jetty.server.handler.ContextHandler: Started o.s.j.s.ServletContextHandler@5e114b23{/jobs,null,AVAILABLE,@Spark}
+2021-12-07 19:04:54,218 INFO [Thread-6] org.spark_project.jetty.server.handler.ContextHandler: Started o.s.j.s.ServletContextHandler@57d29537{/jobs/json,null,AVAILABLE,@Spark}
+2021-12-07 19:04:54,219 INFO [Thread-6] org.spark_project.jetty.server.handler.ContextHandler: Started o.s.j.s.ServletContextHandler@1d09a263{/jobs/job,null,AVAILABLE,@Spark}
+2021-12-07 19:04:54,220 INFO [Thread-6] org.spark_project.jetty.server.handler.ContextHandler: Started o.s.j.s.ServletContextHandler@7ec4b0de{/jobs/job/json,null,AVAILABLE,@Spark}
+2021-12-07 19:04:54,221 INFO [Thread-6] org.spark_project.jetty.server.handler.ContextHandler: Started o.s.j.s.ServletContextHandler@3dfcf91c{/stages,null,AVAILABLE,@Spark}
+2021-12-07 19:04:54,222 INFO [Thread-6] org.spark_project.jetty.server.handler.ContextHandler: Started o.s.j.s.ServletContextHandler@6db64e7a{/stages/json,null,AVAILABLE,@Spark}
+2021-12-07 19:04:54,223 INFO [Thread-6] org.spark_project.jetty.server.handler.ContextHandler: Started o.s.j.s.ServletContextHandler@1b8d01e9{/stages/stage,null,AVAILABLE,@Spark}
+2021-12-07 19:04:54,225 INFO [Thread-6] org.spark_project.jetty.server.handler.ContextHandler: Started o.s.j.s.ServletContextHandler@45e06daa{/stages/stage/json,null,AVAILABLE,@Spark}
+2021-12-07 19:04:54,225 INFO [Thread-6] org.spark_project.jetty.server.handler.ContextHandler: Started o.s.j.s.ServletContextHandler@3691aeb6{/stages/pool,null,AVAILABLE,@Spark}
+2021-12-07 19:04:54,226 INFO [Thread-6] org.spark_project.jetty.server.handler.ContextHandler: Started o.s.j.s.ServletContextHandler@56e50c42{/stages/pool/json,null,AVAILABLE,@Spark}
+2021-12-07 19:04:54,227 INFO [Thread-6] org.spark_project.jetty.server.handler.ContextHandler: Started o.s.j.s.ServletContextHandler@1dfce9a2{/storage,null,AVAILABLE,@Spark}
+2021-12-07 19:04:54,228 INFO [Thread-6] org.spark_project.jetty.server.handler.ContextHandler: Started o.s.j.s.ServletContextHandler@5b374a8a{/storage/json,null,AVAILABLE,@Spark}
+2021-12-07 19:04:54,229 INFO [Thread-6] org.spark_project.jetty.server.handler.ContextHandler: Started o.s.j.s.ServletContextHandler@60e8ab44{/storage/rdd,null,AVAILABLE,@Spark}
+2021-12-07 19:04:54,229 INFO [Thread-6] org.spark_project.jetty.server.handler.ContextHandler: Started o.s.j.s.ServletContextHandler@1e112c07{/storage/rdd/json,null,AVAILABLE,@Spark}
+2021-12-07 19:04:54,230 INFO [Thread-6] org.spark_project.jetty.server.handler.ContextHandler: Started o.s.j.s.ServletContextHandler@64da779e{/environment,null,AVAILABLE,@Spark}
+2021-12-07 19:04:54,231 INFO [Thread-6] org.spark_project.jetty.server.handler.ContextHandler: Started o.s.j.s.ServletContextHandler@5d81295{/environment/json,null,AVAILABLE,@Spark}
+2021-12-07 19:04:54,232 INFO [Thread-6] org.spark_project.jetty.server.handler.ContextHandler: Started o.s.j.s.ServletContextHandler@20cf3be1{/executors,null,AVAILABLE,@Spark}
+2021-12-07 19:04:54,233 INFO [Thread-6] org.spark_project.jetty.server.handler.ContextHandler: Started o.s.j.s.ServletContextHandler@37a95aeb{/executors/json,null,AVAILABLE,@Spark}
+2021-12-07 19:04:54,239 INFO [Thread-6] org.spark_project.jetty.server.handler.ContextHandler: Started o.s.j.s.ServletContextHandler@f8bd07{/executors/threadDump,null,AVAILABLE,@Spark}
+2021-12-07 19:04:54,240 INFO [Thread-6] org.spark_project.jetty.server.handler.ContextHandler: Started o.s.j.s.ServletContextHandler@45f14b37{/executors/threadDump/json,null,AVAILABLE,@Spark}
+2021-12-07 19:04:54,246 INFO [Thread-6] org.spark_project.jetty.server.handler.ContextHandler: Started o.s.j.s.ServletContextHandler@1cb8605b{/static,null,AVAILABLE,@Spark}
+2021-12-07 19:04:54,246 INFO [Thread-6] org.spark_project.jetty.server.handler.ContextHandler: Started o.s.j.s.ServletContextHandler@4073a8aa{/,null,AVAILABLE,@Spark}
+2021-12-07 19:04:54,247 INFO [Thread-6] org.spark_project.jetty.server.handler.ContextHandler: Started o.s.j.s.ServletContextHandler@fd846fa{/api,null,AVAILABLE,@Spark}
+2021-12-07 19:04:54,248 INFO [Thread-6] org.spark_project.jetty.server.handler.ContextHandler: Started o.s.j.s.ServletContextHandler@3fdea8d2{/jobs/job/kill,null,AVAILABLE,@Spark}
+2021-12-07 19:04:54,249 INFO [Thread-6] org.spark_project.jetty.server.handler.ContextHandler: Started o.s.j.s.ServletContextHandler@41cbe193{/stages/stage/kill,null,AVAILABLE,@Spark}
+2021-12-07 19:04:54,250 INFO [Thread-6] org.apache.spark.ui.SparkUI: Bound SparkUI to 0.0.0.0, and started at http://ctit017.ewi.utwente.nl:4040
+2021-12-07 19:04:54,306 INFO [Thread-6] org.apache.spark.executor.Executor: Starting executor ID driver on host localhost
+2021-12-07 19:04:54,387 INFO [Thread-6] org.apache.spark.util.Utils: Successfully started service 'org.apache.spark.network.netty.NettyBlockTransferService' on port 44809.
+2021-12-07 19:04:54,387 INFO [Thread-6] org.apache.spark.network.netty.NettyBlockTransferService: Server created on ctit017.ewi.utwente.nl:44809
+2021-12-07 19:04:54,390 INFO [Thread-6] org.apache.spark.storage.BlockManager: Using org.apache.spark.storage.RandomBlockReplicationPolicy for block replication policy
+2021-12-07 19:04:54,411 INFO [Thread-6] org.apache.spark.storage.BlockManagerMaster: Registering BlockManager BlockManagerId(driver, ctit017.ewi.utwente.nl, 44809, None)
+2021-12-07 19:04:54,415 INFO [dispatcher-event-loop-10] org.apache.spark.storage.BlockManagerMasterEndpoint: Registering block manager ctit017.ewi.utwente.nl:44809 with 366.3 MB RAM, BlockManagerId(driver, ctit017.ewi.utwente.nl, 44809, None)
+2021-12-07 19:04:54,417 INFO [Thread-6] org.apache.spark.storage.BlockManagerMaster: Registered BlockManager BlockManagerId(driver, ctit017.ewi.utwente.nl, 44809, None)
+2021-12-07 19:04:54,417 INFO [Thread-6] org.apache.spark.storage.BlockManager: external shuffle service port = 7337
+2021-12-07 19:04:54,418 INFO [Thread-6] org.apache.spark.storage.BlockManager: Initialized BlockManager: BlockManagerId(driver, ctit017.ewi.utwente.nl, 44809, None)
+2021-12-07 19:04:54,540 INFO [Thread-6] org.spark_project.jetty.server.handler.ContextHandler: Started o.s.j.s.ServletContextHandler@6f71eec0{/metrics/json,null,AVAILABLE,@Spark}
+2021-12-07 19:04:55,737 INFO [Thread-6] org.apache.spark.scheduler.EventLoggingListener: Logging events to hdfs://ctit048.ewi.utwente.nl/user/spark/applicationHistory/local-1638900294290
+2021-12-07 19:04:55,880 INFO [Thread-6] org.apache.spark.sql.internal.SharedState: Setting hive.metastore.warehouse.dir ('null') to the value of spark.sql.warehouse.dir ('file:/home/s2845016/BigDataCourse/big-data-course/AssignmentWeek3/spark-warehouse').
+2021-12-07 19:04:55,881 INFO [Thread-6] org.apache.spark.sql.internal.SharedState: Warehouse path is 'file:/home/s2845016/BigDataCourse/big-data-course/AssignmentWeek3/spark-warehouse'.
+2021-12-07 19:04:55,890 INFO [Thread-6] org.spark_project.jetty.server.handler.ContextHandler: Started o.s.j.s.ServletContextHandler@ae5c955{/SQL,null,AVAILABLE,@Spark}
+2021-12-07 19:04:55,891 INFO [Thread-6] org.spark_project.jetty.server.handler.ContextHandler: Started o.s.j.s.ServletContextHandler@3d827834{/SQL/json,null,AVAILABLE,@Spark}
+2021-12-07 19:04:55,891 INFO [Thread-6] org.spark_project.jetty.server.handler.ContextHandler: Started o.s.j.s.ServletContextHandler@64fed00f{/SQL/execution,null,AVAILABLE,@Spark}
+2021-12-07 19:04:55,892 INFO [Thread-6] org.spark_project.jetty.server.handler.ContextHandler: Started o.s.j.s.ServletContextHandler@3ee17792{/SQL/execution/json,null,AVAILABLE,@Spark}
+2021-12-07 19:04:55,894 INFO [Thread-6] org.spark_project.jetty.server.handler.ContextHandler: Started o.s.j.s.ServletContextHandler@3d11b015{/static/sql,null,AVAILABLE,@Spark}
+2021-12-07 19:04:56,339 INFO [Thread-6] org.apache.spark.sql.execution.streaming.state.StateStoreCoordinatorRef: Registered StateStoreCoordinator endpoint
+2021-12-07 19:04:56,468 INFO [Thread-6] org.apache.spark.sql.execution.datasources.InMemoryFileIndex: It took 56 ms to list leaf files for 1 paths.
+2021-12-07 19:04:58,571 INFO [Thread-6] org.apache.spark.sql.execution.datasources.FileSourceStrategy: Pruning directories with: 
+2021-12-07 19:04:58,573 INFO [Thread-6] org.apache.spark.sql.execution.datasources.FileSourceStrategy: Post-Scan Filters: 
+2021-12-07 19:04:58,576 INFO [Thread-6] org.apache.spark.sql.execution.datasources.FileSourceStrategy: Output Data Schema: struct<value: string>
+2021-12-07 19:04:58,582 INFO [Thread-6] org.apache.spark.sql.execution.FileSourceScanExec: Pushed Filters: 
+2021-12-07 19:04:59,052 INFO [Thread-6] org.apache.spark.sql.catalyst.expressions.codegen.CodeGenerator: Code generated in 249.427944 ms
+2021-12-07 19:04:59,105 INFO [Thread-6] org.apache.spark.sql.catalyst.expressions.codegen.CodeGenerator: Code generated in 25.972739 ms
+2021-12-07 19:04:59,140 INFO [Thread-6] org.apache.spark.sql.catalyst.expressions.codegen.CodeGenerator: Code generated in 24.943801 ms
+2021-12-07 19:04:59,207 INFO [Thread-6] org.apache.spark.storage.memory.MemoryStore: Block broadcast_0 stored as values in memory (estimated size 392.9 KB, free 365.9 MB)
+2021-12-07 19:04:59,371 INFO [Spark Context Cleaner] org.apache.spark.ContextCleaner: Cleaned accumulator 1
+2021-12-07 19:04:59,484 INFO [Thread-6] org.apache.spark.storage.memory.MemoryStore: Block broadcast_0_piece0 stored as bytes in memory (estimated size 41.6 KB, free 365.9 MB)
+2021-12-07 19:04:59,488 INFO [dispatcher-event-loop-13] org.apache.spark.storage.BlockManagerInfo: Added broadcast_0_piece0 in memory on ctit017.ewi.utwente.nl:44809 (size: 41.6 KB, free: 366.3 MB)
+2021-12-07 19:04:59,492 INFO [Thread-6] org.apache.spark.SparkContext: Created broadcast 0 from javaToPython at NativeMethodAccessorImpl.java:0
+2021-12-07 19:04:59,498 INFO [Thread-6] org.apache.spark.sql.execution.FileSourceScanExec: Planning scan with bin packing, max size: 4194304 bytes, open cost is considered as scanning 4194304 bytes.
+2021-12-07 19:04:59,617 INFO [Thread-6] org.apache.spark.sql.catalyst.expressions.codegen.CodeGenerator: Code generated in 16.053197 ms
+2021-12-07 19:04:59,715 INFO [Thread-6] org.apache.spark.SparkContext: Starting job: javaToPython at NativeMethodAccessorImpl.java:0
+2021-12-07 19:04:59,733 INFO [dag-scheduler-event-loop] org.apache.spark.scheduler.DAGScheduler: Got job 0 (javaToPython at NativeMethodAccessorImpl.java:0) with 2 output partitions
+2021-12-07 19:04:59,734 INFO [dag-scheduler-event-loop] org.apache.spark.scheduler.DAGScheduler: Final stage: ResultStage 0 (javaToPython at NativeMethodAccessorImpl.java:0)
+2021-12-07 19:04:59,734 INFO [dag-scheduler-event-loop] org.apache.spark.scheduler.DAGScheduler: Parents of final stage: List()
+2021-12-07 19:04:59,735 INFO [dag-scheduler-event-loop] org.apache.spark.scheduler.DAGScheduler: Missing parents: List()
+2021-12-07 19:04:59,740 INFO [dag-scheduler-event-loop] org.apache.spark.scheduler.DAGScheduler: Submitting ResultStage 0 (MapPartitionsRDD[6] at javaToPython at NativeMethodAccessorImpl.java:0), which has no missing parents
+2021-12-07 19:04:59,759 INFO [dag-scheduler-event-loop] org.apache.spark.storage.memory.MemoryStore: Block broadcast_1 stored as values in memory (estimated size 16.0 KB, free 365.9 MB)
+2021-12-07 19:04:59,777 INFO [dag-scheduler-event-loop] org.apache.spark.storage.memory.MemoryStore: Block broadcast_1_piece0 stored as bytes in memory (estimated size 7.3 KB, free 365.9 MB)
+2021-12-07 19:04:59,778 INFO [dispatcher-event-loop-14] org.apache.spark.storage.BlockManagerInfo: Added broadcast_1_piece0 in memory on ctit017.ewi.utwente.nl:44809 (size: 7.3 KB, free: 366.3 MB)
+2021-12-07 19:04:59,779 INFO [dag-scheduler-event-loop] org.apache.spark.SparkContext: Created broadcast 1 from broadcast at DAGScheduler.scala:1184
+2021-12-07 19:04:59,792 INFO [dag-scheduler-event-loop] org.apache.spark.scheduler.DAGScheduler: Submitting 2 missing tasks from ResultStage 0 (MapPartitionsRDD[6] at javaToPython at NativeMethodAccessorImpl.java:0) (first 15 tasks are for partitions Vector(0, 1))
+2021-12-07 19:04:59,793 INFO [dag-scheduler-event-loop] org.apache.spark.scheduler.TaskSchedulerImpl: Adding task set 0.0 with 2 tasks
+2021-12-07 19:04:59,827 INFO [dispatcher-event-loop-15] org.apache.spark.scheduler.TaskSetManager: Starting task 0.0 in stage 0.0 (TID 0, localhost, executor driver, partition 0, ANY, 8269 bytes)
+2021-12-07 19:04:59,829 INFO [dispatcher-event-loop-15] org.apache.spark.scheduler.TaskSetManager: Starting task 1.0 in stage 0.0 (TID 1, localhost, executor driver, partition 1, ANY, 8269 bytes)
+2021-12-07 19:04:59,837 INFO [Executor task launch worker for task 1] org.apache.spark.executor.Executor: Running task 1.0 in stage 0.0 (TID 1)
+2021-12-07 19:04:59,837 INFO [Executor task launch worker for task 0] org.apache.spark.executor.Executor: Running task 0.0 in stage 0.0 (TID 0)
+2021-12-07 19:04:59,925 INFO [Executor task launch worker for task 0] org.apache.spark.sql.catalyst.expressions.codegen.CodeGenerator: Code generated in 14.493077 ms
+2021-12-07 19:04:59,931 INFO [Executor task launch worker for task 0] org.apache.spark.sql.execution.datasources.FileScanRDD: Reading File path: hdfs://ctit048.ewi.utwente.nl/data/doina/integers.txt, range: 0-4194304, partition values: [empty row]
+2021-12-07 19:04:59,931 INFO [Executor task launch worker for task 1] org.apache.spark.sql.execution.datasources.FileScanRDD: Reading File path: hdfs://ctit048.ewi.utwente.nl/data/doina/integers.txt, range: 4194304-4444391, partition values: [empty row]
+2021-12-07 19:05:00,066 INFO [Executor task launch worker for task 1] org.apache.spark.executor.Executor: Finished task 1.0 in stage 0.0 (TID 1). 1560 bytes result sent to driver
+2021-12-07 19:05:00,081 INFO [task-result-getter-0] org.apache.spark.scheduler.TaskSetManager: Finished task 1.0 in stage 0.0 (TID 1) in 251 ms on localhost (executor driver) (1/2)
+2021-12-07 19:05:00,478 INFO [Executor task launch worker for task 0] org.apache.spark.executor.Executor: Finished task 0.0 in stage 0.0 (TID 0). 42347 bytes result sent to driver
+2021-12-07 19:05:00,508 INFO [task-result-getter-1] org.apache.spark.scheduler.TaskSetManager: Finished task 0.0 in stage 0.0 (TID 0) in 689 ms on localhost (executor driver) (2/2)
+2021-12-07 19:05:00,509 INFO [task-result-getter-1] org.apache.spark.scheduler.TaskSchedulerImpl: Removed TaskSet 0.0, whose tasks have all completed, from pool 
+2021-12-07 19:05:00,511 INFO [dag-scheduler-event-loop] org.apache.spark.scheduler.DAGScheduler: ResultStage 0 (javaToPython at NativeMethodAccessorImpl.java:0) finished in 0.756 s
+2021-12-07 19:05:00,516 INFO [Thread-6] org.apache.spark.scheduler.DAGScheduler: Job 0 finished: javaToPython at NativeMethodAccessorImpl.java:0, took 0.800073 s
+2021-12-07 19:05:00,642 INFO [Thread-6] org.apache.hadoop.hdfs.DFSClient: Created token for s2845016: HDFS_DELEGATION_TOKEN owner=s2845016@AD.UTWENTE.NL, renewer=yarn, realUser=, issueDate=1638900300619, maxDate=1639505100619, sequenceNumber=93781, masterKeyId=2016 on 130.89.6.234:8020
+2021-12-07 19:05:00,671 INFO [Thread-6] org.apache.hadoop.mapreduce.security.TokenCache: Got dt for hdfs://ctit048.ewi.utwente.nl; Kind: HDFS_DELEGATION_TOKEN, Service: 130.89.6.234:8020, Ident: (token for s2845016: HDFS_DELEGATION_TOKEN owner=s2845016@AD.UTWENTE.NL, renewer=yarn, realUser=, issueDate=1638900300619, maxDate=1639505100619, sequenceNumber=93781, masterKeyId=2016)
+2021-12-07 19:05:00,675 INFO [Thread-6] org.apache.hadoop.conf.Configuration.deprecation: mapred.output.dir is deprecated. Instead, use mapreduce.output.fileoutputformat.outputdir
+2021-12-07 19:05:00,678 INFO [Thread-6] org.apache.spark.internal.io.HadoopMapRedCommitProtocol: Using output committer class org.apache.hadoop.mapred.FileOutputCommitter
+2021-12-07 19:05:00,680 INFO [Thread-6] org.apache.hadoop.mapreduce.lib.output.FileOutputCommitter: File Output Committer Algorithm version is 2
+2021-12-07 19:05:00,680 INFO [Thread-6] org.apache.hadoop.mapreduce.lib.output.FileOutputCommitter: FileOutputCommitter skip cleanup _temporary folders under output directory:false, ignore cleanup failures: false
+2021-12-07 19:05:00,728 INFO [Thread-6] org.apache.spark.SparkContext: Starting job: runJob at SparkHadoopWriter.scala:78
+2021-12-07 19:05:00,732 INFO [dag-scheduler-event-loop] org.apache.spark.scheduler.DAGScheduler: Registering RDD 7 (javaToPython at NativeMethodAccessorImpl.java:0) as input to shuffle 0
+2021-12-07 19:05:00,733 INFO [dag-scheduler-event-loop] org.apache.spark.scheduler.DAGScheduler: Got job 1 (runJob at SparkHadoopWriter.scala:78) with 10 output partitions
+2021-12-07 19:05:00,733 INFO [dag-scheduler-event-loop] org.apache.spark.scheduler.DAGScheduler: Final stage: ResultStage 2 (runJob at SparkHadoopWriter.scala:78)
+2021-12-07 19:05:00,734 INFO [dag-scheduler-event-loop] org.apache.spark.scheduler.DAGScheduler: Parents of final stage: List(ShuffleMapStage 1)
+2021-12-07 19:05:00,735 INFO [dag-scheduler-event-loop] org.apache.spark.scheduler.DAGScheduler: Missing parents: List(ShuffleMapStage 1)
+2021-12-07 19:05:00,736 INFO [dag-scheduler-event-loop] org.apache.spark.scheduler.DAGScheduler: Submitting ShuffleMapStage 1 (MapPartitionsRDD[7] at javaToPython at NativeMethodAccessorImpl.java:0), which has no missing parents
+2021-12-07 19:05:00,754 INFO [dag-scheduler-event-loop] org.apache.spark.storage.memory.MemoryStore: Block broadcast_2 stored as values in memory (estimated size 17.9 KB, free 365.8 MB)
+2021-12-07 19:05:00,760 INFO [dag-scheduler-event-loop] org.apache.spark.storage.memory.MemoryStore: Block broadcast_2_piece0 stored as bytes in memory (estimated size 8.3 KB, free 365.8 MB)
+2021-12-07 19:05:00,761 INFO [dispatcher-event-loop-4] org.apache.spark.storage.BlockManagerInfo: Added broadcast_2_piece0 in memory on ctit017.ewi.utwente.nl:44809 (size: 8.3 KB, free: 366.2 MB)
+2021-12-07 19:05:00,762 INFO [dag-scheduler-event-loop] org.apache.spark.SparkContext: Created broadcast 2 from broadcast at DAGScheduler.scala:1184
+2021-12-07 19:05:00,765 INFO [dag-scheduler-event-loop] org.apache.spark.scheduler.DAGScheduler: Submitting 2 missing tasks from ShuffleMapStage 1 (MapPartitionsRDD[7] at javaToPython at NativeMethodAccessorImpl.java:0) (first 15 tasks are for partitions Vector(0, 1))
+2021-12-07 19:05:00,765 INFO [dag-scheduler-event-loop] org.apache.spark.scheduler.TaskSchedulerImpl: Adding task set 1.0 with 2 tasks
+2021-12-07 19:05:00,767 INFO [dispatcher-event-loop-5] org.apache.spark.scheduler.TaskSetManager: Starting task 0.0 in stage 1.0 (TID 2, localhost, executor driver, partition 0, ANY, 8258 bytes)
+2021-12-07 19:05:00,768 INFO [dispatcher-event-loop-5] org.apache.spark.scheduler.TaskSetManager: Starting task 1.0 in stage 1.0 (TID 3, localhost, executor driver, partition 1, ANY, 8258 bytes)
+2021-12-07 19:05:00,768 INFO [Executor task launch worker for task 3] org.apache.spark.executor.Executor: Running task 1.0 in stage 1.0 (TID 3)
+2021-12-07 19:05:00,768 INFO [Executor task launch worker for task 2] org.apache.spark.executor.Executor: Running task 0.0 in stage 1.0 (TID 2)
+2021-12-07 19:05:00,793 INFO [Executor task launch worker for task 3] org.apache.spark.sql.execution.datasources.FileScanRDD: Reading File path: hdfs://ctit048.ewi.utwente.nl/data/doina/integers.txt, range: 4194304-4444391, partition values: [empty row]
+2021-12-07 19:05:00,793 INFO [Executor task launch worker for task 2] org.apache.spark.sql.execution.datasources.FileScanRDD: Reading File path: hdfs://ctit048.ewi.utwente.nl/data/doina/integers.txt, range: 0-4194304, partition values: [empty row]
+2021-12-07 19:05:00,817 INFO [Executor task launch worker for task 3] org.apache.spark.executor.Executor: Finished task 1.0 in stage 1.0 (TID 3). 1603 bytes result sent to driver
+2021-12-07 19:05:00,824 INFO [task-result-getter-2] org.apache.spark.scheduler.TaskSetManager: Finished task 1.0 in stage 1.0 (TID 3) in 57 ms on localhost (executor driver) (1/2)
+2021-12-07 19:05:00,959 INFO [Spark Context Cleaner] org.apache.spark.ContextCleaner: Cleaned accumulator 37
+2021-12-07 19:05:00,959 INFO [Spark Context Cleaner] org.apache.spark.ContextCleaner: Cleaned accumulator 34
+2021-12-07 19:05:00,960 INFO [Spark Context Cleaner] org.apache.spark.ContextCleaner: Cleaned accumulator 24
+2021-12-07 19:05:00,960 INFO [Spark Context Cleaner] org.apache.spark.ContextCleaner: Cleaned accumulator 15
+2021-12-07 19:05:00,960 INFO [Spark Context Cleaner] org.apache.spark.ContextCleaner: Cleaned accumulator 36
+2021-12-07 19:05:00,960 INFO [Spark Context Cleaner] org.apache.spark.ContextCleaner: Cleaned accumulator 23
+2021-12-07 19:05:00,960 INFO [Spark Context Cleaner] org.apache.spark.ContextCleaner: Cleaned accumulator 17
+2021-12-07 19:05:00,960 INFO [Spark Context Cleaner] org.apache.spark.ContextCleaner: Cleaned accumulator 26
+2021-12-07 19:05:00,960 INFO [Spark Context Cleaner] org.apache.spark.ContextCleaner: Cleaned accumulator 22
+2021-12-07 19:05:00,960 INFO [Spark Context Cleaner] org.apache.spark.ContextCleaner: Cleaned accumulator 19
+2021-12-07 19:05:00,960 INFO [Spark Context Cleaner] org.apache.spark.ContextCleaner: Cleaned accumulator 21
+2021-12-07 19:05:00,972 INFO [dispatcher-event-loop-11] org.apache.spark.storage.BlockManagerInfo: Removed broadcast_1_piece0 on ctit017.ewi.utwente.nl:44809 in memory (size: 7.3 KB, free: 366.3 MB)
+2021-12-07 19:05:00,975 INFO [Spark Context Cleaner] org.apache.spark.ContextCleaner: Cleaned accumulator 38
+2021-12-07 19:05:00,975 INFO [Spark Context Cleaner] org.apache.spark.ContextCleaner: Cleaned accumulator 27
+2021-12-07 19:05:00,975 INFO [Spark Context Cleaner] org.apache.spark.ContextCleaner: Cleaned accumulator 28
+2021-12-07 19:05:00,975 INFO [Spark Context Cleaner] org.apache.spark.ContextCleaner: Cleaned accumulator 16
+2021-12-07 19:05:00,975 INFO [Spark Context Cleaner] org.apache.spark.ContextCleaner: Cleaned accumulator 31
+2021-12-07 19:05:00,976 INFO [Spark Context Cleaner] org.apache.spark.ContextCleaner: Cleaned accumulator 30
+2021-12-07 19:05:00,976 INFO [Spark Context Cleaner] org.apache.spark.ContextCleaner: Cleaned accumulator 18
+2021-12-07 19:05:00,976 INFO [Spark Context Cleaner] org.apache.spark.ContextCleaner: Cleaned accumulator 35
+2021-12-07 19:05:00,976 INFO [Spark Context Cleaner] org.apache.spark.ContextCleaner: Cleaned accumulator 33
+2021-12-07 19:05:00,976 INFO [Spark Context Cleaner] org.apache.spark.ContextCleaner: Cleaned accumulator 25
+2021-12-07 19:05:00,976 INFO [Spark Context Cleaner] org.apache.spark.ContextCleaner: Cleaned accumulator 20
+2021-12-07 19:05:00,976 INFO [Spark Context Cleaner] org.apache.spark.ContextCleaner: Cleaned accumulator 32
+2021-12-07 19:05:00,976 INFO [Spark Context Cleaner] org.apache.spark.ContextCleaner: Cleaned accumulator 39
+2021-12-07 19:05:00,976 INFO [Spark Context Cleaner] org.apache.spark.ContextCleaner: Cleaned accumulator 29
+2021-12-07 19:05:01,249 INFO [Executor task launch worker for task 2] org.apache.spark.executor.Executor: Finished task 0.0 in stage 1.0 (TID 2). 1861 bytes result sent to driver
+2021-12-07 19:05:01,253 INFO [task-result-getter-3] org.apache.spark.scheduler.TaskSetManager: Finished task 0.0 in stage 1.0 (TID 2) in 487 ms on localhost (executor driver) (2/2)
+2021-12-07 19:05:01,254 INFO [task-result-getter-3] org.apache.spark.scheduler.TaskSchedulerImpl: Removed TaskSet 1.0, whose tasks have all completed, from pool 
+2021-12-07 19:05:01,255 INFO [dag-scheduler-event-loop] org.apache.spark.scheduler.DAGScheduler: ShuffleMapStage 1 (javaToPython at NativeMethodAccessorImpl.java:0) finished in 0.515 s
+2021-12-07 19:05:01,255 INFO [dag-scheduler-event-loop] org.apache.spark.scheduler.DAGScheduler: looking for newly runnable stages
+2021-12-07 19:05:01,256 INFO [dag-scheduler-event-loop] org.apache.spark.scheduler.DAGScheduler: running: Set()
+2021-12-07 19:05:01,256 INFO [dag-scheduler-event-loop] org.apache.spark.scheduler.DAGScheduler: waiting: Set(ResultStage 2)
+2021-12-07 19:05:01,256 INFO [dag-scheduler-event-loop] org.apache.spark.scheduler.DAGScheduler: failed: Set()
+2021-12-07 19:05:01,259 INFO [dag-scheduler-event-loop] org.apache.spark.scheduler.DAGScheduler: Submitting ResultStage 2 (MapPartitionsRDD[15] at saveAsTextFile at NativeMethodAccessorImpl.java:0), which has no missing parents
+2021-12-07 19:05:01,302 INFO [dag-scheduler-event-loop] org.apache.spark.storage.memory.MemoryStore: Block broadcast_3 stored as values in memory (estimated size 134.6 KB, free 365.7 MB)
+2021-12-07 19:05:01,309 INFO [dag-scheduler-event-loop] org.apache.spark.storage.memory.MemoryStore: Block broadcast_3_piece0 stored as bytes in memory (estimated size 53.2 KB, free 365.7 MB)
+2021-12-07 19:05:01,310 INFO [dispatcher-event-loop-13] org.apache.spark.storage.BlockManagerInfo: Added broadcast_3_piece0 in memory on ctit017.ewi.utwente.nl:44809 (size: 53.2 KB, free: 366.2 MB)
+2021-12-07 19:05:01,311 INFO [dag-scheduler-event-loop] org.apache.spark.SparkContext: Created broadcast 3 from broadcast at DAGScheduler.scala:1184
+2021-12-07 19:05:01,312 INFO [dag-scheduler-event-loop] org.apache.spark.scheduler.DAGScheduler: Submitting 10 missing tasks from ResultStage 2 (MapPartitionsRDD[15] at saveAsTextFile at NativeMethodAccessorImpl.java:0) (first 15 tasks are for partitions Vector(0, 1, 2, 3, 4, 5, 6, 7, 8, 9))
+2021-12-07 19:05:01,312 INFO [dag-scheduler-event-loop] org.apache.spark.scheduler.TaskSchedulerImpl: Adding task set 2.0 with 10 tasks
+2021-12-07 19:05:01,314 INFO [dispatcher-event-loop-14] org.apache.spark.scheduler.TaskSetManager: Starting task 0.0 in stage 2.0 (TID 4, localhost, executor driver, partition 0, ANY, 7767 bytes)
+2021-12-07 19:05:01,314 INFO [dispatcher-event-loop-14] org.apache.spark.scheduler.TaskSetManager: Starting task 1.0 in stage 2.0 (TID 5, localhost, executor driver, partition 1, ANY, 7767 bytes)
+2021-12-07 19:05:01,315 INFO [dispatcher-event-loop-14] org.apache.spark.scheduler.TaskSetManager: Starting task 2.0 in stage 2.0 (TID 6, localhost, executor driver, partition 2, ANY, 7767 bytes)
+2021-12-07 19:05:01,315 INFO [dispatcher-event-loop-14] org.apache.spark.scheduler.TaskSetManager: Starting task 3.0 in stage 2.0 (TID 7, localhost, executor driver, partition 3, ANY, 7767 bytes)
+2021-12-07 19:05:01,315 INFO [dispatcher-event-loop-14] org.apache.spark.scheduler.TaskSetManager: Starting task 4.0 in stage 2.0 (TID 8, localhost, executor driver, partition 4, ANY, 7767 bytes)
+2021-12-07 19:05:01,316 INFO [dispatcher-event-loop-14] org.apache.spark.scheduler.TaskSetManager: Starting task 5.0 in stage 2.0 (TID 9, localhost, executor driver, partition 5, ANY, 7767 bytes)
+2021-12-07 19:05:01,316 INFO [dispatcher-event-loop-14] org.apache.spark.scheduler.TaskSetManager: Starting task 6.0 in stage 2.0 (TID 10, localhost, executor driver, partition 6, ANY, 7767 bytes)
+2021-12-07 19:05:01,316 INFO [dispatcher-event-loop-14] org.apache.spark.scheduler.TaskSetManager: Starting task 7.0 in stage 2.0 (TID 11, localhost, executor driver, partition 7, ANY, 7767 bytes)
+2021-12-07 19:05:01,317 INFO [dispatcher-event-loop-14] org.apache.spark.scheduler.TaskSetManager: Starting task 8.0 in stage 2.0 (TID 12, localhost, executor driver, partition 8, ANY, 7767 bytes)
+2021-12-07 19:05:01,317 INFO [dispatcher-event-loop-14] org.apache.spark.scheduler.TaskSetManager: Starting task 9.0 in stage 2.0 (TID 13, localhost, executor driver, partition 9, ANY, 7767 bytes)
+2021-12-07 19:05:01,317 INFO [Executor task launch worker for task 4] org.apache.spark.executor.Executor: Running task 0.0 in stage 2.0 (TID 4)
+2021-12-07 19:05:01,317 INFO [Executor task launch worker for task 5] org.apache.spark.executor.Executor: Running task 1.0 in stage 2.0 (TID 5)
+2021-12-07 19:05:01,318 INFO [Executor task launch worker for task 6] org.apache.spark.executor.Executor: Running task 2.0 in stage 2.0 (TID 6)
+2021-12-07 19:05:01,318 INFO [Executor task launch worker for task 7] org.apache.spark.executor.Executor: Running task 3.0 in stage 2.0 (TID 7)
+2021-12-07 19:05:01,318 INFO [Executor task launch worker for task 8] org.apache.spark.executor.Executor: Running task 4.0 in stage 2.0 (TID 8)
+2021-12-07 19:05:01,319 INFO [Executor task launch worker for task 9] org.apache.spark.executor.Executor: Running task 5.0 in stage 2.0 (TID 9)
+2021-12-07 19:05:01,323 INFO [Executor task launch worker for task 10] org.apache.spark.executor.Executor: Running task 6.0 in stage 2.0 (TID 10)
+2021-12-07 19:05:01,323 INFO [Executor task launch worker for task 11] org.apache.spark.executor.Executor: Running task 7.0 in stage 2.0 (TID 11)
+2021-12-07 19:05:01,324 INFO [Executor task launch worker for task 12] org.apache.spark.executor.Executor: Running task 8.0 in stage 2.0 (TID 12)
+2021-12-07 19:05:01,325 INFO [Executor task launch worker for task 13] org.apache.spark.executor.Executor: Running task 9.0 in stage 2.0 (TID 13)
+2021-12-07 19:05:01,404 INFO [dispatcher-event-loop-11] org.apache.spark.storage.BlockManagerInfo: Removed broadcast_2_piece0 on ctit017.ewi.utwente.nl:44809 in memory (size: 8.3 KB, free: 366.2 MB)
+2021-12-07 19:05:01,420 INFO [Executor task launch worker for task 6] org.apache.spark.storage.ShuffleBlockFetcherIterator: Getting 1 non-empty blocks including 1 local blocks and 0 remote blocks
+2021-12-07 19:05:01,420 INFO [Executor task launch worker for task 8] org.apache.spark.storage.ShuffleBlockFetcherIterator: Getting 1 non-empty blocks including 1 local blocks and 0 remote blocks
+2021-12-07 19:05:01,421 INFO [Executor task launch worker for task 11] org.apache.spark.storage.ShuffleBlockFetcherIterator: Getting 1 non-empty blocks including 1 local blocks and 0 remote blocks
+2021-12-07 19:05:01,420 INFO [Executor task launch worker for task 4] org.apache.spark.storage.ShuffleBlockFetcherIterator: Getting 1 non-empty blocks including 1 local blocks and 0 remote blocks
+2021-12-07 19:05:01,420 INFO [Executor task launch worker for task 7] org.apache.spark.storage.ShuffleBlockFetcherIterator: Getting 1 non-empty blocks including 1 local blocks and 0 remote blocks
+2021-12-07 19:05:01,421 INFO [Executor task launch worker for task 13] org.apache.spark.storage.ShuffleBlockFetcherIterator: Getting 1 non-empty blocks including 1 local blocks and 0 remote blocks
+2021-12-07 19:05:01,420 INFO [Executor task launch worker for task 9] org.apache.spark.storage.ShuffleBlockFetcherIterator: Getting 1 non-empty blocks including 1 local blocks and 0 remote blocks
+2021-12-07 19:05:01,421 INFO [Executor task launch worker for task 5] org.apache.spark.storage.ShuffleBlockFetcherIterator: Getting 1 non-empty blocks including 1 local blocks and 0 remote blocks
+2021-12-07 19:05:01,421 INFO [Executor task launch worker for task 12] org.apache.spark.storage.ShuffleBlockFetcherIterator: Getting 1 non-empty blocks including 1 local blocks and 0 remote blocks
+2021-12-07 19:05:01,421 INFO [Executor task launch worker for task 10] org.apache.spark.storage.ShuffleBlockFetcherIterator: Getting 1 non-empty blocks including 1 local blocks and 0 remote blocks
+2021-12-07 19:05:01,422 INFO [Executor task launch worker for task 11] org.apache.spark.storage.ShuffleBlockFetcherIterator: Started 0 remote fetches in 6 ms
+2021-12-07 19:05:01,422 INFO [Executor task launch worker for task 8] org.apache.spark.storage.ShuffleBlockFetcherIterator: Started 0 remote fetches in 6 ms
+2021-12-07 19:05:01,422 INFO [Executor task launch worker for task 6] org.apache.spark.storage.ShuffleBlockFetcherIterator: Started 0 remote fetches in 6 ms
+2021-12-07 19:05:01,422 INFO [Executor task launch worker for task 9] org.apache.spark.storage.ShuffleBlockFetcherIterator: Started 0 remote fetches in 6 ms
+2021-12-07 19:05:01,423 INFO [Executor task launch worker for task 10] org.apache.spark.storage.ShuffleBlockFetcherIterator: Started 0 remote fetches in 7 ms
+2021-12-07 19:05:01,423 INFO [Executor task launch worker for task 7] org.apache.spark.storage.ShuffleBlockFetcherIterator: Started 0 remote fetches in 7 ms
+2021-12-07 19:05:01,423 INFO [Executor task launch worker for task 12] org.apache.spark.storage.ShuffleBlockFetcherIterator: Started 0 remote fetches in 7 ms
+2021-12-07 19:05:01,423 INFO [Executor task launch worker for task 5] org.apache.spark.storage.ShuffleBlockFetcherIterator: Started 0 remote fetches in 7 ms
+2021-12-07 19:05:01,423 INFO [Executor task launch worker for task 13] org.apache.spark.storage.ShuffleBlockFetcherIterator: Started 0 remote fetches in 7 ms
+2021-12-07 19:05:01,423 INFO [Executor task launch worker for task 4] org.apache.spark.storage.ShuffleBlockFetcherIterator: Started 0 remote fetches in 7 ms
+2021-12-07 19:05:01,461 INFO [Executor task launch worker for task 6] org.apache.spark.sql.catalyst.expressions.codegen.CodeGenerator: Code generated in 14.153134 ms
+2021-12-07 19:05:01,913 INFO [Executor task launch worker for task 7] org.apache.spark.internal.io.HadoopMapRedCommitProtocol: Using output committer class org.apache.hadoop.mapred.FileOutputCommitter
+2021-12-07 19:05:01,913 INFO [Executor task launch worker for task 9] org.apache.spark.internal.io.HadoopMapRedCommitProtocol: Using output committer class org.apache.hadoop.mapred.FileOutputCommitter
+2021-12-07 19:05:01,913 INFO [Executor task launch worker for task 10] org.apache.spark.internal.io.HadoopMapRedCommitProtocol: Using output committer class org.apache.hadoop.mapred.FileOutputCommitter
+2021-12-07 19:05:01,914 INFO [Executor task launch worker for task 9] org.apache.hadoop.mapreduce.lib.output.FileOutputCommitter: File Output Committer Algorithm version is 2
+2021-12-07 19:05:01,913 INFO [Executor task launch worker for task 12] org.apache.spark.internal.io.HadoopMapRedCommitProtocol: Using output committer class org.apache.hadoop.mapred.FileOutputCommitter
+2021-12-07 19:05:01,913 INFO [Executor task launch worker for task 7] org.apache.hadoop.mapreduce.lib.output.FileOutputCommitter: File Output Committer Algorithm version is 2
+2021-12-07 19:05:01,914 INFO [Executor task launch worker for task 10] org.apache.hadoop.mapreduce.lib.output.FileOutputCommitter: File Output Committer Algorithm version is 2
+2021-12-07 19:05:01,914 INFO [Executor task launch worker for task 9] org.apache.hadoop.mapreduce.lib.output.FileOutputCommitter: FileOutputCommitter skip cleanup _temporary folders under output directory:false, ignore cleanup failures: false
+2021-12-07 19:05:01,914 INFO [Executor task launch worker for task 10] org.apache.hadoop.mapreduce.lib.output.FileOutputCommitter: FileOutputCommitter skip cleanup _temporary folders under output directory:false, ignore cleanup failures: false
+2021-12-07 19:05:01,914 INFO [Executor task launch worker for task 7] org.apache.hadoop.mapreduce.lib.output.FileOutputCommitter: FileOutputCommitter skip cleanup _temporary folders under output directory:false, ignore cleanup failures: false
+2021-12-07 19:05:01,914 INFO [Executor task launch worker for task 12] org.apache.hadoop.mapreduce.lib.output.FileOutputCommitter: File Output Committer Algorithm version is 2
+2021-12-07 19:05:01,914 INFO [Executor task launch worker for task 12] org.apache.hadoop.mapreduce.lib.output.FileOutputCommitter: FileOutputCommitter skip cleanup _temporary folders under output directory:false, ignore cleanup failures: false
+2021-12-07 19:05:01,918 INFO [Executor task launch worker for task 13] org.apache.spark.internal.io.HadoopMapRedCommitProtocol: Using output committer class org.apache.hadoop.mapred.FileOutputCommitter
+2021-12-07 19:05:01,918 INFO [Executor task launch worker for task 13] org.apache.hadoop.mapreduce.lib.output.FileOutputCommitter: File Output Committer Algorithm version is 2
+2021-12-07 19:05:01,918 INFO [Executor task launch worker for task 13] org.apache.hadoop.mapreduce.lib.output.FileOutputCommitter: FileOutputCommitter skip cleanup _temporary folders under output directory:false, ignore cleanup failures: false
+2021-12-07 19:05:01,919 INFO [Executor task launch worker for task 6] org.apache.spark.internal.io.HadoopMapRedCommitProtocol: Using output committer class org.apache.hadoop.mapred.FileOutputCommitter
+2021-12-07 19:05:01,920 INFO [Executor task launch worker for task 6] org.apache.hadoop.mapreduce.lib.output.FileOutputCommitter: File Output Committer Algorithm version is 2
+2021-12-07 19:05:01,920 INFO [Executor task launch worker for task 6] org.apache.hadoop.mapreduce.lib.output.FileOutputCommitter: FileOutputCommitter skip cleanup _temporary folders under output directory:false, ignore cleanup failures: false
+2021-12-07 19:05:01,933 INFO [Executor task launch worker for task 5] org.apache.spark.internal.io.HadoopMapRedCommitProtocol: Using output committer class org.apache.hadoop.mapred.FileOutputCommitter
+2021-12-07 19:05:01,933 INFO [Executor task launch worker for task 5] org.apache.hadoop.mapreduce.lib.output.FileOutputCommitter: File Output Committer Algorithm version is 2
+2021-12-07 19:05:01,934 INFO [Executor task launch worker for task 5] org.apache.hadoop.mapreduce.lib.output.FileOutputCommitter: FileOutputCommitter skip cleanup _temporary folders under output directory:false, ignore cleanup failures: false
+2021-12-07 19:05:01,936 INFO [Executor task launch worker for task 8] org.apache.spark.internal.io.HadoopMapRedCommitProtocol: Using output committer class org.apache.hadoop.mapred.FileOutputCommitter
+2021-12-07 19:05:01,936 INFO [Executor task launch worker for task 8] org.apache.hadoop.mapreduce.lib.output.FileOutputCommitter: File Output Committer Algorithm version is 2
+2021-12-07 19:05:01,936 INFO [Executor task launch worker for task 8] org.apache.hadoop.mapreduce.lib.output.FileOutputCommitter: FileOutputCommitter skip cleanup _temporary folders under output directory:false, ignore cleanup failures: false
+2021-12-07 19:05:01,939 INFO [Executor task launch worker for task 11] org.apache.spark.internal.io.HadoopMapRedCommitProtocol: Using output committer class org.apache.hadoop.mapred.FileOutputCommitter
+2021-12-07 19:05:01,939 INFO [Executor task launch worker for task 11] org.apache.hadoop.mapreduce.lib.output.FileOutputCommitter: File Output Committer Algorithm version is 2
+2021-12-07 19:05:01,939 INFO [Executor task launch worker for task 11] org.apache.hadoop.mapreduce.lib.output.FileOutputCommitter: FileOutputCommitter skip cleanup _temporary folders under output directory:false, ignore cleanup failures: false
+2021-12-07 19:05:01,944 INFO [Executor task launch worker for task 4] org.apache.spark.internal.io.HadoopMapRedCommitProtocol: Using output committer class org.apache.hadoop.mapred.FileOutputCommitter
+2021-12-07 19:05:01,944 INFO [Executor task launch worker for task 4] org.apache.hadoop.mapreduce.lib.output.FileOutputCommitter: File Output Committer Algorithm version is 2
+2021-12-07 19:05:01,944 INFO [Executor task launch worker for task 4] org.apache.hadoop.mapreduce.lib.output.FileOutputCommitter: FileOutputCommitter skip cleanup _temporary folders under output directory:false, ignore cleanup failures: false
+2021-12-07 19:05:03,121 INFO [Executor task launch worker for task 5] org.apache.spark.api.python.PythonRunner: Times: total = 1630, boot = 441, init = 304, finish = 885
+2021-12-07 19:05:03,155 INFO [Executor task launch worker for task 10] org.apache.spark.api.python.PythonRunner: Times: total = 1665, boot = 414, init = 341, finish = 910
+2021-12-07 19:05:03,164 INFO [Executor task launch worker for task 11] org.apache.spark.api.python.PythonRunner: Times: total = 1676, boot = 451, init = 295, finish = 930
+2021-12-07 19:05:03,178 INFO [Executor task launch worker for task 5] org.apache.hadoop.mapreduce.lib.output.FileOutputCommitter: Saved output of task 'attempt_20211207190500_0015_m_000001_0' to hdfs://ctit048.ewi.utwente.nl/user/s2845016/DSORT
+2021-12-07 19:05:03,179 INFO [Executor task launch worker for task 5] org.apache.spark.mapred.SparkHadoopMapRedUtil: attempt_20211207190500_0015_m_000001_0: Committed
+2021-12-07 19:05:03,184 INFO [Executor task launch worker for task 10] org.apache.hadoop.mapreduce.lib.output.FileOutputCommitter: Saved output of task 'attempt_20211207190500_0015_m_000006_0' to hdfs://ctit048.ewi.utwente.nl/user/s2845016/DSORT
+2021-12-07 19:05:03,184 INFO [Executor task launch worker for task 10] org.apache.spark.mapred.SparkHadoopMapRedUtil: attempt_20211207190500_0015_m_000006_0: Committed
+2021-12-07 19:05:03,186 INFO [Executor task launch worker for task 12] org.apache.spark.api.python.PythonRunner: Times: total = 1698, boot = 424, init = 327, finish = 947
+2021-12-07 19:05:03,190 INFO [Executor task launch worker for task 5] org.apache.spark.executor.Executor: Finished task 1.0 in stage 2.0 (TID 5). 3133 bytes result sent to driver
+2021-12-07 19:05:03,191 INFO [Executor task launch worker for task 10] org.apache.spark.executor.Executor: Finished task 6.0 in stage 2.0 (TID 10). 3090 bytes result sent to driver
+2021-12-07 19:05:03,194 INFO [task-result-getter-0] org.apache.spark.scheduler.TaskSetManager: Finished task 1.0 in stage 2.0 (TID 5) in 1880 ms on localhost (executor driver) (1/10)
+2021-12-07 19:05:03,196 INFO [task-result-getter-1] org.apache.spark.scheduler.TaskSetManager: Finished task 6.0 in stage 2.0 (TID 10) in 1880 ms on localhost (executor driver) (2/10)
+2021-12-07 19:05:03,197 INFO [dag-scheduler-event-loop] org.apache.spark.api.python.PythonAccumulatorV2: Connected to AccumulatorServer at host: 127.0.0.1 port: 50479
+2021-12-07 19:05:03,202 INFO [Executor task launch worker for task 7] org.apache.spark.api.python.PythonRunner: Times: total = 1712, boot = 418, init = 326, finish = 968
+2021-12-07 19:05:03,209 INFO [Executor task launch worker for task 11] org.apache.hadoop.mapreduce.lib.output.FileOutputCommitter: Saved output of task 'attempt_20211207190500_0015_m_000007_0' to hdfs://ctit048.ewi.utwente.nl/user/s2845016/DSORT
+2021-12-07 19:05:03,209 INFO [Executor task launch worker for task 11] org.apache.spark.mapred.SparkHadoopMapRedUtil: attempt_20211207190500_0015_m_000007_0: Committed
+2021-12-07 19:05:03,214 INFO [Executor task launch worker for task 11] org.apache.spark.executor.Executor: Finished task 7.0 in stage 2.0 (TID 11). 3133 bytes result sent to driver
+2021-12-07 19:05:03,214 INFO [Executor task launch worker for task 13] org.apache.spark.api.python.PythonRunner: Times: total = 1725, boot = 428, init = 318, finish = 979
+2021-12-07 19:05:03,216 INFO [task-result-getter-2] org.apache.spark.scheduler.TaskSetManager: Finished task 7.0 in stage 2.0 (TID 11) in 1900 ms on localhost (executor driver) (3/10)
+2021-12-07 19:05:03,217 INFO [Executor task launch worker for task 12] org.apache.hadoop.mapreduce.lib.output.FileOutputCommitter: Saved output of task 'attempt_20211207190500_0015_m_000008_0' to hdfs://ctit048.ewi.utwente.nl/user/s2845016/DSORT
+2021-12-07 19:05:03,217 INFO [Executor task launch worker for task 12] org.apache.spark.mapred.SparkHadoopMapRedUtil: attempt_20211207190500_0015_m_000008_0: Committed
+2021-12-07 19:05:03,222 INFO [Executor task launch worker for task 12] org.apache.spark.executor.Executor: Finished task 8.0 in stage 2.0 (TID 12). 3090 bytes result sent to driver
+2021-12-07 19:05:03,224 INFO [task-result-getter-3] org.apache.spark.scheduler.TaskSetManager: Finished task 8.0 in stage 2.0 (TID 12) in 1908 ms on localhost (executor driver) (4/10)
+2021-12-07 19:05:03,233 INFO [Executor task launch worker for task 7] org.apache.hadoop.mapreduce.lib.output.FileOutputCommitter: Saved output of task 'attempt_20211207190500_0015_m_000003_0' to hdfs://ctit048.ewi.utwente.nl/user/s2845016/DSORT
+2021-12-07 19:05:03,234 INFO [Executor task launch worker for task 7] org.apache.spark.mapred.SparkHadoopMapRedUtil: attempt_20211207190500_0015_m_000003_0: Committed
+2021-12-07 19:05:03,239 INFO [Executor task launch worker for task 7] org.apache.spark.executor.Executor: Finished task 3.0 in stage 2.0 (TID 7). 3090 bytes result sent to driver
+2021-12-07 19:05:03,240 INFO [task-result-getter-0] org.apache.spark.scheduler.TaskSetManager: Finished task 3.0 in stage 2.0 (TID 7) in 1925 ms on localhost (executor driver) (5/10)
+2021-12-07 19:05:03,242 INFO [Executor task launch worker for task 4] org.apache.spark.api.python.PythonRunner: Times: total = 1751, boot = 455, init = 293, finish = 1003
+2021-12-07 19:05:03,242 INFO [Executor task launch worker for task 13] org.apache.hadoop.mapreduce.lib.output.FileOutputCommitter: Saved output of task 'attempt_20211207190500_0015_m_000009_0' to hdfs://ctit048.ewi.utwente.nl/user/s2845016/DSORT
+2021-12-07 19:05:03,242 INFO [Executor task launch worker for task 13] org.apache.spark.mapred.SparkHadoopMapRedUtil: attempt_20211207190500_0015_m_000009_0: Committed
+2021-12-07 19:05:03,246 INFO [Executor task launch worker for task 13] org.apache.spark.executor.Executor: Finished task 9.0 in stage 2.0 (TID 13). 3090 bytes result sent to driver
+2021-12-07 19:05:03,248 INFO [task-result-getter-1] org.apache.spark.scheduler.TaskSetManager: Finished task 9.0 in stage 2.0 (TID 13) in 1930 ms on localhost (executor driver) (6/10)
+2021-12-07 19:05:03,265 INFO [Executor task launch worker for task 6] org.apache.spark.api.python.PythonRunner: Times: total = 1777, boot = 431, init = 310, finish = 1036
+2021-12-07 19:05:03,276 INFO [Executor task launch worker for task 9] org.apache.spark.api.python.PythonRunner: Times: total = 1788, boot = 421, init = 353, finish = 1014
+2021-12-07 19:05:03,289 INFO [Executor task launch worker for task 6] org.apache.hadoop.mapreduce.lib.output.FileOutputCommitter: Saved output of task 'attempt_20211207190500_0015_m_000002_0' to hdfs://ctit048.ewi.utwente.nl/user/s2845016/DSORT
+2021-12-07 19:05:03,289 INFO [Executor task launch worker for task 6] org.apache.spark.mapred.SparkHadoopMapRedUtil: attempt_20211207190500_0015_m_000002_0: Committed
+2021-12-07 19:05:03,293 INFO [Executor task launch worker for task 6] org.apache.spark.executor.Executor: Finished task 2.0 in stage 2.0 (TID 6). 3090 bytes result sent to driver
+2021-12-07 19:05:03,294 INFO [task-result-getter-2] org.apache.spark.scheduler.TaskSetManager: Finished task 2.0 in stage 2.0 (TID 6) in 1980 ms on localhost (executor driver) (7/10)
+2021-12-07 19:05:03,308 INFO [Executor task launch worker for task 9] org.apache.hadoop.mapreduce.lib.output.FileOutputCommitter: Saved output of task 'attempt_20211207190500_0015_m_000005_0' to hdfs://ctit048.ewi.utwente.nl/user/s2845016/DSORT
+2021-12-07 19:05:03,309 INFO [Executor task launch worker for task 9] org.apache.spark.mapred.SparkHadoopMapRedUtil: attempt_20211207190500_0015_m_000005_0: Committed
+2021-12-07 19:05:03,314 INFO [Executor task launch worker for task 9] org.apache.spark.executor.Executor: Finished task 5.0 in stage 2.0 (TID 9). 3090 bytes result sent to driver
+2021-12-07 19:05:03,315 INFO [task-result-getter-3] org.apache.spark.scheduler.TaskSetManager: Finished task 5.0 in stage 2.0 (TID 9) in 1999 ms on localhost (executor driver) (8/10)
+2021-12-07 19:05:03,328 INFO [Executor task launch worker for task 8] org.apache.spark.api.python.PythonRunner: Times: total = 1839, boot = 446, init = 322, finish = 1071
+2021-12-07 19:05:03,350 INFO [Executor task launch worker for task 8] org.apache.hadoop.mapreduce.lib.output.FileOutputCommitter: Saved output of task 'attempt_20211207190500_0015_m_000004_0' to hdfs://ctit048.ewi.utwente.nl/user/s2845016/DSORT
+2021-12-07 19:05:03,350 INFO [Executor task launch worker for task 8] org.apache.spark.mapred.SparkHadoopMapRedUtil: attempt_20211207190500_0015_m_000004_0: Committed
+2021-12-07 19:05:03,355 INFO [Executor task launch worker for task 8] org.apache.spark.executor.Executor: Finished task 4.0 in stage 2.0 (TID 8). 3090 bytes result sent to driver
+2021-12-07 19:05:03,356 INFO [task-result-getter-0] org.apache.spark.scheduler.TaskSetManager: Finished task 4.0 in stage 2.0 (TID 8) in 2041 ms on localhost (executor driver) (9/10)
+2021-12-07 19:05:03,542 INFO [Executor task launch worker for task 4] org.apache.hadoop.mapreduce.lib.output.FileOutputCommitter: Saved output of task 'attempt_20211207190500_0015_m_000000_0' to hdfs://ctit048.ewi.utwente.nl/user/s2845016/DSORT
+2021-12-07 19:05:03,542 INFO [Executor task launch worker for task 4] org.apache.spark.mapred.SparkHadoopMapRedUtil: attempt_20211207190500_0015_m_000000_0: Committed
+2021-12-07 19:05:03,550 INFO [Executor task launch worker for task 4] org.apache.spark.executor.Executor: Finished task 0.0 in stage 2.0 (TID 4). 3090 bytes result sent to driver
+2021-12-07 19:05:03,552 INFO [task-result-getter-1] org.apache.spark.scheduler.TaskSetManager: Finished task 0.0 in stage 2.0 (TID 4) in 2239 ms on localhost (executor driver) (10/10)
+2021-12-07 19:05:03,552 INFO [task-result-getter-1] org.apache.spark.scheduler.TaskSchedulerImpl: Removed TaskSet 2.0, whose tasks have all completed, from pool 
+2021-12-07 19:05:03,554 INFO [dag-scheduler-event-loop] org.apache.spark.scheduler.DAGScheduler: ResultStage 2 (runJob at SparkHadoopWriter.scala:78) finished in 2.289 s
+2021-12-07 19:05:03,555 INFO [Thread-6] org.apache.spark.scheduler.DAGScheduler: Job 1 finished: runJob at SparkHadoopWriter.scala:78, took 2.826474 s
+2021-12-07 19:05:03,587 INFO [Thread-6] org.apache.spark.internal.io.SparkHadoopWriter: Job job_20211207190500_0015 committed.
+2021-12-07 19:05:03,616 INFO [shutdown-hook-0] org.apache.spark.SparkContext: Invoking stop() from shutdown hook
+2021-12-07 19:05:03,622 INFO [shutdown-hook-0] org.spark_project.jetty.server.AbstractConnector: Stopped Spark@69f842f5{HTTP/1.1,[http/1.1]}{0.0.0.0:4040}
+2021-12-07 19:05:03,624 INFO [shutdown-hook-0] org.apache.spark.ui.SparkUI: Stopped Spark web UI at http://ctit017.ewi.utwente.nl:4040
+2021-12-07 19:05:03,664 INFO [dispatcher-event-loop-3] org.apache.spark.MapOutputTrackerMasterEndpoint: MapOutputTrackerMasterEndpoint stopped!
+2021-12-07 19:05:03,689 INFO [shutdown-hook-0] org.apache.spark.storage.memory.MemoryStore: MemoryStore cleared
+2021-12-07 19:05:03,689 INFO [shutdown-hook-0] org.apache.spark.storage.BlockManager: BlockManager stopped
+2021-12-07 19:05:03,691 INFO [shutdown-hook-0] org.apache.spark.storage.BlockManagerMaster: BlockManagerMaster stopped
+2021-12-07 19:05:03,693 INFO [dispatcher-event-loop-14] org.apache.spark.scheduler.OutputCommitCoordinator$OutputCommitCoordinatorEndpoint: OutputCommitCoordinator stopped!
+2021-12-07 19:05:03,701 INFO [shutdown-hook-0] org.apache.spark.SparkContext: Successfully stopped SparkContext

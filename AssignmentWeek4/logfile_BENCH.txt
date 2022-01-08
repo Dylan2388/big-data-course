@@ -1,0 +1,193 @@
+2021-12-14 20:57:59,658 INFO [main] org.apache.hadoop.yarn.client.RMProxy: Connecting to ResourceManager at ctit048.ewi.utwente.nl/130.89.6.234:8032
+2021-12-14 20:58:00,006 INFO [main] org.apache.spark.deploy.yarn.Client: Requesting a new application from cluster with 55 NodeManagers
+2021-12-14 20:58:00,107 INFO [main] org.apache.hadoop.conf.Configuration: resource-types.xml not found
+2021-12-14 20:58:00,107 INFO [main] org.apache.hadoop.yarn.util.resource.ResourceUtils: Unable to find 'resource-types.xml'.
+2021-12-14 20:58:00,123 INFO [main] org.apache.spark.deploy.yarn.Client: Verifying our application has not requested more than the maximum memory capability of the cluster (8192 MB per container)
+2021-12-14 20:58:00,124 INFO [main] org.apache.spark.deploy.yarn.Client: Will allocate AM container, with 1408 MB memory including 384 MB overhead
+2021-12-14 20:58:00,124 INFO [main] org.apache.spark.deploy.yarn.Client: Setting up container launch context for our AM
+2021-12-14 20:58:00,130 INFO [main] org.apache.spark.deploy.yarn.Client: Setting up the launch environment for our AM container
+2021-12-14 20:58:00,140 INFO [main] org.apache.spark.deploy.yarn.Client: Preparing resources for our AM container
+2021-12-14 20:58:00,286 WARN [main] org.apache.spark.deploy.yarn.Client: Neither spark.yarn.jars nor spark.yarn.archive is set, falling back to uploading libraries under SPARK_HOME.
+2021-12-14 20:58:02,414 INFO [main] org.apache.spark.deploy.yarn.Client: Uploading resource file:/tmp/spark-dc2b8a3e-d53c-47dd-8e4a-d79feac9ca9f/__spark_libs__3060446946453833590.zip -> hdfs://ctit048.ewi.utwente.nl/user/s2845016/.sparkStaging/application_1639493734154_0042/__spark_libs__3060446946453833590.zip
+2021-12-14 20:58:04,346 INFO [main] org.apache.spark.deploy.yarn.Client: Uploading resource file:/home/s2845016/BigDataCourse/big-data-course/AssignmentWeek4/BENCH-s2845016-s2800209-BENFSD.py -> hdfs://ctit048.ewi.utwente.nl/user/s2845016/.sparkStaging/application_1639493734154_0042/BENCH-s2845016-s2800209-BENFSD.py
+2021-12-14 20:58:04,416 INFO [main] org.apache.spark.deploy.yarn.Client: Uploading resource file:/usr/lib/spark/python/lib/pyspark.zip -> hdfs://ctit048.ewi.utwente.nl/user/s2845016/.sparkStaging/application_1639493734154_0042/pyspark.zip
+2021-12-14 20:58:04,485 INFO [main] org.apache.spark.deploy.yarn.Client: Uploading resource file:/usr/lib/spark/python/lib/py4j-0.10.7-src.zip -> hdfs://ctit048.ewi.utwente.nl/user/s2845016/.sparkStaging/application_1639493734154_0042/py4j-0.10.7-src.zip
+2021-12-14 20:58:04,733 INFO [main] org.apache.spark.deploy.yarn.Client: Uploading resource file:/tmp/spark-dc2b8a3e-d53c-47dd-8e4a-d79feac9ca9f/__spark_conf__1122572611236371398.zip -> hdfs://ctit048.ewi.utwente.nl/user/s2845016/.sparkStaging/application_1639493734154_0042/__spark_conf__.zip
+2021-12-14 20:58:04,883 INFO [main] org.apache.spark.deploy.security.HadoopFSDelegationTokenProvider: getting token for: DFS[DFSClient[clientName=DFSClient_NONMAPREDUCE_-733688832_1, ugi=s2845016@AD.UTWENTE.NL (auth:KERBEROS)]]
+2021-12-14 20:58:04,894 INFO [main] org.apache.hadoop.hdfs.DFSClient: Created token for s2845016: HDFS_DELEGATION_TOKEN owner=s2845016@AD.UTWENTE.NL, renewer=yarn, realUser=, issueDate=1639511884885, maxDate=1640116684885, sequenceNumber=94949, masterKeyId=2025 on 130.89.6.234:8020
+2021-12-14 20:58:05,866 INFO [main] org.apache.spark.deploy.yarn.Client: Submitting application application_1639493734154_0042 to ResourceManager
+2021-12-14 20:58:06,114 INFO [main] org.apache.hadoop.yarn.client.api.impl.YarnClientImpl: Submitted application application_1639493734154_0042
+2021-12-14 20:58:11,117 INFO [main] org.apache.spark.deploy.yarn.Client: Application report for application_1639493734154_0042 (state: ACCEPTED)
+2021-12-14 20:58:11,121 INFO [main] org.apache.spark.deploy.yarn.Client: 
+	 client token: Token { kind: YARN_CLIENT_TOKEN, service:  }
+	 diagnostics: AM container is launched, waiting for AM container to Register with RM
+	 ApplicationMaster host: N/A
+	 ApplicationMaster RPC port: -1
+	 queue: root.s2845016
+	 start time: 1639511885883
+	 final status: UNDEFINED
+	 tracking URL: http://ctit048.ewi.utwente.nl:8088/proxy/application_1639493734154_0042/
+	 user: s2845016
+2021-12-14 20:58:16,122 INFO [main] org.apache.spark.deploy.yarn.Client: Application report for application_1639493734154_0042 (state: RUNNING)
+2021-12-14 20:58:16,123 INFO [main] org.apache.spark.deploy.yarn.Client: 
+	 client token: Token { kind: YARN_CLIENT_TOKEN, service:  }
+	 diagnostics: N/A
+	 ApplicationMaster host: ctit076.ewi.utwente.nl
+	 ApplicationMaster RPC port: 36393
+	 queue: root.s2845016
+	 start time: 1639511885883
+	 final status: UNDEFINED
+	 tracking URL: http://ctit048.ewi.utwente.nl:8088/proxy/application_1639493734154_0042/
+	 user: s2845016
+2021-12-14 20:58:21,124 INFO [main] org.apache.spark.deploy.yarn.Client: Application report for application_1639493734154_0042 (state: RUNNING)
+2021-12-14 20:58:26,126 INFO [main] org.apache.spark.deploy.yarn.Client: Application report for application_1639493734154_0042 (state: RUNNING)
+2021-12-14 20:58:31,127 INFO [main] org.apache.spark.deploy.yarn.Client: Application report for application_1639493734154_0042 (state: RUNNING)
+2021-12-14 20:58:36,129 INFO [main] org.apache.spark.deploy.yarn.Client: Application report for application_1639493734154_0042 (state: RUNNING)
+2021-12-14 20:58:41,130 INFO [main] org.apache.spark.deploy.yarn.Client: Application report for application_1639493734154_0042 (state: RUNNING)
+2021-12-14 20:58:46,132 INFO [main] org.apache.spark.deploy.yarn.Client: Application report for application_1639493734154_0042 (state: RUNNING)
+2021-12-14 20:58:51,134 INFO [main] org.apache.spark.deploy.yarn.Client: Application report for application_1639493734154_0042 (state: RUNNING)
+2021-12-14 20:58:56,135 INFO [main] org.apache.spark.deploy.yarn.Client: Application report for application_1639493734154_0042 (state: RUNNING)
+2021-12-14 20:59:01,137 INFO [main] org.apache.spark.deploy.yarn.Client: Application report for application_1639493734154_0042 (state: RUNNING)
+2021-12-14 20:59:06,138 INFO [main] org.apache.spark.deploy.yarn.Client: Application report for application_1639493734154_0042 (state: RUNNING)
+2021-12-14 20:59:11,140 INFO [main] org.apache.spark.deploy.yarn.Client: Application report for application_1639493734154_0042 (state: RUNNING)
+2021-12-14 20:59:16,142 INFO [main] org.apache.spark.deploy.yarn.Client: Application report for application_1639493734154_0042 (state: RUNNING)
+2021-12-14 20:59:21,144 INFO [main] org.apache.spark.deploy.yarn.Client: Application report for application_1639493734154_0042 (state: RUNNING)
+2021-12-14 20:59:26,145 INFO [main] org.apache.spark.deploy.yarn.Client: Application report for application_1639493734154_0042 (state: RUNNING)
+2021-12-14 20:59:31,147 INFO [main] org.apache.spark.deploy.yarn.Client: Application report for application_1639493734154_0042 (state: RUNNING)
+2021-12-14 20:59:36,149 INFO [main] org.apache.spark.deploy.yarn.Client: Application report for application_1639493734154_0042 (state: RUNNING)
+2021-12-14 20:59:41,150 INFO [main] org.apache.spark.deploy.yarn.Client: Application report for application_1639493734154_0042 (state: RUNNING)
+2021-12-14 20:59:46,170 INFO [main] org.apache.spark.deploy.yarn.Client: Application report for application_1639493734154_0042 (state: RUNNING)
+2021-12-14 20:59:51,171 INFO [main] org.apache.spark.deploy.yarn.Client: Application report for application_1639493734154_0042 (state: RUNNING)
+2021-12-14 20:59:56,173 INFO [main] org.apache.spark.deploy.yarn.Client: Application report for application_1639493734154_0042 (state: RUNNING)
+2021-12-14 21:00:01,174 INFO [main] org.apache.spark.deploy.yarn.Client: Application report for application_1639493734154_0042 (state: RUNNING)
+2021-12-14 21:00:06,176 INFO [main] org.apache.spark.deploy.yarn.Client: Application report for application_1639493734154_0042 (state: RUNNING)
+2021-12-14 21:00:11,178 INFO [main] org.apache.spark.deploy.yarn.Client: Application report for application_1639493734154_0042 (state: RUNNING)
+2021-12-14 21:00:16,181 INFO [main] org.apache.spark.deploy.yarn.Client: Application report for application_1639493734154_0042 (state: RUNNING)
+2021-12-14 21:00:21,182 INFO [main] org.apache.spark.deploy.yarn.Client: Application report for application_1639493734154_0042 (state: RUNNING)
+2021-12-14 21:00:26,184 INFO [main] org.apache.spark.deploy.yarn.Client: Application report for application_1639493734154_0042 (state: RUNNING)
+2021-12-14 21:00:31,185 INFO [main] org.apache.spark.deploy.yarn.Client: Application report for application_1639493734154_0042 (state: RUNNING)
+2021-12-14 21:00:36,187 INFO [main] org.apache.spark.deploy.yarn.Client: Application report for application_1639493734154_0042 (state: RUNNING)
+2021-12-14 21:00:41,188 INFO [main] org.apache.spark.deploy.yarn.Client: Application report for application_1639493734154_0042 (state: RUNNING)
+2021-12-14 21:00:46,190 INFO [main] org.apache.spark.deploy.yarn.Client: Application report for application_1639493734154_0042 (state: RUNNING)
+2021-12-14 21:00:51,191 INFO [main] org.apache.spark.deploy.yarn.Client: Application report for application_1639493734154_0042 (state: RUNNING)
+2021-12-14 21:00:56,193 INFO [main] org.apache.spark.deploy.yarn.Client: Application report for application_1639493734154_0042 (state: RUNNING)
+2021-12-14 21:01:01,194 INFO [main] org.apache.spark.deploy.yarn.Client: Application report for application_1639493734154_0042 (state: RUNNING)
+2021-12-14 21:01:06,195 INFO [main] org.apache.spark.deploy.yarn.Client: Application report for application_1639493734154_0042 (state: RUNNING)
+2021-12-14 21:01:11,197 INFO [main] org.apache.spark.deploy.yarn.Client: Application report for application_1639493734154_0042 (state: RUNNING)
+2021-12-14 21:01:16,198 INFO [main] org.apache.spark.deploy.yarn.Client: Application report for application_1639493734154_0042 (state: RUNNING)
+2021-12-14 21:01:21,200 INFO [main] org.apache.spark.deploy.yarn.Client: Application report for application_1639493734154_0042 (state: RUNNING)
+2021-12-14 21:01:26,201 INFO [main] org.apache.spark.deploy.yarn.Client: Application report for application_1639493734154_0042 (state: RUNNING)
+2021-12-14 21:01:31,203 INFO [main] org.apache.spark.deploy.yarn.Client: Application report for application_1639493734154_0042 (state: RUNNING)
+2021-12-14 21:01:36,204 INFO [main] org.apache.spark.deploy.yarn.Client: Application report for application_1639493734154_0042 (state: RUNNING)
+2021-12-14 21:01:41,205 INFO [main] org.apache.spark.deploy.yarn.Client: Application report for application_1639493734154_0042 (state: RUNNING)
+2021-12-14 21:01:46,207 INFO [main] org.apache.spark.deploy.yarn.Client: Application report for application_1639493734154_0042 (state: RUNNING)
+2021-12-14 21:01:51,208 INFO [main] org.apache.spark.deploy.yarn.Client: Application report for application_1639493734154_0042 (state: RUNNING)
+2021-12-14 21:01:56,210 INFO [main] org.apache.spark.deploy.yarn.Client: Application report for application_1639493734154_0042 (state: RUNNING)
+2021-12-14 21:02:01,211 INFO [main] org.apache.spark.deploy.yarn.Client: Application report for application_1639493734154_0042 (state: RUNNING)
+2021-12-14 21:02:06,212 INFO [main] org.apache.spark.deploy.yarn.Client: Application report for application_1639493734154_0042 (state: RUNNING)
+2021-12-14 21:02:11,214 INFO [main] org.apache.spark.deploy.yarn.Client: Application report for application_1639493734154_0042 (state: RUNNING)
+2021-12-14 21:02:16,215 INFO [main] org.apache.spark.deploy.yarn.Client: Application report for application_1639493734154_0042 (state: RUNNING)
+2021-12-14 21:02:21,216 INFO [main] org.apache.spark.deploy.yarn.Client: Application report for application_1639493734154_0042 (state: RUNNING)
+2021-12-14 21:02:26,218 INFO [main] org.apache.spark.deploy.yarn.Client: Application report for application_1639493734154_0042 (state: RUNNING)
+2021-12-14 21:02:31,219 INFO [main] org.apache.spark.deploy.yarn.Client: Application report for application_1639493734154_0042 (state: RUNNING)
+2021-12-14 21:02:36,221 INFO [main] org.apache.spark.deploy.yarn.Client: Application report for application_1639493734154_0042 (state: RUNNING)
+2021-12-14 21:02:41,222 INFO [main] org.apache.spark.deploy.yarn.Client: Application report for application_1639493734154_0042 (state: RUNNING)
+2021-12-14 21:02:46,223 INFO [main] org.apache.spark.deploy.yarn.Client: Application report for application_1639493734154_0042 (state: RUNNING)
+2021-12-14 21:02:51,225 INFO [main] org.apache.spark.deploy.yarn.Client: Application report for application_1639493734154_0042 (state: RUNNING)
+2021-12-14 21:02:56,226 INFO [main] org.apache.spark.deploy.yarn.Client: Application report for application_1639493734154_0042 (state: RUNNING)
+2021-12-14 21:03:01,228 INFO [main] org.apache.spark.deploy.yarn.Client: Application report for application_1639493734154_0042 (state: RUNNING)
+2021-12-14 21:03:06,229 INFO [main] org.apache.spark.deploy.yarn.Client: Application report for application_1639493734154_0042 (state: RUNNING)
+2021-12-14 21:03:11,230 INFO [main] org.apache.spark.deploy.yarn.Client: Application report for application_1639493734154_0042 (state: RUNNING)
+2021-12-14 21:03:16,232 INFO [main] org.apache.spark.deploy.yarn.Client: Application report for application_1639493734154_0042 (state: RUNNING)
+2021-12-14 21:03:21,233 INFO [main] org.apache.spark.deploy.yarn.Client: Application report for application_1639493734154_0042 (state: RUNNING)
+2021-12-14 21:03:26,235 INFO [main] org.apache.spark.deploy.yarn.Client: Application report for application_1639493734154_0042 (state: RUNNING)
+2021-12-14 21:03:31,237 INFO [main] org.apache.spark.deploy.yarn.Client: Application report for application_1639493734154_0042 (state: RUNNING)
+2021-12-14 21:03:36,238 INFO [main] org.apache.spark.deploy.yarn.Client: Application report for application_1639493734154_0042 (state: RUNNING)
+2021-12-14 21:03:41,240 INFO [main] org.apache.spark.deploy.yarn.Client: Application report for application_1639493734154_0042 (state: RUNNING)
+2021-12-14 21:03:46,241 INFO [main] org.apache.spark.deploy.yarn.Client: Application report for application_1639493734154_0042 (state: RUNNING)
+2021-12-14 21:03:51,242 INFO [main] org.apache.spark.deploy.yarn.Client: Application report for application_1639493734154_0042 (state: RUNNING)
+2021-12-14 21:03:56,244 INFO [main] org.apache.spark.deploy.yarn.Client: Application report for application_1639493734154_0042 (state: RUNNING)
+2021-12-14 21:04:01,245 INFO [main] org.apache.spark.deploy.yarn.Client: Application report for application_1639493734154_0042 (state: RUNNING)
+2021-12-14 21:04:06,247 INFO [main] org.apache.spark.deploy.yarn.Client: Application report for application_1639493734154_0042 (state: RUNNING)
+2021-12-14 21:04:11,248 INFO [main] org.apache.spark.deploy.yarn.Client: Application report for application_1639493734154_0042 (state: RUNNING)
+2021-12-14 21:04:16,249 INFO [main] org.apache.spark.deploy.yarn.Client: Application report for application_1639493734154_0042 (state: RUNNING)
+2021-12-14 21:04:21,251 INFO [main] org.apache.spark.deploy.yarn.Client: Application report for application_1639493734154_0042 (state: RUNNING)
+2021-12-14 21:04:26,253 INFO [main] org.apache.spark.deploy.yarn.Client: Application report for application_1639493734154_0042 (state: RUNNING)
+2021-12-14 21:04:31,254 INFO [main] org.apache.spark.deploy.yarn.Client: Application report for application_1639493734154_0042 (state: RUNNING)
+2021-12-14 21:04:36,255 INFO [main] org.apache.spark.deploy.yarn.Client: Application report for application_1639493734154_0042 (state: RUNNING)
+2021-12-14 21:04:41,257 INFO [main] org.apache.spark.deploy.yarn.Client: Application report for application_1639493734154_0042 (state: RUNNING)
+2021-12-14 21:04:46,258 INFO [main] org.apache.spark.deploy.yarn.Client: Application report for application_1639493734154_0042 (state: RUNNING)
+2021-12-14 21:04:51,259 INFO [main] org.apache.spark.deploy.yarn.Client: Application report for application_1639493734154_0042 (state: RUNNING)
+2021-12-14 21:04:56,261 INFO [main] org.apache.spark.deploy.yarn.Client: Application report for application_1639493734154_0042 (state: RUNNING)
+2021-12-14 21:05:01,262 INFO [main] org.apache.spark.deploy.yarn.Client: Application report for application_1639493734154_0042 (state: RUNNING)
+2021-12-14 21:05:06,264 INFO [main] org.apache.spark.deploy.yarn.Client: Application report for application_1639493734154_0042 (state: RUNNING)
+2021-12-14 21:05:11,266 INFO [main] org.apache.spark.deploy.yarn.Client: Application report for application_1639493734154_0042 (state: RUNNING)
+2021-12-14 21:05:16,267 INFO [main] org.apache.spark.deploy.yarn.Client: Application report for application_1639493734154_0042 (state: RUNNING)
+2021-12-14 21:05:21,269 INFO [main] org.apache.spark.deploy.yarn.Client: Application report for application_1639493734154_0042 (state: RUNNING)
+2021-12-14 21:05:26,270 INFO [main] org.apache.spark.deploy.yarn.Client: Application report for application_1639493734154_0042 (state: RUNNING)
+2021-12-14 21:05:31,271 INFO [main] org.apache.spark.deploy.yarn.Client: Application report for application_1639493734154_0042 (state: RUNNING)
+2021-12-14 21:05:36,272 INFO [main] org.apache.spark.deploy.yarn.Client: Application report for application_1639493734154_0042 (state: RUNNING)
+2021-12-14 21:05:41,274 INFO [main] org.apache.spark.deploy.yarn.Client: Application report for application_1639493734154_0042 (state: RUNNING)
+2021-12-14 21:05:46,275 INFO [main] org.apache.spark.deploy.yarn.Client: Application report for application_1639493734154_0042 (state: RUNNING)
+2021-12-14 21:05:51,276 INFO [main] org.apache.spark.deploy.yarn.Client: Application report for application_1639493734154_0042 (state: RUNNING)
+2021-12-14 21:05:56,278 INFO [main] org.apache.spark.deploy.yarn.Client: Application report for application_1639493734154_0042 (state: RUNNING)
+2021-12-14 21:06:01,279 INFO [main] org.apache.spark.deploy.yarn.Client: Application report for application_1639493734154_0042 (state: RUNNING)
+2021-12-14 21:06:06,280 INFO [main] org.apache.spark.deploy.yarn.Client: Application report for application_1639493734154_0042 (state: RUNNING)
+2021-12-14 21:06:11,282 INFO [main] org.apache.spark.deploy.yarn.Client: Application report for application_1639493734154_0042 (state: RUNNING)
+2021-12-14 21:06:16,283 INFO [main] org.apache.spark.deploy.yarn.Client: Application report for application_1639493734154_0042 (state: RUNNING)
+2021-12-14 21:06:21,285 INFO [main] org.apache.spark.deploy.yarn.Client: Application report for application_1639493734154_0042 (state: RUNNING)
+2021-12-14 21:06:26,286 INFO [main] org.apache.spark.deploy.yarn.Client: Application report for application_1639493734154_0042 (state: RUNNING)
+2021-12-14 21:06:31,287 INFO [main] org.apache.spark.deploy.yarn.Client: Application report for application_1639493734154_0042 (state: RUNNING)
+2021-12-14 21:06:36,288 INFO [main] org.apache.spark.deploy.yarn.Client: Application report for application_1639493734154_0042 (state: RUNNING)
+2021-12-14 21:06:41,290 INFO [main] org.apache.spark.deploy.yarn.Client: Application report for application_1639493734154_0042 (state: RUNNING)
+2021-12-14 21:06:46,292 INFO [main] org.apache.spark.deploy.yarn.Client: Application report for application_1639493734154_0042 (state: RUNNING)
+2021-12-14 21:06:51,294 INFO [main] org.apache.spark.deploy.yarn.Client: Application report for application_1639493734154_0042 (state: RUNNING)
+2021-12-14 21:06:56,295 INFO [main] org.apache.spark.deploy.yarn.Client: Application report for application_1639493734154_0042 (state: RUNNING)
+2021-12-14 21:07:01,297 INFO [main] org.apache.spark.deploy.yarn.Client: Application report for application_1639493734154_0042 (state: RUNNING)
+2021-12-14 21:07:06,298 INFO [main] org.apache.spark.deploy.yarn.Client: Application report for application_1639493734154_0042 (state: RUNNING)
+2021-12-14 21:07:11,299 INFO [main] org.apache.spark.deploy.yarn.Client: Application report for application_1639493734154_0042 (state: RUNNING)
+2021-12-14 21:07:16,301 INFO [main] org.apache.spark.deploy.yarn.Client: Application report for application_1639493734154_0042 (state: RUNNING)
+2021-12-14 21:07:21,302 INFO [main] org.apache.spark.deploy.yarn.Client: Application report for application_1639493734154_0042 (state: RUNNING)
+2021-12-14 21:07:26,303 INFO [main] org.apache.spark.deploy.yarn.Client: Application report for application_1639493734154_0042 (state: RUNNING)
+2021-12-14 21:07:31,304 INFO [main] org.apache.spark.deploy.yarn.Client: Application report for application_1639493734154_0042 (state: RUNNING)
+2021-12-14 21:07:36,306 INFO [main] org.apache.spark.deploy.yarn.Client: Application report for application_1639493734154_0042 (state: RUNNING)
+2021-12-14 21:07:41,307 INFO [main] org.apache.spark.deploy.yarn.Client: Application report for application_1639493734154_0042 (state: RUNNING)
+2021-12-14 21:07:46,308 INFO [main] org.apache.spark.deploy.yarn.Client: Application report for application_1639493734154_0042 (state: RUNNING)
+2021-12-14 21:07:51,310 INFO [main] org.apache.spark.deploy.yarn.Client: Application report for application_1639493734154_0042 (state: RUNNING)
+2021-12-14 21:07:56,311 INFO [main] org.apache.spark.deploy.yarn.Client: Application report for application_1639493734154_0042 (state: RUNNING)
+2021-12-14 21:08:01,313 INFO [main] org.apache.spark.deploy.yarn.Client: Application report for application_1639493734154_0042 (state: RUNNING)
+2021-12-14 21:08:06,314 INFO [main] org.apache.spark.deploy.yarn.Client: Application report for application_1639493734154_0042 (state: RUNNING)
+2021-12-14 21:08:11,315 INFO [main] org.apache.spark.deploy.yarn.Client: Application report for application_1639493734154_0042 (state: RUNNING)
+2021-12-14 21:08:16,317 INFO [main] org.apache.spark.deploy.yarn.Client: Application report for application_1639493734154_0042 (state: RUNNING)
+2021-12-14 21:08:21,318 INFO [main] org.apache.spark.deploy.yarn.Client: Application report for application_1639493734154_0042 (state: RUNNING)
+2021-12-14 21:08:26,319 INFO [main] org.apache.spark.deploy.yarn.Client: Application report for application_1639493734154_0042 (state: RUNNING)
+2021-12-14 21:08:31,321 INFO [main] org.apache.spark.deploy.yarn.Client: Application report for application_1639493734154_0042 (state: RUNNING)
+2021-12-14 21:08:36,322 INFO [main] org.apache.spark.deploy.yarn.Client: Application report for application_1639493734154_0042 (state: RUNNING)
+2021-12-14 21:08:41,324 INFO [main] org.apache.spark.deploy.yarn.Client: Application report for application_1639493734154_0042 (state: RUNNING)
+2021-12-14 21:08:46,325 INFO [main] org.apache.spark.deploy.yarn.Client: Application report for application_1639493734154_0042 (state: RUNNING)
+2021-12-14 21:08:51,327 INFO [main] org.apache.spark.deploy.yarn.Client: Application report for application_1639493734154_0042 (state: RUNNING)
+2021-12-14 21:08:56,328 INFO [main] org.apache.spark.deploy.yarn.Client: Application report for application_1639493734154_0042 (state: RUNNING)
+2021-12-14 21:09:01,330 INFO [main] org.apache.spark.deploy.yarn.Client: Application report for application_1639493734154_0042 (state: RUNNING)
+2021-12-14 21:09:06,331 INFO [main] org.apache.spark.deploy.yarn.Client: Application report for application_1639493734154_0042 (state: RUNNING)
+2021-12-14 21:09:11,332 INFO [main] org.apache.spark.deploy.yarn.Client: Application report for application_1639493734154_0042 (state: RUNNING)
+2021-12-14 21:09:16,333 INFO [main] org.apache.spark.deploy.yarn.Client: Application report for application_1639493734154_0042 (state: RUNNING)
+2021-12-14 21:09:21,335 INFO [main] org.apache.spark.deploy.yarn.Client: Application report for application_1639493734154_0042 (state: RUNNING)
+2021-12-14 21:09:26,336 INFO [main] org.apache.spark.deploy.yarn.Client: Application report for application_1639493734154_0042 (state: RUNNING)
+2021-12-14 21:09:31,337 INFO [main] org.apache.spark.deploy.yarn.Client: Application report for application_1639493734154_0042 (state: RUNNING)
+2021-12-14 21:09:36,339 INFO [main] org.apache.spark.deploy.yarn.Client: Application report for application_1639493734154_0042 (state: RUNNING)
+2021-12-14 21:09:41,340 INFO [main] org.apache.spark.deploy.yarn.Client: Application report for application_1639493734154_0042 (state: RUNNING)
+2021-12-14 21:09:46,341 INFO [main] org.apache.spark.deploy.yarn.Client: Application report for application_1639493734154_0042 (state: RUNNING)
+2021-12-14 21:09:51,343 INFO [main] org.apache.spark.deploy.yarn.Client: Application report for application_1639493734154_0042 (state: RUNNING)
+2021-12-14 21:09:56,344 INFO [main] org.apache.spark.deploy.yarn.Client: Application report for application_1639493734154_0042 (state: RUNNING)
+2021-12-14 21:10:01,345 INFO [main] org.apache.spark.deploy.yarn.Client: Application report for application_1639493734154_0042 (state: RUNNING)
+2021-12-14 21:10:06,346 INFO [main] org.apache.spark.deploy.yarn.Client: Application report for application_1639493734154_0042 (state: FINISHED)
+2021-12-14 21:10:06,347 INFO [main] org.apache.spark.deploy.yarn.Client: 
+	 client token: N/A
+	 diagnostics: N/A
+	 ApplicationMaster host: ctit076.ewi.utwente.nl
+	 ApplicationMaster RPC port: 36393
+	 queue: root.s2845016
+	 start time: 1639511885883
+	 final status: SUCCEEDED
+	 tracking URL: http://ctit048.ewi.utwente.nl:8088/proxy/application_1639493734154_0042/
+	 user: s2845016
