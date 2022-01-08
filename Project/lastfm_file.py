@@ -1,6 +1,6 @@
-from pyspark import SparkContext
-sc = SparkContext(appName="hashtags")
-sc.setLogLevel("ERROR")
+from pyspark.sql import SparkSession
+spark = SparkSession.builder.getOrCreate()
+#Command: time spark-submit --master yarn --deploy-mode cluster --conf spark.dynamicAllocation.maxExecutors=10 --executor-memory 1G  lastfm_file.py > logfile_lastfm.txt 2>&1 /dev/null
 
 #Read
 lastfm_a = spark.read.json("/user/s2733226/lastfm/lastfm_train/A/*/*/*.json")
