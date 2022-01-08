@@ -42,7 +42,7 @@ PATH_6_DAY = "/data/doina/Twitter-Archive.org/2017-01/1[0-5]/*/*.json.bz2"
 PATH_7_DAY = "/data/doina/Twitter-Archive.org/2017-01/1[0-6]/*/*.json.bz2"
 ### 8-day data: 24-36GB
 PATH_8_DAY = "/data/doina/Twitter-Archive.org/2017-01/1[0-7]/*/*.json.bz2"
-### 9-day data: 27-40.5GB
+### 9-`day` data: 27-40.5GB
 PATH_9_DAY = "/data/doina/Twitter-Archive.org/2017-01/1[0-8]/*/*.json.bz2"
 ### 10-day data: 30-45GB
 PATH_10_DAY = "/data/doina/Twitter-Archive.org/2017-01/1[0-9]/*/*.json.bz2"

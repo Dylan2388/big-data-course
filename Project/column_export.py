@@ -1,10 +1,11 @@
-from pyspark import SparkContext
-sc = SparkContext(appName="hashtags")
-sc.setLogLevel("ERROR")
-
+# from pyspark import SparkContext
+from pyspark.sql import SparkSession
+# sc = SparkContext(appName="hashtags")
+# sc.setLogLevel("ERROR")
 from pyspark.sql.functions import col
 
 #Read
+spark = SparkSession.builder.getOrCreate()
 df1 = spark.read.option("header",True).option("quote", "\"").option("escape", "\"").csv("/data/doina/OSCD-MillionSongDataset/*.csv")
 
 #Select
