@@ -1,6 +1,10 @@
 from pyspark.sql import SparkSession
 spark = SparkSession.builder.getOrCreate()
-#Command: time spark-submit --master yarn --deploy-mode cluster --conf spark.dynamicAllocation.maxExecutors=10 --executor-memory 1G  lastfm_file.py > logfile_lastfm.txt 2>&1 /dev/null
+#Command: time spark-submit --master yarn --deploy-mode cluster --conf spark.dynamicAllocation.maxExecutors=20 --executor-memory 4G --driver-memory 6G lastfm_file.py > logfile_lastfm.txt 2>&1 /dev/null
+
+#Import statements
+from functools import reduce
+from pyspark.sql import DataFrame
 
 #Read
 lastfm_a = spark.read.json("/user/s2733226/lastfm/lastfm_train/A/*/*/*.json")
