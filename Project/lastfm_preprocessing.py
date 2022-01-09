@@ -15,7 +15,7 @@ lastfm_3 = lastfm_2.select(col('artist'),col('similars'),col('tags')[0].alias('t
 #Count number of tags
 lastfm_tagcount = lastfm_3.groupBy('tags').count()
 #Assign each tag with its count, and remove tags with count less than 10,000
-lastfm_4 = lastfm_3.join(lastfm_tagcount,'tags', how='left').filter(col('count') > 1000)
+lastfm_4 = lastfm_3.join(lastfm_tagcount,'tags', how='left').filter(col('count') > 10000)
 
 #Combine tags and tags_confidence into a single column
 import pyspark.sql.functions as f
