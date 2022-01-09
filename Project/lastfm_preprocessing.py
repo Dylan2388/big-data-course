@@ -1,4 +1,4 @@
-#Command: time spark-submit --master yarn --deploy-mode cluster --conf spark.dynamicAllocation.maxExecutors=20 --executor-memory 4G --driver-memory 6G lastfm_preprocessing.py > logfile_lastfm_preprocessing.txt 2>&1 /dev/null
+#Command: time spark-submit --master yarn --deploy-mode cluster --conf spark.dynamicAllocation.maxExecutors=20 --executor-memory 4G lastfm_preprocessing.py > logfile_lastfm_preprocessing.txt 2>&1 /dev/null
 from pyspark.sql import SparkSession
 spark = SparkSession.builder.getOrCreate()
 
@@ -15,7 +15,7 @@ lastfm_3 = lastfm_2.select(col('artist'),col('similars'),col('tags')[0].alias('t
 #Count number of tags
 lastfm_tagcount = lastfm_3.groupBy('tags').count()
 #Assign each tag with its count, and remove tags with count less than 10,000
-lastfm_4 = lastfm_3.join(lastfm_tagcount,'tags', how='left').filter(col('count') > 10000)
+lastfm_4 = lastfm_3.join(lastfm_tagcount,'tags', how='left').filter(col('count') > 1000)
 
 #Combine tags and tags_confidence into a single column
 import pyspark.sql.functions as f
