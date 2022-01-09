@@ -1,7 +1,7 @@
+#Command: time spark-submit --master yarn --deploy-mode cluster --conf spark.dynamicAllocation.maxExecutors=20 --executor-memory 4G --driver-memory 6G lastfm_preprocessing.py > logfile_lastfm_preprocessing.txt 2>&1 /dev/null
 from pyspark.sql import SparkSession
 spark = SparkSession.builder.getOrCreate()
 
-sc.setLogLevel("ERROR")
 from pyspark.sql.functions import col, explode
 
 #Read all tags
