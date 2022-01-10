@@ -9,8 +9,7 @@ from pyspark.ml.feature import StandardScaler
 from pyspark.sql import functions as f
 from pyspark.sql.functions import col
 from pyspark.ml.feature import Normalizer
-from pyspark.sql.functions import when
-from pyspark.sql.functions import lit
+
 
 spark = SparkSession.builder.getOrCreate()
 
