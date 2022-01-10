@@ -4,8 +4,16 @@
 # Import packages and initiate session
 from pyspark.sql import SparkSession
 from pyspark.sql.types import StructType, StructField, StringType, FloatType, IntegerType
+from pyspark.ml.feature import VectorAssembler
+from pyspark.ml.feature import StandardScaler
+from pyspark.sql import functions as f
+from pyspark.sql.functions import col
+from pyspark.ml.feature import Normalizer
+from pyspark.sql.functions import when
+from pyspark.sql.functions import lit
 
 spark = SparkSession.builder.getOrCreate()
+
 
 # Feature: Duration
 # Create schema
@@ -14,110 +22,106 @@ schema = StructType(\
      StructField("duration", FloatType(), True)])
 # Read the text file
 df_duration = spark.read.csv("/user/s2733226/project/column_data/duration/part*.csv", header = 'False', schema = schema)
-# Remove duplicates
-# with duplicates df_duration.count() = 3.000.000
-# without duplicates df_duration.count() = 1.000.000
+# Remove duplicates: w/ duplicates df_duration.count() = 3.000.000; w/o duplicates df_duration.count() = 1.000.000
 df_duration = df_duration.distinct()
-# Convert duration from float to integer
-#df_duration = df_duration.withColumn("duration", df_duration["duration"].cast(IntegerType()))
-# Filter out songs which have a duration of 0 second
-df_duration = df_duration.filter(df_duration.duration != 0)
-# Filter out songs with abnormal durations e.g. songs that last 5 seconds
-# duration_rdd = df_duration.select(df_duration.duration).rdd
-#ScaledData
-#read data as float
-#df_duration = spark.read.csv("/user/s2733226/project/column_data/duration/part*.csv", header = 'False', schema = schema)
-#Convert to vector
-assembler = VectorAssembler().setInputCols(['duration']).setOutputCol('features')
-#Standard Scaler
-scaler = StandardScaler(inputCol="features", outputCol="scaledFeatures", withStd=True, withMean=True)
-#Scaled Model
-scalerModel = scaler.fit(assembler.transform(df_duration))
-scaledData = scalerModel.transform(assembler.transform(df_duration))
-#Transform vector data tp float
-from pyspark.sql import functions as f
-from pyspark.sql.types import FloatType
-firstelement=f.udf(lambda v:float(v[0]),FloatType())
-transform = scaledData.withColumn("features", firstelement("features")).withColumn("scaledFeatures", firstelement("scaledFeatures"))
-#Filter data
-transform.filter((col('scaledFeatures') > -1.5)).show()
+# Remove null's
+df_duration = df_duration.filter(col("track_id").isNotNull() & col("duration").isNotNull())
+# Remove zero's
+df_duration = df_duration.filter(col('duration') != 0.0)
+# Remove outliners using StandardScaler
+assembler = VectorAssembler().setInputCols(["duration"]).setOutputCol("duration_vector") # convert duration from float to vector
+scaler = StandardScaler(inputCol="duration_vector", outputCol="duration_std_vector", withStd=True, withMean=True)
+scaler_model = scaler.fit(assembler.transform(df_duration))
+df_duration = scaler_model.transform(assembler.transform(df_duration)) # calculate duration_std_vector
+convert_float = f.udf(lambda v: float(v[0]), FloatType()) # transform duration_std_vector to duration_std float
+df_duration = df_duration.withColumn("duration_std", convert_float("duration_std_vector"))
+# df_duration.sort(col('duration_std'), ascending=True).show()
+lower_std = -1.5 # min std = -1.9740827; max std = 22.066174|
+upper_std = 1.5
+df_duration = df_duration.filter((col("duration_std") > lower_std) & (col("duration_std") < upper_std)) # keep only songs that fall between lower_std and upper_std
+# Normalize duration using Normalizer
+normalizer = Normalizer(inputCol="duration_vector", outputCol="duration_normalized_vector", p=2.0)
+df_duration = normalizer.transform(df_duration)
+df_duration = df_duration.withColumn("duration_normalized", convert_float("duration_normalized_vector"))
+# df_duration.sort(col('duration_normalized'), ascending=False).show()
 
 
-# 3. Energy: already normalized in original data
+# Attribute: Loudness
+# Create schema
+schema = StructType(\
+    [StructField("track_id", StringType(), True),\
+     StructField("loudness", FloatType(), True)])
 # Read the text file
-df_energy = spark.read.csv("/user/s2733226/project/column_data/duration/part-0*.csv")
-# Showing the data
-df_energy.show()
-# Rename the column names
-df_energy = df_energy.selectExpr("_c0 as name", "_c1 as value")
-# Convert the data types to integer
-df_energy = df_energy.withColumn("value",df_energy["value"].cast(IntegerType()))
-# Count the whole data
-df_energy.count()
-# 3000000
-# Count the data that is zero
-df_energy.select('name').where(df_energy.value==0).count()
-# 255
-# Count the data that is not zero
-df_energy.select('name').where(df_energy.value!=0).count()
-# 2999745
+df_loudness = spark.read.csv("/user/s2733226/project/column_data/loudness/part*.csv", header = 'False', schema = schema)
+# Remove duplicates
+df_loudness = df_loudness.distinct()
+# Remove null's
+df_loudness = df_loudness.filter(col("track_id").isNotNull() & col("loudness").isNotNull())
+# Remove zero's
+df_loudness = df_loudness.filter(col('loudness') != 0.0)
+# Remove outliners using StandardScaler
+assembler = VectorAssembler().setInputCols(['loudness']).setOutputCol('loudness_vector') # convert duration from float to vector
+scaler = StandardScaler(inputCol="loudness_vector", outputCol="loudness_std_vector", withStd=True, withMean=True)
+scaler_model = scaler.fit(assembler.transform(df_loudness))
+df_loudness = scaler_model.transform(assembler.transform(df_loudness)) # calculate duration_std_vector
+convert_float = f.udf(lambda v: float(v[0]), FloatType()) # transform duration_std_vector to duration_std float
+df_loudness = df_loudness.withColumn("loudness_std", convert_float("loudness_std_vector"))
+lower_std = -1.5 # min std = -9.246046; max std = 2.7787876
+upper_std = 1.5
+df_loudness = df_loudness.filter((col("loudness_std") > lower_std) & (col("loudness_std") < upper_std)) # keep only songs that fall between lower_std and upper_std
 
-# 4. Loudness
+
+# Attribute: Tempo (beat/minute)
+# Create schema
+schema = StructType(\
+    [StructField("track_id", StringType(), True),\
+     StructField("tempo", FloatType(), True)])
 # Read the text file
-df_loudness = spark.read.csv("/user/s2733226/project/column_data/loudness/part-0*.csv")
-# Rename the column names
-df_loudness = df_loudness.selectExpr("_c0 as name", "_c1 as value")
-# Showing the data
-df_loudness.show()
-# Convert the data types to integer
-df_loudness = df_loudness.withColumn("value",df_loudness["value"].cast(IntegerType()))
-# Count the whole data
-df_loudness.count()
-# Count the data that is zero
-df_loudness.select('name').where(df_loudness.value==0).count()
-# 1824
-# Count the data that is not zero
-df_loudness.select('name').where(df_loudness.value!=0).count()
-# 2998176
+df_tempo = spark.read.csv("/user/s2733226/project/column_data/tempo/part*.csv", header = 'False', schema = schema)
+# Remove duplicates
+df_tempo = df_tempo.distinct()
+# Remove null's
+df_tempo = df_tempo.filter(col("track_id").isNotNull() & col("tempo").isNotNull())
+# Remove zero's
+df_tempo = df_tempo.filter(col('tempo') != 0.0)
+# Remove outliners using StandardScaler
+assembler = VectorAssembler().setInputCols(['tempo']).setOutputCol('tempo_vector') # convert duration from float to vector
+scaler = StandardScaler(inputCol="tempo_vector", outputCol="tempo_std_vector", withStd=True, withMean=True)
+scaler_model = scaler.fit(assembler.transform(df_tempo))
+df_tempo = scaler_model.transform(assembler.transform(df_tempo)) # calculate duration_std_vector
+convert_float = f.udf(lambda v: float(v[0]), FloatType()) # transform duration_std_vector to duration_std float
+df_tempo = df_tempo.withColumn("tempo_std", convert_float("tempo_std_vector"))
+# df_tempo.sort(col('tempo_std'), ascending=False).show()
+lower_std = -1.5 # min std = -3.5340395; max std = 5.08931
+upper_std = 1.5
+df_tempo = df_tempo.filter((col("tempo_std") > lower_std) & (col("tempo_std") < upper_std)) # keep only songs that fall between lower_std and upper_std
 
-# 5. Song Hotness
+
+# Attribute: Song Hotness
+# Create schema
+schema = StructType(\
+    [StructField("track_id", StringType(), False),\
+     StructField("song_hotttnesss", FloatType(), False)])
 # Read the text file
-df_hotness = spark.read.csv("/user/s2733226/project/column_data/song_hotttnesss/part-0*.csv")
-# Showing the data
-df_hotness.show()
-# Rename the column names
-df_hotness = df_hotness.selectExpr("_c0 as name", "_c1 as value")
-# Convert the data types to integer
-df_hotness = df_hotness.withColumn("value",df_hotness["value"].cast(IntegerType()))
-# Count the whole data
-df_hotness.count()
-# Count the data that is zero
-df_hotness.select('name').where(df_hotness.value==0).count()
-# 1745379
-# Count the data that is not zero
-df_hotness.select('name').where(df_hotness.value!=0).count()
-# 516
-# 1255137
-# there are nan and 0 data in hotness
+df_song_hotttnesss = spark.read.csv("/user/s2733226/project/column_data/song_hotttnesss/part*.csv", header = 'False', schema = schema)
+# Remove duplicates
+df_song_hotttnesss = df_song_hotttnesss.distinct()
+# Remove null's
+df_song_hotttnesss = df_song_hotttnesss.filter(col("track_id").isNotNull() & col("song_hotttnesss").isNotNull())
+# Remove zero's
+df_song_hotttnesss = df_song_hotttnesss.filter(col('song_hotttnesss') != 0.0)
+# df_song_hotttnesss.sort(col('song_hotttnesss'), ascending=False).show()
 
-# 6. Tempo
+
+# Attribute: Energy; Dancability - disregard because all energy/ danceability data == 0.0
+# Create schema
+schema = StructType(\
+    [StructField("track_id", StringType(), True),\
+     StructField("energy", FloatType(), True)])
 # Read the text file
-df_tempo = spark.read.csv("/user/s2733226/project/column_data/tempo/part-0*.csv")
-# Rename the column names
-df_tempo = df_tempo.selectExpr("_c0 as name", "_c1 as value")
-# Showing the data
-df_tempo.show()
-# Convert the data types to integer
-df_tempo = df_tempo.withColumn("value",df_tempo["value"].cast(IntegerType()))
-# Count the whole data
-# 3000000
-df_tempo.distinct().count()
-# Count the data that is zero
-df_tempo.select('name').where(df_tempo.value==0).distinct().count()
-# 9690
-# Count the data that is not zero
-df_tempo.select('name').where(df_tempo.value!=0).count()
-# 2990310
+df_energy = spark.read.csv("/user/s2733226/project/column_data/energy/part*.csv", header = 'False', schema = schema)
+# Remove duplicates
+df_energy = df_energy.distinct()
+# Confirm that all energy data == 0.0
+df_energy.groupBy().agg(f.sum("energy")).collect()
 
-# Tempo =  beat/minutes
-# There are triple duplicates but it should be 1000000 datasets
