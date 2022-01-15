@@ -20,6 +20,7 @@ Run time: time spark-submit --master yarn --deploy-mode cluster --conf spark.dyn
 ### Code taken from Tweet_Selection
 from datetime import datetime
 from pyspark.sql import SparkSession
+spark = SparkSession.builder.getOrCreate()
 from pyspark.sql.functions import col
 
 spark = SparkSession.builder.getOrCreate()

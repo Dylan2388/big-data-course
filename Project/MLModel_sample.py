@@ -16,3 +16,8 @@ df = spark.createDataFrame([
     (1.0, Vectors.dense([1.0, 0.0])),
     (0.0, Vectors.dense([1.0, 1.0]))], ["label", "features"])
 mlp = MultilayerPerceptronClassifier(layers=[2, 2, 2], seed=123)
+model = mlp.fit(df)
+model.layers
+testDF = spark.createDataFrame([
+    (Vectors.dense([1.0, 0.0]),),
+    (Vectors.dense([0.0, 0.0]),)], ["features"])
