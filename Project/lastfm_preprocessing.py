@@ -19,7 +19,9 @@ lastfm_4 = lastfm_3.join(lastfm_tagcount,'tags', how='left').filter(col('count')
 
 #Combine tags and tags_confidence into a single column
 import pyspark.sql.functions as f
-lastfm_5 = lastfm_4.select(col('track_id'),col('artist'),col('similars'),f.array(col('tags'),col('tags_confidence')).alias('tags'),col('title'),col('count'))
+#Keeping confidence values (uncomment below line if needed, else use the line after that)
+#lastfm_5 = lastfm_4.select(col('track_id'),col('artist'),col('similars'),f.array(col('tags'),col('tags_confidence')).alias('tags'),col('title'),col('count'))
+lastfm_5 = lastfm_4.select(col('track_id'),col('artist'),col('similars'),col('tags'),col('title'),col('count'))
 
 #Grouping all tags for unique track_id
 from pyspark.sql.functions import collect_list
