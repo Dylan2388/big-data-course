@@ -15,12 +15,12 @@ df_timesig = df_timesig.selectExpr("_c0 as name", "_c1 as value")
 # First step of transformation
 stringIndexer = StringIndexer(inputCol="value", outputCol="categorical").fit(df_timesig)
 df_timesig = stringIndexer.transform(df_timesig)
-df_timesig.drop("bar").show()
+# df_timesig.drop("bar").show()
 # One hot encoder
 encoder = OneHotEncoderEstimator(inputCols=["categorical"], outputCols=["categorical_vector"])
 model = encoder.fit(df_timesig)
 df_timesig = model.transform(df_timesig)
-df_timesig.show()
+# df_timesig.show()
 
 # 2. Key 
 # Read the text file
@@ -48,10 +48,10 @@ df_mode = df_mode.selectExpr("_c0 as name", "_c1 as value")
 df_mode.show()
 # First step of transformation
 stringIndexer = StringIndexer(inputCol="value", outputCol="categorical").fit(df_mode)
-indexed_df = stringIndexer.transform(df_mode)
-indexed_df.drop("bar").show()
+df_mode = stringIndexer.transform(df_mode)
+df_mode.drop("bar").show()
 # One hot encoder
 encoder = OneHotEncoderEstimator(inputCols=["categorical"], outputCols=["categorical_vector"])
-model = encoder.fit(indexed_df)
-encoded = model.transform(indexed_df)
-encoded.show()
+model = encoder.fit(df_mode)
+df_mode = model.transform(df_mode)
+df_mode.show()
