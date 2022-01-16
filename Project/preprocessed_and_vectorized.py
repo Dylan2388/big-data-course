@@ -1,11 +1,10 @@
 from pyspark.sql import SparkSession
 spark = SparkSession.builder.getOrCreate()
 
-from pyspark.sql.functions import col, explode
+from pyspark.sql.functions import col, explode, udf, concat_ws
 
 df = spark.read.json('/user/s2733226/project/segments_tatums_preprocessed/*.json')
 
-from pyspark.sql.functions import udf
 from pyspark.ml.linalg import Vectors, VectorUDT
 import pyspark.sql.functions as f	
 	
