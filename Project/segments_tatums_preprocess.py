@@ -6,6 +6,7 @@ spark = SparkSession.builder.getOrCreate()
 df3 = spark.read.json("/user/s2733226/project/msd_lastfm_tags_columns_preprocessed/*.json")
 
 import pyspark.sql.functions as F
+from pyspark.sql.functions import col, explode
 from pyspark.sql.types import ArrayType, FloatType
 df4 = df3.select(col('track_id'),col('segments_start'))
 #exploding
