@@ -1,5 +1,5 @@
 '''
-time spark-submit --master yarn --deploy-mode cluster --conf spark.dynamicAllocation.maxExecutors=5 --executor-memory 6G  main.py > logfile_.txt 2>&1 /dev/null
+time spark-submit --master yarn --deploy-mode cluster --conf spark.dynamicAllocation.maxExecutors=5 --executor-memory 6G  main.py > logfile_main.txt 2>&1 /dev/null
 '''
 from pyspark.sql import SparkSession
 spark = SparkSession.builder.getOrCreate()
@@ -715,20 +715,20 @@ data = assembler.transform(df)
 # print("POP Test set accuracy = " + str(evaluator.evaluate(predictionAndLabels)))
 
 
-# ############### DECISION TREE - ROCK #####################
-# from pyspark.ml.classification import DecisionTreeClassifier
-# from pyspark.ml.evaluation import MulticlassClassificationEvaluator
-# ### Data splitting
-# data_rock = data.select(rock_column)
-# train, validate, test = data_rock.randomSplit([0.7, 0.2, 0.1], seed=42)
-# ### Training
-# dt = DecisionTreeClassifier(maxDepth=20, labelCol="rock", featuresCol='features')
-# model = dt.fit(train)
-# ### Testing
-# result = model.transform(validate)
-# predictionAndLabels = result.select("prediction", "rock")
-# evaluator = MulticlassClassificationEvaluator(metricName="accuracy",predictionCol='prediction', labelCol='rock')
-# print("ROCK Test set accuracy = " + str(evaluator.evaluate(predictionAndLabels)))
+############### DECISION TREE - ROCK #####################
+from pyspark.ml.classification import DecisionTreeClassifier
+from pyspark.ml.evaluation import MulticlassClassificationEvaluator
+### Data splitting
+data_rock = data.select(rock_column)
+train, validate, test = data_rock.randomSplit([0.7, 0.2, 0.1], seed=42)
+### Training
+dt = DecisionTreeClassifier(maxDepth=20, labelCol="rock", featuresCol='features')
+model = dt.fit(train)
+### Testing
+result = model.transform(validate)
+predictionAndLabels = result.select("prediction", "rock")
+evaluator = MulticlassClassificationEvaluator(metricName="accuracy",predictionCol='prediction', labelCol='rock')
+print("ROCK Test set accuracy = " + str(evaluator.evaluate(predictionAndLabels)))
 
 
 
@@ -749,159 +749,159 @@ data = assembler.transform(df)
 # print("SOUL Test set accuracy = " + str(evaluator.evaluate(predictionAndLabels)))
 
 
-############### GBTC - ALTERNATIVE #####################
-from pyspark.ml.classification import GBTClassifier
-from pyspark.ml.evaluation import MulticlassClassificationEvaluator
-### Data splitting
-filter_data = data.select(alternative_column)
-train, validate, test = filter_data.randomSplit([0.7, 0.2, 0.1], seed=42)
-### Training
-dt = GBTClassifier(maxDepth=10, labelCol="alternative", featuresCol='features')
-model = dt.fit(train)
-### Testing
-result = model.transform(validate)
-predictionAndLabels = result.select("prediction", "alternative")
-evaluator = MulticlassClassificationEvaluator(metricName="accuracy",predictionCol='prediction', labelCol='alternative')
-print("ALTERNATIVE Test set accuracy = " + str(evaluator.evaluate(predictionAndLabels)))
+# ############### GBTC - ALTERNATIVE #####################
+# from pyspark.ml.classification import GBTClassifier
+# from pyspark.ml.evaluation import MulticlassClassificationEvaluator
+# ### Data splitting
+# filter_data = data.select(alternative_column)
+# train, validate, test = filter_data.randomSplit([0.7, 0.2, 0.1], seed=42)
+# ### Training
+# dt = GBTClassifier(maxDepth=10, labelCol="alternative", featuresCol='features')
+# model = dt.fit(train)
+# ### Testing
+# result = model.transform(validate)
+# predictionAndLabels = result.select("prediction", "alternative")
+# evaluator = MulticlassClassificationEvaluator(metricName="accuracy",predictionCol='prediction', labelCol='alternative')
+# print("ALTERNATIVE Test set accuracy = " + str(evaluator.evaluate(predictionAndLabels)))
 
 
-############### GBTC - DANCE #####################
-from pyspark.ml.classification import GBTClassifier
-from pyspark.ml.evaluation import MulticlassClassificationEvaluator
-### Data splitting
-filter_data = data.select(dance_column)
-train, validate, test = filter_data.randomSplit([0.7, 0.2, 0.1], seed=42)
-### Training
-dt = GBTClassifier(maxDepth=10, labelCol="dance", featuresCol='features')
-model = dt.fit(train)
-### Testing
-result = model.transform(validate)
-predictionAndLabels = result.select("prediction", "dance")
-evaluator = MulticlassClassificationEvaluator(metricName="accuracy",predictionCol='prediction', labelCol='dance')
-print("DANCE Test set accuracy = " + str(evaluator.evaluate(predictionAndLabels)))
+# ############### GBTC - DANCE #####################
+# from pyspark.ml.classification import GBTClassifier
+# from pyspark.ml.evaluation import MulticlassClassificationEvaluator
+# ### Data splitting
+# filter_data = data.select(dance_column)
+# train, validate, test = filter_data.randomSplit([0.7, 0.2, 0.1], seed=42)
+# ### Training
+# dt = GBTClassifier(maxDepth=10, labelCol="dance", featuresCol='features')
+# model = dt.fit(train)
+# ### Testing
+# result = model.transform(validate)
+# predictionAndLabels = result.select("prediction", "dance")
+# evaluator = MulticlassClassificationEvaluator(metricName="accuracy",predictionCol='prediction', labelCol='dance')
+# print("DANCE Test set accuracy = " + str(evaluator.evaluate(predictionAndLabels)))
 
-############### NAIVE BAYES - ELECTRONIC #####################
-from pyspark.ml.classification import GBTClassifier
-from pyspark.ml.evaluation import MulticlassClassificationEvaluator
-### Data splitting
-filter_data = data.select(electronic_column)
-train, validate, test = filter_data.randomSplit([0.7, 0.2, 0.1], seed=42)
-### Training
-dt = GBTClassifier(maxDepth=10, labelCol="electronic", featuresCol='features')
-model = dt.fit(train)
-### Testing
-result = model.transform(validate)
-predictionAndLabels = result.select("prediction", "electronic")
-evaluator = MulticlassClassificationEvaluator(metricName="accuracy",predictionCol='prediction', labelCol='electronic')
-print("ELECTRONIC Test set accuracy = " + str(evaluator.evaluate(predictionAndLabels)))
-
-
-############### NAIVE BAYES - INDIE #####################
-from pyspark.ml.classification import GBTClassifier
-from pyspark.ml.evaluation import MulticlassClassificationEvaluator
-### Data splitting
-filter_data = data.select(indie_column)
-train, validate, test = filter_data.randomSplit([0.7, 0.2, 0.1], seed=42)
-### Training
-dt = GBTClassifier(maxDepth=10, labelCol="indie", featuresCol='features')
-model = dt.fit(train)
-### Testing
-result = model.transform(validate)
-predictionAndLabels = result.select("prediction", "indie")
-evaluator = MulticlassClassificationEvaluator(metricName="accuracy",predictionCol='prediction', labelCol='indie')
-print("INDIE Test set accuracy = " + str(evaluator.evaluate(predictionAndLabels)))
+# ############### NAIVE BAYES - ELECTRONIC #####################
+# from pyspark.ml.classification import GBTClassifier
+# from pyspark.ml.evaluation import MulticlassClassificationEvaluator
+# ### Data splitting
+# filter_data = data.select(electronic_column)
+# train, validate, test = filter_data.randomSplit([0.7, 0.2, 0.1], seed=42)
+# ### Training
+# dt = GBTClassifier(maxDepth=10, labelCol="electronic", featuresCol='features')
+# model = dt.fit(train)
+# ### Testing
+# result = model.transform(validate)
+# predictionAndLabels = result.select("prediction", "electronic")
+# evaluator = MulticlassClassificationEvaluator(metricName="accuracy",predictionCol='prediction', labelCol='electronic')
+# print("ELECTRONIC Test set accuracy = " + str(evaluator.evaluate(predictionAndLabels)))
 
 
-############### NAIVE BAYES - INSTRUMENTAL #####################
-from pyspark.ml.classification import GBTClassifier
-from pyspark.ml.evaluation import MulticlassClassificationEvaluator
-### Data splitting
-filter_data = data.select(instrumental_column)
-train, validate, test = filter_data.randomSplit([0.7, 0.2, 0.1], seed=42)
-### Training
-dt = GBTClassifier(maxDepth=10, labelCol="instrumental", featuresCol='features')
-model = dt.fit(train)
-### Testing
-result = model.transform(validate)
-predictionAndLabels = result.select("prediction", "instrumental")
-evaluator = MulticlassClassificationEvaluator(metricName="accuracy",predictionCol='prediction', labelCol='instrumental')
-print("INSTRUMENTAL Test set accuracy = " + str(evaluator.evaluate(predictionAndLabels)))
-
-############### NAIVE BAYES - JAZZ #####################
-from pyspark.ml.classification import GBTClassifier
-from pyspark.ml.evaluation import MulticlassClassificationEvaluator
-### Data splitting
-filter_data = data.select(jazz_column)
-train, validate, test = filter_data.randomSplit([0.7, 0.2, 0.1], seed=42)
-### Training
-dt = GBTClassifier(maxDepth=10, labelCol="jazz", featuresCol='features')
-model = dt.fit(train)
-### Testing
-result = model.transform(validate)
-predictionAndLabels = result.select("prediction", "jazz")
-evaluator = MulticlassClassificationEvaluator(metricName="accuracy",predictionCol='prediction', labelCol='jazz')
-print("JAZZ Test set accuracy = " + str(evaluator.evaluate(predictionAndLabels)))
-
-############### NAIVE BAYES - METAL #####################
-from pyspark.ml.classification import GBTClassifier
-from pyspark.ml.evaluation import MulticlassClassificationEvaluator
-### Data splitting
-filter_data = data.select(metal_column)
-train, validate, test = filter_data.randomSplit([0.7, 0.2, 0.1], seed=42)
-### Training
-dt = GBTClassifier(maxDepth=10, labelCol="metal", featuresCol='features')
-model = dt.fit(train)
-### Testing
-result = model.transform(validate)
-predictionAndLabels = result.select("prediction", "metal")
-evaluator = MulticlassClassificationEvaluator(metricName="accuracy",predictionCol='prediction', labelCol='metal')
-print("METAL Test set accuracy = " + str(evaluator.evaluate(predictionAndLabels)))
-
-############### NAIVE BAYES - POP #####################
-from pyspark.ml.classification import GBTClassifier
-from pyspark.ml.evaluation import MulticlassClassificationEvaluator
-### Data splitting
-filter_data = data.select(pop_column)
-train, validate, test = filter_data.randomSplit([0.7, 0.2, 0.1], seed=42)
-### Training
-dt = GBTClassifier(maxDepth=10, labelCol="pop", featuresCol='features')
-model = dt.fit(train)
-### Testing
-result = model.transform(validate)
-predictionAndLabels = result.select("prediction", "pop")
-evaluator = MulticlassClassificationEvaluator(metricName="accuracy",predictionCol='prediction', labelCol='pop')
-print("POP Test set accuracy = " + str(evaluator.evaluate(predictionAndLabels)))
+# ############### NAIVE BAYES - INDIE #####################
+# from pyspark.ml.classification import GBTClassifier
+# from pyspark.ml.evaluation import MulticlassClassificationEvaluator
+# ### Data splitting
+# filter_data = data.select(indie_column)
+# train, validate, test = filter_data.randomSplit([0.7, 0.2, 0.1], seed=42)
+# ### Training
+# dt = GBTClassifier(maxDepth=10, labelCol="indie", featuresCol='features')
+# model = dt.fit(train)
+# ### Testing
+# result = model.transform(validate)
+# predictionAndLabels = result.select("prediction", "indie")
+# evaluator = MulticlassClassificationEvaluator(metricName="accuracy",predictionCol='prediction', labelCol='indie')
+# print("INDIE Test set accuracy = " + str(evaluator.evaluate(predictionAndLabels)))
 
 
-############### NAIVE BAYES - ROCK #####################
-from pyspark.ml.classification import GBTClassifier
-from pyspark.ml.evaluation import MulticlassClassificationEvaluator
-### Data splitting
-data_rock = data.select(rock_column)
-train, validate, test = data_rock.randomSplit([0.7, 0.2, 0.1], seed=42)
-### Training
-dt = GBTClassifier(maxDepth=10, labelCol="rock", featuresCol='features')
-model = dt.fit(train)
-### Testing
-result = model.transform(validate)
-predictionAndLabels = result.select("prediction", "rock")
-evaluator = MulticlassClassificationEvaluator(metricName="accuracy",predictionCol='prediction', labelCol='rock')
-print("ROCK Test set accuracy = " + str(evaluator.evaluate(predictionAndLabels)))
+# ############### NAIVE BAYES - INSTRUMENTAL #####################
+# from pyspark.ml.classification import GBTClassifier
+# from pyspark.ml.evaluation import MulticlassClassificationEvaluator
+# ### Data splitting
+# filter_data = data.select(instrumental_column)
+# train, validate, test = filter_data.randomSplit([0.7, 0.2, 0.1], seed=42)
+# ### Training
+# dt = GBTClassifier(maxDepth=10, labelCol="instrumental", featuresCol='features')
+# model = dt.fit(train)
+# ### Testing
+# result = model.transform(validate)
+# predictionAndLabels = result.select("prediction", "instrumental")
+# evaluator = MulticlassClassificationEvaluator(metricName="accuracy",predictionCol='prediction', labelCol='instrumental')
+# print("INSTRUMENTAL Test set accuracy = " + str(evaluator.evaluate(predictionAndLabels)))
 
-############### DECISION TREE - SOUL #####################
-from pyspark.ml.classification import GBTClassifier
-from pyspark.ml.evaluation import MulticlassClassificationEvaluator
-### Data splitting
-filter_data = data.select(soul_column)
-train, validate, test = filter_data.randomSplit([0.7, 0.2, 0.1], seed=42)
-### Training
-dt = GBTClassifier(maxDepth=10, labelCol="soul", featuresCol='features')
-model = dt.fit(train)
-### Testing
-result = model.transform(validate)
-predictionAndLabels = result.select("prediction", "soul")
-evaluator = MulticlassClassificationEvaluator(metricName="accuracy",predictionCol='prediction', labelCol='soul')
-print("SOUL Test set accuracy = " + str(evaluator.evaluate(predictionAndLabels)))
+# ############### NAIVE BAYES - JAZZ #####################
+# from pyspark.ml.classification import GBTClassifier
+# from pyspark.ml.evaluation import MulticlassClassificationEvaluator
+# ### Data splitting
+# filter_data = data.select(jazz_column)
+# train, validate, test = filter_data.randomSplit([0.7, 0.2, 0.1], seed=42)
+# ### Training
+# dt = GBTClassifier(maxDepth=10, labelCol="jazz", featuresCol='features')
+# model = dt.fit(train)
+# ### Testing
+# result = model.transform(validate)
+# predictionAndLabels = result.select("prediction", "jazz")
+# evaluator = MulticlassClassificationEvaluator(metricName="accuracy",predictionCol='prediction', labelCol='jazz')
+# print("JAZZ Test set accuracy = " + str(evaluator.evaluate(predictionAndLabels)))
+
+# ############### NAIVE BAYES - METAL #####################
+# from pyspark.ml.classification import GBTClassifier
+# from pyspark.ml.evaluation import MulticlassClassificationEvaluator
+# ### Data splitting
+# filter_data = data.select(metal_column)
+# train, validate, test = filter_data.randomSplit([0.7, 0.2, 0.1], seed=42)
+# ### Training
+# dt = GBTClassifier(maxDepth=10, labelCol="metal", featuresCol='features')
+# model = dt.fit(train)
+# ### Testing
+# result = model.transform(validate)
+# predictionAndLabels = result.select("prediction", "metal")
+# evaluator = MulticlassClassificationEvaluator(metricName="accuracy",predictionCol='prediction', labelCol='metal')
+# print("METAL Test set accuracy = " + str(evaluator.evaluate(predictionAndLabels)))
+
+# ############### NAIVE BAYES - POP #####################
+# from pyspark.ml.classification import GBTClassifier
+# from pyspark.ml.evaluation import MulticlassClassificationEvaluator
+# ### Data splitting
+# filter_data = data.select(pop_column)
+# train, validate, test = filter_data.randomSplit([0.7, 0.2, 0.1], seed=42)
+# ### Training
+# dt = GBTClassifier(maxDepth=10, labelCol="pop", featuresCol='features')
+# model = dt.fit(train)
+# ### Testing
+# result = model.transform(validate)
+# predictionAndLabels = result.select("prediction", "pop")
+# evaluator = MulticlassClassificationEvaluator(metricName="accuracy",predictionCol='prediction', labelCol='pop')
+# print("POP Test set accuracy = " + str(evaluator.evaluate(predictionAndLabels)))
+
+
+# ############### NAIVE BAYES - ROCK #####################
+# from pyspark.ml.classification import GBTClassifier
+# from pyspark.ml.evaluation import MulticlassClassificationEvaluator
+# ### Data splitting
+# data_rock = data.select(rock_column)
+# train, validate, test = data_rock.randomSplit([0.7, 0.2, 0.1], seed=42)
+# ### Training
+# dt = GBTClassifier(maxDepth=10, labelCol="rock", featuresCol='features')
+# model = dt.fit(train)
+# ### Testing
+# result = model.transform(validate)
+# predictionAndLabels = result.select("prediction", "rock")
+# evaluator = MulticlassClassificationEvaluator(metricName="accuracy",predictionCol='prediction', labelCol='rock')
+# print("ROCK Test set accuracy = " + str(evaluator.evaluate(predictionAndLabels)))
+
+# ############### DECISION TREE - SOUL #####################
+# from pyspark.ml.classification import GBTClassifier
+# from pyspark.ml.evaluation import MulticlassClassificationEvaluator
+# ### Data splitting
+# filter_data = data.select(soul_column)
+# train, validate, test = filter_data.randomSplit([0.7, 0.2, 0.1], seed=42)
+# ### Training
+# dt = GBTClassifier(maxDepth=10, labelCol="soul", featuresCol='features')
+# model = dt.fit(train)
+# ### Testing
+# result = model.transform(validate)
+# predictionAndLabels = result.select("prediction", "soul")
+# evaluator = MulticlassClassificationEvaluator(metricName="accuracy",predictionCol='prediction', labelCol='soul')
+# print("SOUL Test set accuracy = " + str(evaluator.evaluate(predictionAndLabels)))
 
 
 ############### MULTILAYER PERCEPTION - ROCK #####################
