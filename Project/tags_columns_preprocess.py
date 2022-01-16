@@ -93,6 +93,7 @@ df3 = scalerModel.transform(df3)
 cols = ("duration_vector","duration_std_vector","duration_std","loudness_vector","loudness_std_vector","loudness_std","tempo_vector","tempo_std_vector","tempo_std")
 df3 = df3.drop(*cols)
 
+'''
 #Categorical Data Pre-Processing
 import pyspark.sql.functions as F
 from pyspark.sql import SparkSession
@@ -127,7 +128,7 @@ df3 = model.transform(df3)
 #Drop columns
 cols = ("categorical_time_signature","categorical_key","categorical_mode")
 df3 = df3.drop(*cols)
-
+'''
 #Taking distinct values
 df3 = df3.distinct()
 	
