@@ -2,9 +2,12 @@ import pyspark.sql.functions as F
 from pyspark.sql import SparkSession
 from pyspark.sql.types import *
 from pyspark.ml.feature import PCA
+from pyspark.ml.feature import Bucketizer
 
 
 spark = SparkSession.builder.getOrCreate()
+
+
 
 df = spark.read.csv("/user/s2733226/project/column_data/sections_start/part-0*.csv")
 df = df.selectExpr("_c0 as name", "_c1 as value")
@@ -22,6 +25,12 @@ df_section_start_vector = df_section_start_array.select(
     list_to_vector_udf(df_section_start_array["value"]).alias("value_vector")
 )
 
+#### 
+
+
+
+
+
 # PCA algorithm
 pca = PCA(k=3, inputCol="value_vector", outputCol="value_vector_pca")
 model = pca.fit(df_section_start_vector)
@@ -29,5 +38,7 @@ model = pca.fit(df_section_start_vector)
 result = model.transform(df_section_start_vector).select("value_vector_pca")
 result.show(truncate=False)
 
-
+splits = [-float("inf"), -0.5, 0.0, 0.5, float("inf")]
+bucketizer = Bucketizer(splits=splits, inputCol="value", outputCol="valueBucket")
+bucketedData = bucketizer.transform(df_section_start_array)
 df_section_start_vector.show(5, truncate=False)
