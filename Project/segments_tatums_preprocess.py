@@ -70,7 +70,7 @@ df8 = df7.select(col('track_id'),col('`0.0_sum(count)`').alias('tatum_0_sum'),co
 df_joined_2 = df_joined.join(df8, how = 'inner', on = 'track_id')
 
 #Drop final columns
-cols = ("artist_playmeid","artist_terms","artist_terms_freq","artist_terms_weight","audio_md5","bars_confidence","bars_start","beats_confidence","beats_start","danceability","key_confidence","energy","mode_confidence","release","release_7digitalid","sections_confidence","segments_confidence","segments_loudness_max","segments_loudness_max_time","segments_loudness_start","segments_pitches","segments_start","segments_timbre","similar_artists","song_hotttnesss","start_of_fade_out","tatums_confidence","tatums_start","time_signature","time_signature_confidence","track_7digitalid","duration_vector","duration_std_vector","duration_std","loudness_vector","loudness_std_vector","loudness_std","end_of_fade_in","sections_start")
+cols = ("artist_playmeid","artist_terms","artist_terms_freq","artist_terms_weight","audio_md5","bars_confidence","bars_start","beats_confidence","beats_start","danceability","key_confidence","energy","mode_confidence","release","release_7digitalid","sections_confidence","segments_confidence","segments_loudness_max","segments_loudness_max_time","segments_loudness_start","segments_pitches","segments_start","segments_timbre","similar_artists","song_hotttnesss","start_of_fade_out","tatums_confidence","tatums_start","time_signature_confidence","track_7digitalid","duration_vector","duration_std_vector","duration_std","loudness_vector","loudness_std_vector","loudness_std","end_of_fade_in","sections_start")
 df_final = df_joined_2.drop(*cols)
 
 df_final.write.format('json').save('/user/s2733226/project/segments_tatums_preprocessed')
