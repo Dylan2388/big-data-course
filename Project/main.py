@@ -592,7 +592,7 @@ data = assembler.transform(df)
 
 
 ############### DECISION TREE - ALTERNATIVE #####################
-from pyspark.ml.classification import NaiveBayes
+from pyspark.ml.classification import DecisionTreeClassifier
 from pyspark.ml.evaluation import MulticlassClassificationEvaluator
 ### Data splitting
 filter_data = data.select(alternative_column)
@@ -608,7 +608,7 @@ print("ALTERNATIVE Test set accuracy = " + str(evaluator.evaluate(predictionAndL
 
 
 ############### NAIVE BAYES - DANCE #####################
-from pyspark.ml.classification import NaiveBayes
+from pyspark.ml.classification import DecisionTreeClassifier
 from pyspark.ml.evaluation import MulticlassClassificationEvaluator
 ### Data splitting
 filter_data = data.select(dance_column)
@@ -623,7 +623,7 @@ evaluator = MulticlassClassificationEvaluator(metricName="accuracy",predictionCo
 print("DANCE Test set accuracy = " + str(evaluator.evaluate(predictionAndLabels)))
 
 ############### NAIVE BAYES - ELECTRONIC #####################
-from pyspark.ml.classification import LinearSVC
+from pyspark.ml.classification import DecisionTreeClassifier
 from pyspark.ml.evaluation import MulticlassClassificationEvaluator
 ### Data splitting
 filter_data = data.select(electronic_column)
@@ -639,7 +639,7 @@ print("ELECTRONIC Test set accuracy = " + str(evaluator.evaluate(predictionAndLa
 
 
 ############### NAIVE BAYES - INDIE #####################
-from pyspark.ml.classification import LinearSVC
+from pyspark.ml.classification import DecisionTreeClassifier
 from pyspark.ml.evaluation import MulticlassClassificationEvaluator
 ### Data splitting
 filter_data = data.select(indie_column)
@@ -655,7 +655,7 @@ print("INDIE Test set accuracy = " + str(evaluator.evaluate(predictionAndLabels)
 
 
 ############### NAIVE BAYES - INSTRUMENTAL #####################
-from pyspark.ml.classification import LinearSVC
+from pyspark.ml.classification import DecisionTreeClassifier
 from pyspark.ml.evaluation import MulticlassClassificationEvaluator
 ### Data splitting
 filter_data = data.select(instrumental_column)
@@ -670,7 +670,7 @@ evaluator = MulticlassClassificationEvaluator(metricName="accuracy",predictionCo
 print("INSTRUMENTAL Test set accuracy = " + str(evaluator.evaluate(predictionAndLabels)))
 
 ############### NAIVE BAYES - JAZZ #####################
-from pyspark.ml.classification import LinearSVC
+from pyspark.ml.classification import DecisionTreeClassifier
 from pyspark.ml.evaluation import MulticlassClassificationEvaluator
 ### Data splitting
 filter_data = data.select(jazz_column)
@@ -685,7 +685,7 @@ evaluator = MulticlassClassificationEvaluator(metricName="accuracy",predictionCo
 print("JAZZ Test set accuracy = " + str(evaluator.evaluate(predictionAndLabels)))
 
 ############### NAIVE BAYES - METAL #####################
-from pyspark.ml.classification import LinearSVC
+from pyspark.ml.classification import DecisionTreeClassifier
 from pyspark.ml.evaluation import MulticlassClassificationEvaluator
 ### Data splitting
 filter_data = data.select(metal_column)
@@ -700,7 +700,7 @@ evaluator = MulticlassClassificationEvaluator(metricName="accuracy",predictionCo
 print("METAL Test set accuracy = " + str(evaluator.evaluate(predictionAndLabels)))
 
 ############### NAIVE BAYES - POP #####################
-from pyspark.ml.classification import LinearSVC
+from pyspark.ml.classification import DecisionTreeClassifier
 from pyspark.ml.evaluation import MulticlassClassificationEvaluator
 ### Data splitting
 filter_data = data.select(pop_column)
@@ -716,7 +716,7 @@ print("POP Test set accuracy = " + str(evaluator.evaluate(predictionAndLabels)))
 
 
 ############### NAIVE BAYES - ROCK #####################
-from pyspark.ml.classification import LinearSVC
+from pyspark.ml.classification import DecisionTreeClassifier
 from pyspark.ml.evaluation import MulticlassClassificationEvaluator
 ### Data splitting
 data_rock = data.select(rock_column)
