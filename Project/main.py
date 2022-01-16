@@ -722,7 +722,7 @@ from pyspark.ml.evaluation import MulticlassClassificationEvaluator
 data_rock = data.select(rock_column)
 train, validate, test = data_rock.randomSplit([0.7, 0.2, 0.1], seed=42)
 ### Training
-dt = DecisionTreeClassifier(maxDepth=20, labelCol="rock", featuresCol='features')
+dt = DecisionTreeClassifier(maxDepth=10, labelCol="rock", featuresCol='features')
 model = dt.fit(train)
 ### Testing
 result = model.transform(validate)
