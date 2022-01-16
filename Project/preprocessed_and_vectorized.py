@@ -97,7 +97,17 @@ df1 = df1.withColumn('values',df1['values'].cast("float").alias('values'))
 columns = [f.col("type"),f.col("values")]
 df2 = df1.withColumn("scaled_loudness_vector", f.array(columns)).drop("type","values")
 #convert to vector
-df = df2.select('alternative', 'artist_mbid', 'artist_name', 'categorical_key_vector', 'categorical_mode_vector', 'categorical_time_signature_vector', 'dance', 'duration', 'electronic', 'indie', 'instrumental', 'jazz', 'key', 'loudness', 'metal', 'mode', 'pop', 'rock', 'scaled_duration_vector', 'scaled_tempo_vector', 'segment_0_sum', 'segment_10_sum', 'segment_11_sum', 'segment_12_sum', 'segment_13_sum', 'segment_14_sum', 'segment_15_sum', 'segment_16_sum', 'segment_17_sum', 'segment_18_sum', 'segment_19_sum', 'segment_1_sum', 'segment_20_sum', 'segment_21_sum', 'segment_22_sum', 'segment_23_sum', 'segment_24_sum', 'segment_25_sum', 'segment_26_sum', 'segment_27_sum', 'segment_2_sum', 'segment_3_sum', 'segment_4_sum', 'segment_5_sum', 'segment_6_sum', 'segment_7_sum', 'segment_8_sum', 'segment_9_sum', 'similars', 'song_id', 'soul', 'tags', 'tatum_0_sum', 'tatum_10_sum', 'tatum_11_sum', 'tatum_12_sum', 'tatum_13_sum', 'tatum_14_sum', 'tatum_15_sum', 'tatum_16_sum', 'tatum_17_sum', 'tatum_18_sum', 'tatum_19_sum', 'tatum_1_sum', 'tatum_20_sum', 'tatum_21_sum', 'tatum_22_sum', 'tatum_23_sum', 'tatum_24_sum', 'tatum_25_sum', 'tatum_26_sum', 'tatum_27_sum', 'tatum_2_sum', 'tatum_3_sum', 'tatum_4_sum', 'tatum_5_sum', 'tatum_6_sum', 'tatum_7_sum', 'tatum_8_sum', 'tatum_9_sum', 'tempo', 'title', 'track_id', 'year', to_vector("scaled_loudness_vector").alias('scaled_loudness_vector'))
+df = df2.select('alternative', 'artist_mbid', 'artist_name', 'categorical_key_vector', 'categorical_mode_vector', 'categorical_time_signature_vector', 'dance', 'duration', 'electronic', 'indie', 'instrumental', 'jazz', 'key', 'loudness', 'metal', 'mode', 'pop', 'rock', 'scaled_duration_vector', 'scaled_tempo_vector', 
+                'segment_0_sum', 'segment_10_sum', 'segment_11_sum', 'segment_12_sum', 'segment_13_sum', 'segment_14_sum', 'segment_15_sum', 
+                'segment_16_sum', 'segment_17_sum', 'segment_18_sum', 'segment_19_sum', 'segment_1_sum', 'segment_20_sum', 'segment_21_sum', 
+                'segment_22_sum', 'segment_23_sum', 'segment_24_sum', 'segment_25_sum', 'segment_26_sum', 'segment_27_sum', 'segment_2_sum', 
+                'segment_3_sum', 'segment_4_sum', 'segment_5_sum', 'segment_6_sum', 'segment_7_sum', 'segment_8_sum', 'segment_9_sum', 
+                'similars', 'song_id', 'soul', 'tags', 
+                'tatum_0_sum', 'tatum_10_sum', 'tatum_11_sum', 'tatum_12_sum', 'tatum_13_sum', 'tatum_14_sum', 'tatum_15_sum', 'tatum_16_sum', 
+                'tatum_17_sum', 'tatum_18_sum', 'tatum_19_sum', 'tatum_1_sum', 'tatum_20_sum', 'tatum_21_sum', 'tatum_22_sum', 'tatum_23_sum', 
+                'tatum_24_sum', 'tatum_25_sum', 'tatum_26_sum', 'tatum_27_sum', 'tatum_2_sum', 'tatum_3_sum', 'tatum_4_sum', 'tatum_5_sum', 
+                'tatum_6_sum', 'tatum_7_sum', 'tatum_8_sum', 'tatum_9_sum', 
+                'tempo', 'title', 'track_id', 'year', to_vector("scaled_loudness_vector").alias('scaled_loudness_vector'))
 
 #scaled_tempo_vector
 #convert struct to vectors

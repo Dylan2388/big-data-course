@@ -1,37 +1,54 @@
 from pyspark.sql import Row
 from pyspark.ml.linalg import Vectors
+from pyspark.ml.classification import LogisticRegression
 
 bdf = sc.parallelize([
     Row(label=1.0, weight=1.0, features=Vectors.dense(0.0, 5.0)),
     Row(label=0.0, weight=2.0, features=Vectors.dense(1.0, 2.0)),
     Row(label=1.0, weight=3.0, features=Vectors.dense(2.0, 1.0)),
     Row(label=0.0, weight=4.0, features=Vectors.dense(3.0, 3.0))]).toDF()
-blor = LogisticRegression(regParam=0.01, weightCol="weight")
-blorModel = blor.fit(bdf)
-blorModel.coefficients
-blorModel.intercept
-data_path = "mlmodel-test/sample_multiclass_classification_data.txt"
-mdf = spark.read.format("libsvm").load(data_path)
-mlor = LogisticRegression(regParam=0.1, elasticNetParam=1.0, family="multinomial")
-mlorModel = mlor.fit(mdf)
-mlorModel.coefficientMatrix
+test = sc.parallelize([Row(features=Vectors.dense(-1.0, 1.0))]).toDF()
 
-mlorModel.interceptVector
-test0 = sc.parallelize([Row(features=Vectors.dense(-1.0, 1.0))]).toDF()
-result = blorModel.transform(test0).head()
+######## LOGISTIC REGRESSION ##############
+blor = LogisticRegression(regParam=0.3, elasticNetParam=0.8)
+# Fit the model
+blorModel = blor.fit(bdf)
+trainingSummary = blorModel.summary
+
+# Test model
+result = blorModel.transform(test0)
 result.prediction
 result.probability
 result.rawPrediction
-test1 = sc.parallelize([Row(features=Vectors.sparse(2, [0], [1.0]))]).toDF()
-blorModel.transform(test1).head().prediction
-blor.setParams("vector")
-lr_path = temp_path + "/lr"
-blor.save(lr_path)
-lr2 = LogisticRegression.load(lr_path)
-lr2.getRegParam()
-model_path = temp_path + "/lr_model"
-blorModel.save(model_path)
-model2 = LogisticRegressionModel.load(model_path)
-blorModel.coefficients[0] == model2.coefficients[0]
-blorModel.intercept == model2.intercept
-model2
+result.features
+
+
+from pyspark.ml.classification import MultilayerPerceptronClassifier
+from pyspark.ml.evaluation import MulticlassClassificationEvaluator
+
+
+df = spark.createDataFrame([
+    (0.0, Vectors.dense([0.0, 0.0])),
+    (1.0, Vectors.dense([0.0, 1.0])),
+    (1.0, Vectors.dense([1.0, 0.0])),
+    (0.0, Vectors.dense([1.0, 1.0]))], ["label", "features"])
+
+testDF = spark.createDataFrame([
+    (Vectors.dense([1.0, 0.0]),),
+    (Vectors.dense([0.0, 0.0]),)], ["features"])
+
+####### Multi-layer Perceptron ##########3
+layers = [4, 5, 4, 3]
+# create the trainer and set its parameters
+mlp = MultilayerPerceptronClassifier(maxIter=100, layers=[2, 2, 2], blockSize=1, seed=123)
+# train the model
+model = mlp.fit(df)
+
+# test model
+model.transform(testDF).select("features", "prediction", "probability").show(truncate=False)
+
+# compute accuracy on the test set
+result = model.transform(testDF)
+predictionAndLabels = result.select("prediction", "label")
+evaluator = MulticlassClassificationEvaluator(metricName="accuracy")
+print("Test set accuracy = " + str(evaluator.evaluate(predictionAndLabels)))

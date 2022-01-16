@@ -7,7 +7,7 @@ spark = SparkSession.builder.getOrCreate()
 
 # 1. Time Signature
 # Read the text file
-df_timesig = spark.read.csv("/user/s2733226/project/column_data/time_signature/part*.csv")
+df_timesig = spark.read.csv("/user/s2733226/project/column_data/time_signature/part-0*.csv")
 # Showing the data
 # df_timesig.show()
 # Rename the column names
@@ -20,7 +20,7 @@ df_timesig = stringIndexer.transform(df_timesig)
 encoder = OneHotEncoderEstimator(inputCols=["categorical"], outputCols=["categorical_vector"])
 model = encoder.fit(df_timesig)
 df_timesig = model.transform(df_timesig)
-# df_timesig.show()
+df_timesig.show()
 
 # 2. Key 
 # Read the text file
