@@ -1,3 +1,6 @@
+'''
+time spark-submit --master yarn --deploy-mode cluster --conf spark.dynamicAllocation.maxExecutors=10 --executor-memory 2G  main.py > logfile_.txt 2>&1 /dev/null
+'''
 from pyspark.sql import SparkSession
 spark = SparkSession.builder.getOrCreate()
 
@@ -274,7 +277,160 @@ data = assembler.transform(df)
 
 
 
+############### LINEAR SVC - ALTERNATIVE #####################
+from pyspark.ml.classification import LinearSVC
+from pyspark.ml.evaluation import MulticlassClassificationEvaluator
+### Data splitting
+filter_data = data.select(alternative_column)
+train, validate, test = filter_data.randomSplit([0.7, 0.2, 0.1], seed=42)
+### Training
+ls = svm = LinearSVC(featuresCol='features', labelCol='alternative')
+model = ls.fit(train)
+### Testing
+result = model.transform(validate)
+predictionAndLabels = result.select("prediction", "alternative")
+evaluator = MulticlassClassificationEvaluator(metricName="accuracy",predictionCol='prediction', labelCol='alternative')
+print("ALTERNATIVE Test set accuracy = " + str(evaluator.evaluate(predictionAndLabels)))
 
+############### LINEAR SVC - DANCE #####################
+from pyspark.ml.classification import LinearSVC
+from pyspark.ml.evaluation import MulticlassClassificationEvaluator
+### Data splitting
+filter_data = data.select(dance_column)
+train, validate, test = filter_data.randomSplit([0.7, 0.2, 0.1], seed=42)
+### Training
+ls = svm = LinearSVC(featuresCol='features', labelCol='dance')
+model = ls.fit(train)
+### Testing
+result = model.transform(validate)
+predictionAndLabels = result.select("prediction", "dance")
+evaluator = MulticlassClassificationEvaluator(metricName="accuracy",predictionCol='prediction', labelCol='dance')
+print("DANCE Test set accuracy = " + str(evaluator.evaluate(predictionAndLabels)))
+
+
+############### LINEAR SVC - ELECTRONIC #####################
+from pyspark.ml.classification import LinearSVC
+from pyspark.ml.evaluation import MulticlassClassificationEvaluator
+### Data splitting
+filter_data = data.select(electronic_column)
+train, validate, test = filter_data.randomSplit([0.7, 0.2, 0.1], seed=42)
+### Training
+ls = svm = LinearSVC(featuresCol='features', labelCol='electronic')
+model = ls.fit(train)
+### Testing
+result = model.transform(validate)
+predictionAndLabels = result.select("prediction", "electronic")
+evaluator = MulticlassClassificationEvaluator(metricName="accuracy",predictionCol='prediction', labelCol='electronic')
+print("ELECTRONIC Test set accuracy = " + str(evaluator.evaluate(predictionAndLabels)))
+
+
+############### LINEAR SVC - INDIE #####################
+from pyspark.ml.classification import LinearSVC
+from pyspark.ml.evaluation import MulticlassClassificationEvaluator
+### Data splitting
+filter_data = data.select(indie_column)
+train, validate, test = filter_data.randomSplit([0.7, 0.2, 0.1], seed=42)
+### Training
+ls = svm = LinearSVC(featuresCol='features', labelCol='indie')
+model = ls.fit(train)
+### Testing
+result = model.transform(validate)
+predictionAndLabels = result.select("prediction", "indie")
+evaluator = MulticlassClassificationEvaluator(metricName="accuracy",predictionCol='prediction', labelCol='indie')
+print("INDIE Test set accuracy = " + str(evaluator.evaluate(predictionAndLabels)))
+
+
+############### LINEAR SVC - INSTRUMENTAL #####################
+from pyspark.ml.classification import LinearSVC
+from pyspark.ml.evaluation import MulticlassClassificationEvaluator
+### Data splitting
+filter_data = data.select(instrumental_column)
+train, validate, test = filter_data.randomSplit([0.7, 0.2, 0.1], seed=42)
+### Training
+ls = svm = LinearSVC(featuresCol='features', labelCol='instrumental')
+model = ls.fit(train)
+### Testing
+result = model.transform(validate)
+predictionAndLabels = result.select("prediction", "instrumental")
+evaluator = MulticlassClassificationEvaluator(metricName="accuracy",predictionCol='prediction', labelCol='instrumental')
+print("INSTRUMENTAL Test set accuracy = " + str(evaluator.evaluate(predictionAndLabels)))
+
+############### LINEAR SVC - JAZZ #####################
+from pyspark.ml.classification import LinearSVC
+from pyspark.ml.evaluation import MulticlassClassificationEvaluator
+### Data splitting
+filter_data = data.select(jazz_column)
+train, validate, test = filter_data.randomSplit([0.7, 0.2, 0.1], seed=42)
+### Training
+ls = svm = LinearSVC(featuresCol='features', labelCol='jazz')
+model = ls.fit(train)
+### Testing
+result = model.transform(validate)
+predictionAndLabels = result.select("prediction", "jazz")
+evaluator = MulticlassClassificationEvaluator(metricName="accuracy",predictionCol='prediction', labelCol='jazz')
+print("JAZZ Test set accuracy = " + str(evaluator.evaluate(predictionAndLabels)))
+
+############### LINEAR SVC - METAL #####################
+from pyspark.ml.classification import LinearSVC
+from pyspark.ml.evaluation import MulticlassClassificationEvaluator
+### Data splitting
+filter_data = data.select(metal_column)
+train, validate, test = filter_data.randomSplit([0.7, 0.2, 0.1], seed=42)
+### Training
+ls = svm = LinearSVC(featuresCol='features', labelCol='metal')
+model = ls.fit(train)
+### Testing
+result = model.transform(validate)
+predictionAndLabels = result.select("prediction", "metal")
+evaluator = MulticlassClassificationEvaluator(metricName="accuracy",predictionCol='prediction', labelCol='metal')
+print("METAL Test set accuracy = " + str(evaluator.evaluate(predictionAndLabels)))
+
+############### LINEAR SVC - POP #####################
+from pyspark.ml.classification import LinearSVC
+from pyspark.ml.evaluation import MulticlassClassificationEvaluator
+### Data splitting
+filter_data = data.select(pop_column)
+train, validate, test = filter_data.randomSplit([0.7, 0.2, 0.1], seed=42)
+### Training
+ls = svm = LinearSVC(featuresCol='features', labelCol='pop')
+model = ls.fit(train)
+### Testing
+result = model.transform(validate)
+predictionAndLabels = result.select("prediction", "pop")
+evaluator = MulticlassClassificationEvaluator(metricName="accuracy",predictionCol='prediction', labelCol='pop')
+print("POP Test set accuracy = " + str(evaluator.evaluate(predictionAndLabels)))
+
+
+############### LINEAR SVC - ROCK #####################
+from pyspark.ml.classification import LinearSVC
+from pyspark.ml.evaluation import MulticlassClassificationEvaluator
+### Data splitting
+data_rock = data.select(rock_column)
+train, validate, test = data_rock.randomSplit([0.7, 0.2, 0.1], seed=42)
+### Training
+ls = svm = LinearSVC(featuresCol='features', labelCol='rock')
+model = ls.fit(train)
+### Testing
+result = model.transform(validate)
+predictionAndLabels = result.select("prediction", "rock")
+evaluator = MulticlassClassificationEvaluator(metricName="accuracy",predictionCol='prediction', labelCol='rock')
+print("ROCK Test set accuracy = " + str(evaluator.evaluate(predictionAndLabels)))
+
+
+############### LINEAR SVC - SOUL #####################
+from pyspark.ml.classification import LinearSVC
+from pyspark.ml.evaluation import MulticlassClassificationEvaluator
+### Data splitting
+filter_data = data.select(soul_column)
+train, validate, test = filter_data.randomSplit([0.7, 0.2, 0.1], seed=42)
+### Training
+ls = svm = LinearSVC(featuresCol='features', labelCol='soul')
+model = ls.fit(train)
+### Testing
+result = model.transform(validate)
+predictionAndLabels = result.select("prediction", "soul")
+evaluator = MulticlassClassificationEvaluator(metricName="accuracy",predictionCol='prediction', labelCol='soul')
+print("SOUL Test set accuracy = " + str(evaluator.evaluate(predictionAndLabels)))
 
 
 
@@ -283,17 +439,17 @@ data = assembler.transform(df)
 
 
 ############### MULTILAYER PERCEPTION - ROCK #####################
-from pyspark.ml.classification import MultilayerPerceptronClassifier
-from pyspark.ml.evaluation import MulticlassClassificationEvaluator
-### Data splitting
-filter_data = data.select(rock_column)
-train, validate, test = filter_data.randomSplit([0.7, 0.2, 0.1], seed=42)
-### Training
-layers = [64, 32, 16, 8]
-mlp = MultilayerPerceptronClassifier(layers=layers, seed=42, featuresCol='features', labelCol='rock')
-model = mlp.fit(train)
-### Testing
-result = model.transform(validate)
-predictionAndLabels = result.select("prediction", "rock")
-evaluator = MulticlassClassificationEvaluator(metricName="accuracy",predictionCol='prediction', labelCol='rock')
-print("Test set accuracy = " + str(evaluator.evaluate(predictionAndLabels)))
+# from pyspark.ml.classification import MultilayerPerceptronClassifier
+# from pyspark.ml.evaluation import MulticlassClassificationEvaluator
+# ### Data splitting
+# filter_data = data.select(rock_column)
+# train, validate, test = filter_data.randomSplit([0.7, 0.2, 0.1], seed=42)
+# ### Training
+# layers = [64, 32, 16, 8]
+# mlp = MultilayerPerceptronClassifier(layers=layers, seed=42, featuresCol='features', labelCol='rock')
+# model = mlp.fit(train)
+# ### Testing
+# result = model.transform(validate)
+# predictionAndLabels = result.select("prediction", "rock")
+# evaluator = MulticlassClassificationEvaluator(metricName="accuracy",predictionCol='prediction', labelCol='rock')
+# print("Test set accuracy = " + str(evaluator.evaluate(predictionAndLabels)))
