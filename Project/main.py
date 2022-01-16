@@ -834,7 +834,7 @@ from pyspark.ml.evaluation import MulticlassClassificationEvaluator
 filter_data = data.select(jazz_column)
 train, validate, test = filter_data.randomSplit([0.7, 0.2, 0.1], seed=42)
 ### Training
-dt = GBTClassifier(maxDepth=20, labelCol="jazz", featuresCol='features')
+dt = GBTClassifier(maxDepth=10, labelCol="jazz", featuresCol='features')
 model = dt.fit(train)
 ### Testing
 result = model.transform(validate)
@@ -849,7 +849,7 @@ from pyspark.ml.evaluation import MulticlassClassificationEvaluator
 filter_data = data.select(metal_column)
 train, validate, test = filter_data.randomSplit([0.7, 0.2, 0.1], seed=42)
 ### Training
-dt = GBTClassifier(maxDepth=20, labelCol="metal", featuresCol='features')
+dt = GBTClassifier(maxDepth=10, labelCol="metal", featuresCol='features')
 model = dt.fit(train)
 ### Testing
 result = model.transform(validate)
@@ -864,7 +864,7 @@ from pyspark.ml.evaluation import MulticlassClassificationEvaluator
 filter_data = data.select(pop_column)
 train, validate, test = filter_data.randomSplit([0.7, 0.2, 0.1], seed=42)
 ### Training
-dt = GBTClassifier(maxDepth=20, labelCol="pop", featuresCol='features')
+dt = GBTClassifier(maxDepth=10, labelCol="pop", featuresCol='features')
 model = dt.fit(train)
 ### Testing
 result = model.transform(validate)
@@ -880,7 +880,7 @@ from pyspark.ml.evaluation import MulticlassClassificationEvaluator
 data_rock = data.select(rock_column)
 train, validate, test = data_rock.randomSplit([0.7, 0.2, 0.1], seed=42)
 ### Training
-dt = GBTClassifier(maxDepth=20, labelCol="rock", featuresCol='features')
+dt = GBTClassifier(maxDepth=10, labelCol="rock", featuresCol='features')
 model = dt.fit(train)
 ### Testing
 result = model.transform(validate)
@@ -895,7 +895,7 @@ from pyspark.ml.evaluation import MulticlassClassificationEvaluator
 filter_data = data.select(soul_column)
 train, validate, test = filter_data.randomSplit([0.7, 0.2, 0.1], seed=42)
 ### Training
-dt = GBTClassifier(maxDepth=20, labelCol="soul", featuresCol='features')
+dt = GBTClassifier(maxDepth=10, labelCol="soul", featuresCol='features')
 model = dt.fit(train)
 ### Testing
 result = model.transform(validate)
