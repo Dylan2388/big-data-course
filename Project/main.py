@@ -1,6 +1,8 @@
 '''
 time spark-submit --master yarn --deploy-mode cluster --conf spark.dynamicAllocation.maxExecutors=5 --executor-memory 6G  main.py > logfile_main.txt 2>&1 /dev/null
 '''
+import fractions
+from random import seed
 from pyspark.sql import SparkSession
 spark = SparkSession.builder.getOrCreate()
 
@@ -115,161 +117,167 @@ data = assembler.transform(df)
 
 
 
-# ############### LOGISTIC REGRESSION - ALTENATIVE #####################
-# from pyspark.ml.classification import LogisticRegression
-# from pyspark.ml.evaluation import MulticlassClassificationEvaluator
-# ### Data splitting
-# filter_data = data.select(alternative_column)
-# train, validate, test = filter_data.randomSplit([0.7, 0.2, 0.1], seed=42)
-# ### Training
-# lr = LogisticRegression(featuresCol='features', labelCol='alternative')
-# model = lr.fit(train)
-# ### Testing
-# result = model.transform(validate)
-# predictionAndLabels = result.select("prediction", "alternative")
-# evaluator = MulticlassClassificationEvaluator(metricName="accuracy",predictionCol='prediction', labelCol='alternative')
-# print("Test set accuracy = " + str(evaluator.evaluate(predictionAndLabels)))
+############### LOGISTIC REGRESSION - ALTENATIVE #####################
+from pyspark.ml.classification import LogisticRegression
+from pyspark.ml.evaluation import MulticlassClassificationEvaluator
+### Data splitting
+filter_data = data.select(alternative_column)
+train, validate, test = filter_data.randomSplit([0.7, 0.2, 0.1], seed=42)
+### Training
+lr = LogisticRegression(featuresCol='features', labelCol='alternative')
+model = lr.fit(train)
+### Testing
+result = model.transform(validate)
+predictionAndLabels = result.select("prediction", "alternative")
+evaluator = MulticlassClassificationEvaluator(metricName="f1",predictionCol='prediction', labelCol='alternative')
+print("Test set accuracy = " + str(evaluator.evaluate(predictionAndLabels)))
 
 
-# ############### LOGISTIC REGRESSION - DANCE #####################
-# from pyspark.ml.classification import LogisticRegression
-# from pyspark.ml.evaluation import MulticlassClassificationEvaluator
-# ### Data splitting
-# filter_data = data.select(dance_column)
-# train, validate, test = filter_data.randomSplit([0.7, 0.2, 0.1], seed=42)
-# ### Training
-# lr = LogisticRegression(featuresCol='features', labelCol='dance')
-# model = lr.fit(train)
-# ### Testing
-# result = model.transform(validate)
-# predictionAndLabels = result.select("prediction", "dance")
-# evaluator = MulticlassClassificationEvaluator(metricName="accuracy",predictionCol='prediction', labelCol='dance')
-# print("Test set accuracy = " + str(evaluator.evaluate(predictionAndLabels)))
+############### LOGISTIC REGRESSION - DANCE #####################
+from pyspark.ml.classification import LogisticRegression
+from pyspark.ml.evaluation import MulticlassClassificationEvaluator
+### Data splitting
+filter_data = data.select(dance_column)
+train, validate, test = filter_data.randomSplit([0.7, 0.2, 0.1], seed=42)
+### Training
+lr = LogisticRegression(featuresCol='features', labelCol='dance')
+model = lr.fit(train)
+### Testing
+result = model.transform(validate)
+predictionAndLabels = result.select("prediction", "dance")
+evaluator = MulticlassClassificationEvaluator(metricName="f1",predictionCol='prediction', labelCol='dance')
+print("Test set accuracy = " + str(evaluator.evaluate(predictionAndLabels)))
 
 
-# ############### LOGISTIC REGRESSION - ELECTRONIC #####################
-# from pyspark.ml.classification import LogisticRegression
-# from pyspark.ml.evaluation import MulticlassClassificationEvaluator
-# ### Data splitting
-# filter_data = data.select(electronic_column)
-# train, validate, test = filter_data.randomSplit([0.7, 0.2, 0.1], seed=42)
-# ### Training
-# lr = LogisticRegression(featuresCol='features', labelCol='electronic')
-# model = lr.fit(train)
-# ### Testing
-# result = model.transform(validate)
-# predictionAndLabels = result.select("prediction", "electronic")
-# evaluator = MulticlassClassificationEvaluator(metricName="accuracy",predictionCol='prediction', labelCol='electronic')
-# print("Test set accuracy = " + str(evaluator.evaluate(predictionAndLabels)))
+############### LOGISTIC REGRESSION - ELECTRONIC #####################
+from pyspark.ml.classification import LogisticRegression
+from pyspark.ml.evaluation import MulticlassClassificationEvaluator
+### Data splitting
+filter_data = data.select(electronic_column)
+train, validate, test = filter_data.randomSplit([0.7, 0.2, 0.1], seed=42)
+### Training
+lr = LogisticRegression(featuresCol='features', labelCol='electronic')
+model = lr.fit(train)
+### Testing
+result = model.transform(validate)
+predictionAndLabels = result.select("prediction", "electronic")
+evaluator = MulticlassClassificationEvaluator(metricName="f1",predictionCol='prediction', labelCol='electronic')
+print("Test set accuracy = " + str(evaluator.evaluate(predictionAndLabels)))
 
 
-# ############### LOGISTIC REGRESSION - INDIE #####################
-# from pyspark.ml.classification import LogisticRegression
-# from pyspark.ml.evaluation import MulticlassClassificationEvaluator
-# ### Data splitting
-# filter_data = data.select(indie_column)
-# train, validate, test = filter_data.randomSplit([0.7, 0.2, 0.1], seed=42)
-# ### Training
-# lr = LogisticRegression(featuresCol='features', labelCol='indie')
-# model = lr.fit(train)
-# ### Testing
-# result = model.transform(validate)
-# predictionAndLabels = result.select("prediction", "indie")
-# evaluator = MulticlassClassificationEvaluator(metricName="accuracy",predictionCol='prediction', labelCol='indie')
-# print("Test set accuracy = " + str(evaluator.evaluate(predictionAndLabels)))
+############### LOGISTIC REGRESSION - INDIE #####################
+from pyspark.ml.classification import LogisticRegression
+from pyspark.ml.evaluation import MulticlassClassificationEvaluator
+### Data splitting
+filter_data = data.select(indie_column)
+train, validate, test = filter_data.randomSplit([0.7, 0.2, 0.1], seed=42)
+### Training
+lr = LogisticRegression(featuresCol='features', labelCol='indie')
+model = lr.fit(train)
+### Testing
+result = model.transform(validate)
+predictionAndLabels = result.select("prediction", "indie")
+evaluator = MulticlassClassificationEvaluator(metricName="f1",predictionCol='prediction', labelCol='indie')
+print("Test set accuracy = " + str(evaluator.evaluate(predictionAndLabels)))
 
 
-# ############### LOGISTIC REGRESSION - INSTRUMENTAL #####################
-# from pyspark.ml.classification import LogisticRegression
-# from pyspark.ml.evaluation import MulticlassClassificationEvaluator
-# ### Data splitting
-# filter_data = data.select(instrumental_column)
-# train, validate, test = filter_data.randomSplit([0.7, 0.2, 0.1], seed=42)
-# ### Training
-# lr = LogisticRegression(featuresCol='features', labelCol='instrumental')
-# model = lr.fit(train)
-# ### Testing
-# result = model.transform(validate)
-# predictionAndLabels = result.select("prediction", "instrumental")
-# evaluator = MulticlassClassificationEvaluator(metricName="accuracy",predictionCol='prediction', labelCol='instrumental')
-# print("Test set accuracy = " + str(evaluator.evaluate(predictionAndLabels)))
+############### LOGISTIC REGRESSION - INSTRUMENTAL #####################
+from pyspark.ml.classification import LogisticRegression
+from pyspark.ml.evaluation import MulticlassClassificationEvaluator
+### Data splitting
+filter_data = data.select(instrumental_column)
+train, validate, test = filter_data.randomSplit([0.7, 0.2, 0.1], seed=42)
+### Training
+lr = LogisticRegression(featuresCol='features', labelCol='instrumental')
+model = lr.fit(train)
+### Testing
+result = model.transform(validate)
+predictionAndLabels = result.select("prediction", "instrumental")
+evaluator = MulticlassClassificationEvaluator(metricName="f1",predictionCol='prediction', labelCol='instrumental')
+print("Test set accuracy = " + str(evaluator.evaluate(predictionAndLabels)))
 
-# ############### LOGISTIC REGRESSION - JAZZ #####################
-# from pyspark.ml.classification import LogisticRegression
-# from pyspark.ml.evaluation import MulticlassClassificationEvaluator
-# ### Data splitting
-# filter_data = data.select(jazz_column)
-# train, validate, test = filter_data.randomSplit([0.7, 0.2, 0.1], seed=42)
-# ### Training
-# lr = LogisticRegression(featuresCol='features', labelCol='jazz')
-# model = lr.fit(train)
-# ### Testing
-# result = model.transform(validate)
-# predictionAndLabels = result.select("prediction", "jazz")
-# evaluator = MulticlassClassificationEvaluator(metricName="accuracy",predictionCol='prediction', labelCol='jazz')
-# print("Test set accuracy = " + str(evaluator.evaluate(predictionAndLabels)))
+############### LOGISTIC REGRESSION - JAZZ #####################
+from pyspark.ml.classification import LogisticRegression
+from pyspark.ml.evaluation import MulticlassClassificationEvaluator
+### Data splitting
+filter_data = data.select(jazz_column)
+train, validate, test = filter_data.randomSplit([0.7, 0.2, 0.1], seed=42)
+### Training
+lr = LogisticRegression(featuresCol='features', labelCol='jazz')
+model = lr.fit(train)
+### Testing
+result = model.transform(validate)
+predictionAndLabels = result.select("prediction", "jazz")
+evaluator = MulticlassClassificationEvaluator(metricName="f1",predictionCol='prediction', labelCol='jazz')
+print("Test set accuracy = " + str(evaluator.evaluate(predictionAndLabels)))
 
-# ############### LOGISTIC REGRESSION - METAL #####################
-# from pyspark.ml.classification import LogisticRegression
-# from pyspark.ml.evaluation import MulticlassClassificationEvaluator
-# ### Data splitting
-# filter_data = data.select(metal_column)
-# train, validate, test = filter_data.randomSplit([0.7, 0.2, 0.1], seed=42)
-# ### Training
-# lr = LogisticRegression(featuresCol='features', labelCol='metal')
-# model = lr.fit(train)
-# ### Testing
-# result = model.transform(validate)
-# predictionAndLabels = result.select("prediction", "metal")
-# evaluator = MulticlassClassificationEvaluator(metricName="accuracy",predictionCol='prediction', labelCol='metal')
-# print("Test set accuracy = " + str(evaluator.evaluate(predictionAndLabels)))
+############### LOGISTIC REGRESSION - METAL #####################
+from pyspark.ml.classification import LogisticRegression
+from pyspark.ml.evaluation import MulticlassClassificationEvaluator
+### Data splitting
+filter_data = data.select(metal_column)
+train, validate, test = filter_data.randomSplit([0.7, 0.2, 0.1], seed=42)
+### Training
+lr = LogisticRegression(featuresCol='features', labelCol='metal')
+model = lr.fit(train)
+### Testing
+result = model.transform(validate)
+predictionAndLabels = result.select("prediction", "metal")
+evaluator = MulticlassClassificationEvaluator(metricName="f1",predictionCol='prediction', labelCol='metal')
+print("Test set accuracy = " + str(evaluator.evaluate(predictionAndLabels)))
 
-# ############### LOGISTIC REGRESSION - POP #####################
-# from pyspark.ml.classification import LogisticRegression
-# from pyspark.ml.evaluation import MulticlassClassificationEvaluator
-# ### Data splitting
-# filter_data = data.select(pop_column)
-# train, validate, test = filter_data.randomSplit([0.7, 0.2, 0.1], seed=42)
-# ### Training
-# lr = LogisticRegression(featuresCol='features', labelCol='pop')
-# model = lr.fit(train)
-# ### Testing
-# result = model.transform(validate)
-# predictionAndLabels = result.select("prediction", "pop")
-# evaluator = MulticlassClassificationEvaluator(metricName="accuracy",predictionCol='prediction', labelCol='pop')
-# print("Test set accuracy = " + str(evaluator.evaluate(predictionAndLabels)))
-
-
-# ############### LOGISTIC REGRESSION - ROCK #####################
-# from pyspark.ml.classification import LogisticRegression
-# from pyspark.ml.evaluation import MulticlassClassificationEvaluator
-# ### Data splitting
-# data_rock = data.select(rock_column)
-# train, validate, test = data_rock.randomSplit([0.7, 0.2, 0.1], seed=42)
-# ### Training
-# lr = LogisticRegression(featuresCol='features', labelCol='rock')
-# model = lr.fit(train)
-# ### Testing
-# result = model.transform(validate)
-# predictionAndLabels = result.select("prediction", "rock")
-# evaluator = MulticlassClassificationEvaluator(metricName="accuracy",predictionCol='prediction', labelCol='rock')
-# print("Test set accuracy = " + str(evaluator.evaluate(predictionAndLabels)))
+############## LOGISTIC REGRESSION - POP #####################
+from pyspark.ml.classification import LogisticRegression
+from pyspark.ml.evaluation import MulticlassClassificationEvaluator
+### Data splitting
+filter_data = data.select(pop_column)
+train, validate, test = filter_data.randomSplit([0.7, 0.2, 0.1], seed=42)
+# train1 = train.filter(train['pop'] == 1)
+# num1 = float(train1.count())
+# train0 = train.filter(train['pop'] == 0)
+# num0 = float(train0.count())
+# train0 = train0.sample(fraction=num1/num0, seed=42)
+# train = train1.union(train0)
+### Training
+lr = LogisticRegression(featuresCol='features', labelCol='pop')
+model = lr.fit(train)
+### Testing
+result = model.transform(validate)
+predictionAndLabels = result.select("prediction", "pop")
+evaluator = MulticlassClassificationEvaluator(metricName="f1",predictionCol='prediction', labelCol='pop')
+print("Test set accuracy = " + str(evaluator.evaluate(predictionAndLabels)))
 
 
-# ############### LOGISTIC REGRESSION - SOUL #####################
-# from pyspark.ml.classification import LogisticRegression
-# from pyspark.ml.evaluation import MulticlassClassificationEvaluator
-# ### Data splitting
-# filter_data = data.select(soul_column)
-# train, validate, test = filter_data.randomSplit([0.7, 0.2, 0.1], seed=42)
-# ### Training
-# lr = LogisticRegression(featuresCol='features', labelCol='soul')
-# model = lr.fit(train)
-# ### Testing
-# result = model.transform(validate)
-# predictionAndLabels = result.select("prediction", "soul")
-# evaluator = MulticlassClassificationEvaluator(metricName="accuracy",predictionCol='prediction', labelCol='soul')
-# print("Test set accuracy = " + str(evaluator.evaluate(predictionAndLabels)))
+############### LOGISTIC REGRESSION - ROCK #####################
+from pyspark.ml.classification import LogisticRegression
+from pyspark.ml.evaluation import MulticlassClassificationEvaluator
+### Data splitting
+data_rock = data.select(rock_column)
+train, validate, test = data_rock.randomSplit([0.7, 0.2, 0.1], seed=42)
+### Training
+lr = LogisticRegression(featuresCol='features', labelCol='rock')
+model = lr.fit(train)
+### Testing
+result = model.transform(validate)
+predictionAndLabels = result.select("prediction", "rock")
+evaluator = MulticlassClassificationEvaluator(metricName="f1",predictionCol='prediction', labelCol='rock')
+print("Test set accuracy = " + str(evaluator.evaluate(predictionAndLabels)))
+
+
+############### LOGISTIC REGRESSION - SOUL #####################
+from pyspark.ml.classification import LogisticRegression
+from pyspark.ml.evaluation import MulticlassClassificationEvaluator
+### Data splitting
+filter_data = data.select(soul_column)
+train, validate, test = filter_data.randomSplit([0.7, 0.2, 0.1], seed=42)
+### Training
+lr = LogisticRegression(featuresCol='features', labelCol='soul')
+model = lr.fit(train)
+### Testing
+result = model.transform(validate)
+predictionAndLabels = result.select("prediction", "soul")
+evaluator = MulticlassClassificationEvaluator(metricName="f1",predictionCol='prediction', labelCol='soul')
+print("Test set accuracy = " + str(evaluator.evaluate(predictionAndLabels)))
 
 
 
