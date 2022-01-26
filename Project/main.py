@@ -625,8 +625,8 @@ result = model.transform(validate)
 predictionAndLabels = result.select("prediction", "alternative")
 evaluator = MulticlassClassificationEvaluator(metricName="f1",predictionCol='prediction', labelCol='alternative')
 print("DECISION TREE - ALTERNATIVE Test set f1 = " + str(evaluator.evaluate(predictionAndLabels)))
-print("Predicted 1s: " + result.filter(result["prediction"]==1))
-print("Predicted 0s: " + result.filter(result["prediction"]==0))
+print("Predicted 1s: " + str(result.filter(result["prediction"]==1).count()))
+print("Predicted 0s: " + str(result.filter(result["prediction"]==0).count()))
 
 
 ############### DECISION TREE - DANCE #####################
@@ -643,8 +643,8 @@ result = model.transform(validate)
 predictionAndLabels = result.select("prediction", "dance")
 evaluator = MulticlassClassificationEvaluator(metricName="f1",predictionCol='prediction', labelCol='dance')
 print("DECISION TREE - DANCE Test set f1 = " + str(evaluator.evaluate(predictionAndLabels)))
-print("Predicted 1s: " + result.filter(result["prediction"]==1))
-print("Predicted 0s: " + result.filter(result["prediction"]==0))
+print("Predicted 1s: " + str(result.filter(result["prediction"]==1).count()))
+print("Predicted 0s: " + str(result.filter(result["prediction"]==0).count()))
 
 ############### DECISION TREE - ELECTRONIC #####################
 from pyspark.ml.classification import DecisionTreeClassifier
@@ -660,8 +660,8 @@ result = model.transform(validate)
 predictionAndLabels = result.select("prediction", "electronic")
 evaluator = MulticlassClassificationEvaluator(metricName="f1",predictionCol='prediction', labelCol='electronic')
 print("DECISION TREE - ELECTRONIC Test set f1 = " + str(evaluator.evaluate(predictionAndLabels)))
-print("Predicted 1s: " + result.filter(result["prediction"]==1))
-print("Predicted 0s: " + result.filter(result["prediction"]==0))
+print("Predicted 1s: " + str(result.filter(result["prediction"]==1).count()))
+print("Predicted 0s: " + str(result.filter(result["prediction"]==0).count()))
 
 
 ############### DECISION TREE - INDIE #####################
@@ -678,8 +678,8 @@ result = model.transform(validate)
 predictionAndLabels = result.select("prediction", "indie")
 evaluator = MulticlassClassificationEvaluator(metricName="f1",predictionCol='prediction', labelCol='indie')
 print("DECISION TREE - INDIE Test set f1 = " + str(evaluator.evaluate(predictionAndLabels)))
-print("Predicted 1s: " + result.filter(result["prediction"]==1))
-print("Predicted 0s: " + result.filter(result["prediction"]==0))
+print("Predicted 1s: " + str(result.filter(result["prediction"]==1).count()))
+print("Predicted 0s: " + str(result.filter(result["prediction"]==0).count()))
 
 
 ############### DECISION TREE - INSTRUMENTAL #####################
@@ -696,8 +696,8 @@ result = model.transform(validate)
 predictionAndLabels = result.select("prediction", "instrumental")
 evaluator = MulticlassClassificationEvaluator(metricName="f1",predictionCol='prediction', labelCol='instrumental')
 print("DECISION TREE - INSTRUMENTAL Test set f1 = " + str(evaluator.evaluate(predictionAndLabels)))
-print("Predicted 1s: " + result.filter(result["prediction"]==1))
-print("Predicted 0s: " + result.filter(result["prediction"]==0))
+print("Predicted 1s: " + str(result.filter(result["prediction"]==1).count()))
+print("Predicted 0s: " + str(result.filter(result["prediction"]==0).count()))
 
 ############### DECISION TREE - JAZZ #####################
 from pyspark.ml.classification import DecisionTreeClassifier
@@ -713,8 +713,8 @@ result = model.transform(validate)
 predictionAndLabels = result.select("prediction", "jazz")
 evaluator = MulticlassClassificationEvaluator(metricName="f1",predictionCol='prediction', labelCol='jazz')
 print("DECISION TREE - JAZZ Test set f1 = " + str(evaluator.evaluate(predictionAndLabels)))
-print("Predicted 1s: " + result.filter(result["prediction"]==1))
-print("Predicted 0s: " + result.filter(result["prediction"]==0))
+print("Predicted 1s: " + str(result.filter(result["prediction"]==1).count()))
+print("Predicted 0s: " + str(result.filter(result["prediction"]==0).count()))
 
 ############### DECISION TREE - METAL #####################
 from pyspark.ml.classification import DecisionTreeClassifier
@@ -730,8 +730,8 @@ result = model.transform(validate)
 predictionAndLabels = result.select("prediction", "metal")
 evaluator = MulticlassClassificationEvaluator(metricName="f1",predictionCol='prediction', labelCol='metal')
 print("DECISION TREE - METAL Test set f1 = " + str(evaluator.evaluate(predictionAndLabels)))
-print("Predicted 1s: " + result.filter(result["prediction"]==1))
-print("Predicted 0s: " + result.filter(result["prediction"]==0))
+print("Predicted 1s: " + str(result.filter(result["prediction"]==1).count()))
+print("Predicted 0s: " + str(result.filter(result["prediction"]==0).count()))
 
 ############### DECISION TREE - POP #####################
 from pyspark.ml.classification import DecisionTreeClassifier
@@ -747,8 +747,8 @@ result = model.transform(validate)
 predictionAndLabels = result.select("prediction", "pop")
 evaluator = MulticlassClassificationEvaluator(metricName="f1",predictionCol='prediction', labelCol='pop')
 print("DECISION TREE - POP Test set f1 = " + str(evaluator.evaluate(predictionAndLabels)))
-print("Predicted 1s: " + result.filter(result["prediction"]==1))
-print("Predicted 0s: " + result.filter(result["prediction"]==0))
+print("Predicted 1s: " + str(result.filter(result["prediction"]==1).count()))
+print("Predicted 0s: " + str(result.filter(result["prediction"]==0).count()))
 
 
 ############### DECISION TREE - ROCK #####################
@@ -765,8 +765,8 @@ result = model.transform(validate)
 predictionAndLabels = result.select("prediction", "rock")
 evaluator = MulticlassClassificationEvaluator(metricName="f1",predictionCol='prediction', labelCol='rock')
 print("DECISION TREE - ROCK Test set f1 = " + str(evaluator.evaluate(predictionAndLabels)))
-print("Predicted 1s: " + result.filter(result["prediction"]==1))
-print("Predicted 0s: " + result.filter(result["prediction"]==0))
+print("Predicted 1s: " + str(result.filter(result["prediction"]==1).count()))
+print("Predicted 0s: " + str(result.filter(result["prediction"]==0).count()))
 
 
 
@@ -785,8 +785,8 @@ result = model.transform(validate)
 predictionAndLabels = result.select("prediction", "soul")
 evaluator = MulticlassClassificationEvaluator(metricName="f1",predictionCol='prediction', labelCol='soul')
 print("DECISION TREE - SOUL Test set f1 = " + str(evaluator.evaluate(predictionAndLabels)))
-print("Predicted 1s: " + result.filter(result["prediction"]==1))
-print("Predicted 0s: " + result.filter(result["prediction"]==0))
+print("Predicted 1s: " + str(result.filter(result["prediction"]==1).count()))
+print("Predicted 0s: " + str(result.filter(result["prediction"]==0).count()))
 
 
 
@@ -804,8 +804,8 @@ result = model.transform(validate)
 predictionAndLabels = result.select("prediction", "alternative")
 evaluator = MulticlassClassificationEvaluator(metricName="f1",predictionCol='prediction', labelCol='alternative')
 print("GBTC - ALTERNATIVE Test set f1 = " + str(evaluator.evaluate(predictionAndLabels)))
-print("Predicted 1s: " + result.filter(result["prediction"]==1))
-print("Predicted 0s: " + result.filter(result["prediction"]==0))
+print("Predicted 1s: " + str(result.filter(result["prediction"]==1).count()))
+print("Predicted 0s: " + str(result.filter(result["prediction"]==0).count()))
 
 
 ############### GBTC - DANCE #####################
@@ -822,8 +822,8 @@ result = model.transform(validate)
 predictionAndLabels = result.select("prediction", "dance")
 evaluator = MulticlassClassificationEvaluator(metricName="f1",predictionCol='prediction', labelCol='dance')
 print("GBTC - DANCE Test set f1 = " + str(evaluator.evaluate(predictionAndLabels)))
-print("Predicted 1s: " + result.filter(result["prediction"]==1))
-print("Predicted 0s: " + result.filter(result["prediction"]==0))
+print("Predicted 1s: " + str(result.filter(result["prediction"]==1).count()))
+print("Predicted 0s: " + str(result.filter(result["prediction"]==0).count()))
 
 ############### GBTC - ELECTRONIC #####################
 from pyspark.ml.classification import GBTClassifier
@@ -839,8 +839,8 @@ result = model.transform(validate)
 predictionAndLabels = result.select("prediction", "electronic")
 evaluator = MulticlassClassificationEvaluator(metricName="f1",predictionCol='prediction', labelCol='electronic')
 print("GBTC - ELECTRONIC Test set f1 = " + str(evaluator.evaluate(predictionAndLabels)))
-print("Predicted 1s: " + result.filter(result["prediction"]==1))
-print("Predicted 0s: " + result.filter(result["prediction"]==0))
+print("Predicted 1s: " + str(result.filter(result["prediction"]==1).count()))
+print("Predicted 0s: " + str(result.filter(result["prediction"]==0).count()))
 
 
 ############### GBTC - INDIE #####################
@@ -857,8 +857,8 @@ result = model.transform(validate)
 predictionAndLabels = result.select("prediction", "indie")
 evaluator = MulticlassClassificationEvaluator(metricName="f1",predictionCol='prediction', labelCol='indie')
 print("GBTC - INDIE Test set f1 = " + str(evaluator.evaluate(predictionAndLabels)))
-print("Predicted 1s: " + result.filter(result["prediction"]==1))
-print("Predicted 0s: " + result.filter(result["prediction"]==0))
+print("Predicted 1s: " + str(result.filter(result["prediction"]==1).count()))
+print("Predicted 0s: " + str(result.filter(result["prediction"]==0).count()))
 
 
 ############### GBTC - INSTRUMENTAL #####################
@@ -875,8 +875,8 @@ result = model.transform(validate)
 predictionAndLabels = result.select("prediction", "instrumental")
 evaluator = MulticlassClassificationEvaluator(metricName="f1",predictionCol='prediction', labelCol='instrumental')
 print("GBTC - INSTRUMENTAL Test set f1 = " + str(evaluator.evaluate(predictionAndLabels)))
-print("Predicted 1s: " + result.filter(result["prediction"]==1))
-print("Predicted 0s: " + result.filter(result["prediction"]==0))
+print("Predicted 1s: " + str(result.filter(result["prediction"]==1).count()))
+print("Predicted 0s: " + str(result.filter(result["prediction"]==0).count()))
 
 ############### GBTC - JAZZ #####################
 from pyspark.ml.classification import GBTClassifier
@@ -892,8 +892,8 @@ result = model.transform(validate)
 predictionAndLabels = result.select("prediction", "jazz")
 evaluator = MulticlassClassificationEvaluator(metricName="f1",predictionCol='prediction', labelCol='jazz')
 print("GBTC - JAZZ Test set f1 = " + str(evaluator.evaluate(predictionAndLabels)))
-print("Predicted 1s: " + result.filter(result["prediction"]==1))
-print("Predicted 0s: " + result.filter(result["prediction"]==0))
+print("Predicted 1s: " + str(result.filter(result["prediction"]==1).count()))
+print("Predicted 0s: " + str(result.filter(result["prediction"]==0).count()))
 
 ############### GBTC - METAL #####################
 from pyspark.ml.classification import GBTClassifier
@@ -909,8 +909,8 @@ result = model.transform(validate)
 predictionAndLabels = result.select("prediction", "metal")
 evaluator = MulticlassClassificationEvaluator(metricName="f1",predictionCol='prediction', labelCol='metal')
 print("GBTC - METAL Test set f1 = " + str(evaluator.evaluate(predictionAndLabels)))
-print("Predicted 1s: " + result.filter(result["prediction"]==1))
-print("Predicted 0s: " + result.filter(result["prediction"]==0))
+print("Predicted 1s: " + str(result.filter(result["prediction"]==1).count()))
+print("Predicted 0s: " + str(result.filter(result["prediction"]==0).count()))
 
 ############### GBTC - POP #####################
 from pyspark.ml.classification import GBTClassifier
@@ -926,8 +926,8 @@ result = model.transform(validate)
 predictionAndLabels = result.select("prediction", "pop")
 evaluator = MulticlassClassificationEvaluator(metricName="f1",predictionCol='prediction', labelCol='pop')
 print("GBTC - POP Test set f1 = " + str(evaluator.evaluate(predictionAndLabels)))
-print("Predicted 1s: " + result.filter(result["prediction"]==1))
-print("Predicted 0s: " + result.filter(result["prediction"]==0))
+print("Predicted 1s: " + str(result.filter(result["prediction"]==1).count()))
+print("Predicted 0s: " + str(result.filter(result["prediction"]==0).count()))
 
 
 ############### GBTC - ROCK #####################
@@ -944,8 +944,8 @@ result = model.transform(validate)
 predictionAndLabels = result.select("prediction", "rock")
 evaluator = MulticlassClassificationEvaluator(metricName="f1",predictionCol='prediction', labelCol='rock')
 print("GBTC - ROCK Test set f1 = " + str(evaluator.evaluate(predictionAndLabels)))
-print("Predicted 1s: " + result.filter(result["prediction"]==1))
-print("Predicted 0s: " + result.filter(result["prediction"]==0))
+print("Predicted 1s: " + str(result.filter(result["prediction"]==1).count()))
+print("Predicted 0s: " + str(result.filter(result["prediction"]==0).count()))
 
 ############### GBTC - SOUL #####################
 from pyspark.ml.classification import GBTClassifier
@@ -961,7 +961,7 @@ result = model.transform(validate)
 predictionAndLabels = result.select("prediction", "soul")
 evaluator = MulticlassClassificationEvaluator(metricName="f1",predictionCol='prediction', labelCol='soul')
 print("GBTC - SOUL Test set f1 = " + str(evaluator.evaluate(predictionAndLabels)))
-print("Predicted 1s: " + result.filter(result["prediction"]==1))
-print("Predicted 0s: " + result.filter(result["prediction"]==0))
+print("Predicted 1s: " + str(result.filter(result["prediction"]==1).count()))
+print("Predicted 0s: " + str(result.filter(result["prediction"]==0).count()))
 
 
