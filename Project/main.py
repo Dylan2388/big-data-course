@@ -117,241 +117,241 @@ data = assembler.transform(df)
 
 
 
-############### LOGISTIC REGRESSION - ALTENATIVE #####################
-from pyspark.ml.classification import LogisticRegression
-from pyspark.ml.evaluation import MulticlassClassificationEvaluator
-### Data splitting
-filter_data = data.select(alternative_column)
-train, validate, test = filter_data.randomSplit([0.7, 0.2, 0.1], seed=42)
-train1 = train.filter(train['alternative'] == 1)
-num1 = float(train1.count())
-train0 = train.filter(train['alternative'] == 0)
-num0 = float(train0.count())
-train0 = train0.sample(fraction=num1/num0, seed=42)
-train = train1.union(train0)
-### Training
-lr = LogisticRegression(featuresCol='features', labelCol='alternative')
-model = lr.fit(train)
-### Testing
-result = model.transform(validate)
-predictionAndLabels = result.select("prediction", "alternative")
-evaluator = MulticlassClassificationEvaluator(metricName="accuracy",predictionCol='prediction', labelCol='alternative')
-print(" LOGISTIC REGRESSION - ALTENATIVE Test set accuracy = " + str(evaluator.evaluate(predictionAndLabels)))
-print("Predicted 1s: " + str(result.filter(result["prediction"]==1).count()))
-print("Predicted 0s: " + str(result.filter(result["prediction"]==0).count()))
+# ############### LOGISTIC REGRESSION - ALTENATIVE #####################
+# from pyspark.ml.classification import LogisticRegression
+# from pyspark.ml.evaluation import MulticlassClassificationEvaluator
+# ### Data splitting
+# filter_data = data.select(alternative_column)
+# train, validate, test = filter_data.randomSplit([0.7, 0.2, 0.1], seed=42)
+# train1 = train.filter(train['alternative'] == 1)
+# num1 = float(train1.count())
+# train0 = train.filter(train['alternative'] == 0)
+# num0 = float(train0.count())
+# train0 = train0.sample(fraction=num1/num0, seed=42)
+# train = train1.union(train0)
+# ### Training
+# lr = LogisticRegression(featuresCol='features', labelCol='alternative')
+# model = lr.fit(train)
+# ### Testing
+# result = model.transform(validate)
+# predictionAndLabels = result.select("prediction", "alternative")
+# evaluator = MulticlassClassificationEvaluator(metricName="accuracy",predictionCol='prediction', labelCol='alternative')
+# print(" LOGISTIC REGRESSION - ALTENATIVE Test set accuracy = " + str(evaluator.evaluate(predictionAndLabels)))
+# print("Predicted 1s: " + str(result.filter(result["prediction"]==1).count()))
+# print("Predicted 0s: " + str(result.filter(result["prediction"]==0).count()))
 
 
-############### LOGISTIC REGRESSION - DANCE #####################
-from pyspark.ml.classification import LogisticRegression
-from pyspark.ml.evaluation import MulticlassClassificationEvaluator
-### Data splitting
-filter_data = data.select(dance_column)
-train, validate, test = filter_data.randomSplit([0.7, 0.2, 0.1], seed=42)
-train1 = train.filter(train['dance'] == 1)
-num1 = float(train1.count())
-train0 = train.filter(train['dance'] == 0)
-num0 = float(train0.count())
-train0 = train0.sample(fraction=num1/num0, seed=42)
-train = train1.union(train0)
-### Training
-lr = LogisticRegression(featuresCol='features', labelCol='dance')
-model = lr.fit(train)
-### Testing
-result = model.transform(validate)
-predictionAndLabels = result.select("prediction", "dance")
-evaluator = MulticlassClassificationEvaluator(metricName="accuracy",predictionCol='prediction', labelCol='dance')
-print("LOGISTIC REGRESSION - DANCE Test set accuracy = " + str(evaluator.evaluate(predictionAndLabels)))
-print("Predicted 1s: " + str(result.filter(result["prediction"]==1).count()))
-print("Predicted 0s: " + str(result.filter(result["prediction"]==0).count()))
+# ############### LOGISTIC REGRESSION - DANCE #####################
+# from pyspark.ml.classification import LogisticRegression
+# from pyspark.ml.evaluation import MulticlassClassificationEvaluator
+# ### Data splitting
+# filter_data = data.select(dance_column)
+# train, validate, test = filter_data.randomSplit([0.7, 0.2, 0.1], seed=42)
+# train1 = train.filter(train['dance'] == 1)
+# num1 = float(train1.count())
+# train0 = train.filter(train['dance'] == 0)
+# num0 = float(train0.count())
+# train0 = train0.sample(fraction=num1/num0, seed=42)
+# train = train1.union(train0)
+# ### Training
+# lr = LogisticRegression(featuresCol='features', labelCol='dance')
+# model = lr.fit(train)
+# ### Testing
+# result = model.transform(validate)
+# predictionAndLabels = result.select("prediction", "dance")
+# evaluator = MulticlassClassificationEvaluator(metricName="accuracy",predictionCol='prediction', labelCol='dance')
+# print("LOGISTIC REGRESSION - DANCE Test set accuracy = " + str(evaluator.evaluate(predictionAndLabels)))
+# print("Predicted 1s: " + str(result.filter(result["prediction"]==1).count()))
+# print("Predicted 0s: " + str(result.filter(result["prediction"]==0).count()))
 
 
-############### LOGISTIC REGRESSION - ELECTRONIC #####################
-from pyspark.ml.classification import LogisticRegression
-from pyspark.ml.evaluation import MulticlassClassificationEvaluator
-### Data splitting
-filter_data = data.select(electronic_column)
-train, validate, test = filter_data.randomSplit([0.7, 0.2, 0.1], seed=42)
-train1 = train.filter(train['electronic'] == 1)
-num1 = float(train1.count())
-train0 = train.filter(train['electronic'] == 0)
-num0 = float(train0.count())
-train0 = train0.sample(fraction=num1/num0, seed=42)
-train = train1.union(train0)
-### Training
-lr = LogisticRegression(featuresCol='features', labelCol='electronic')
-model = lr.fit(train)
-### Testing
-result = model.transform(validate)
-predictionAndLabels = result.select("prediction", "electronic")
-evaluator = MulticlassClassificationEvaluator(metricName="accuracy",predictionCol='prediction', labelCol='electronic')
-print("LOGISTIC REGRESSION - ELECTRONIC Test set accuracy = " + str(evaluator.evaluate(predictionAndLabels)))
-print("Predicted 1s: " + str(result.filter(result["prediction"]==1).count()))
-print("Predicted 0s: " + str(result.filter(result["prediction"]==0).count()))
+# ############### LOGISTIC REGRESSION - ELECTRONIC #####################
+# from pyspark.ml.classification import LogisticRegression
+# from pyspark.ml.evaluation import MulticlassClassificationEvaluator
+# ### Data splitting
+# filter_data = data.select(electronic_column)
+# train, validate, test = filter_data.randomSplit([0.7, 0.2, 0.1], seed=42)
+# train1 = train.filter(train['electronic'] == 1)
+# num1 = float(train1.count())
+# train0 = train.filter(train['electronic'] == 0)
+# num0 = float(train0.count())
+# train0 = train0.sample(fraction=num1/num0, seed=42)
+# train = train1.union(train0)
+# ### Training
+# lr = LogisticRegression(featuresCol='features', labelCol='electronic')
+# model = lr.fit(train)
+# ### Testing
+# result = model.transform(validate)
+# predictionAndLabels = result.select("prediction", "electronic")
+# evaluator = MulticlassClassificationEvaluator(metricName="accuracy",predictionCol='prediction', labelCol='electronic')
+# print("LOGISTIC REGRESSION - ELECTRONIC Test set accuracy = " + str(evaluator.evaluate(predictionAndLabels)))
+# print("Predicted 1s: " + str(result.filter(result["prediction"]==1).count()))
+# print("Predicted 0s: " + str(result.filter(result["prediction"]==0).count()))
 
 
-############### LOGISTIC REGRESSION - INDIE #####################
-from pyspark.ml.classification import LogisticRegression
-from pyspark.ml.evaluation import MulticlassClassificationEvaluator
-### Data splitting
-filter_data = data.select(indie_column)
-train, validate, test = filter_data.randomSplit([0.7, 0.2, 0.1], seed=42)
-train1 = train.filter(train['indie'] == 1)
-num1 = float(train1.count())
-train0 = train.filter(train['indie'] == 0)
-num0 = float(train0.count())
-train0 = train0.sample(fraction=num1/num0, seed=42)
-train = train1.union(train0)
-### Training
-lr = LogisticRegression(featuresCol='features', labelCol='indie')
-model = lr.fit(train)
-### Testing
-result = model.transform(validate)
-predictionAndLabels = result.select("prediction", "indie")
-evaluator = MulticlassClassificationEvaluator(metricName="accuracy",predictionCol='prediction', labelCol='indie')
-print("LOGISTIC REGRESSION - INDIE Test set accuracy = " + str(evaluator.evaluate(predictionAndLabels)))
-print("Predicted 1s: " + str(result.filter(result["prediction"]==1).count()))
-print("Predicted 0s: " + str(result.filter(result["prediction"]==0).count()))
+# ############### LOGISTIC REGRESSION - INDIE #####################
+# from pyspark.ml.classification import LogisticRegression
+# from pyspark.ml.evaluation import MulticlassClassificationEvaluator
+# ### Data splitting
+# filter_data = data.select(indie_column)
+# train, validate, test = filter_data.randomSplit([0.7, 0.2, 0.1], seed=42)
+# train1 = train.filter(train['indie'] == 1)
+# num1 = float(train1.count())
+# train0 = train.filter(train['indie'] == 0)
+# num0 = float(train0.count())
+# train0 = train0.sample(fraction=num1/num0, seed=42)
+# train = train1.union(train0)
+# ### Training
+# lr = LogisticRegression(featuresCol='features', labelCol='indie')
+# model = lr.fit(train)
+# ### Testing
+# result = model.transform(validate)
+# predictionAndLabels = result.select("prediction", "indie")
+# evaluator = MulticlassClassificationEvaluator(metricName="accuracy",predictionCol='prediction', labelCol='indie')
+# print("LOGISTIC REGRESSION - INDIE Test set accuracy = " + str(evaluator.evaluate(predictionAndLabels)))
+# print("Predicted 1s: " + str(result.filter(result["prediction"]==1).count()))
+# print("Predicted 0s: " + str(result.filter(result["prediction"]==0).count()))
 
 
-############### LOGISTIC REGRESSION - INSTRUMENTAL #####################
-from pyspark.ml.classification import LogisticRegression
-from pyspark.ml.evaluation import MulticlassClassificationEvaluator
-### Data splitting
-filter_data = data.select(instrumental_column)
-train, validate, test = filter_data.randomSplit([0.7, 0.2, 0.1], seed=42)
-train1 = train.filter(train['instrumental'] == 1)
-num1 = float(train1.count())
-train0 = train.filter(train['instrumental'] == 0)
-num0 = float(train0.count())
-train0 = train0.sample(fraction=num1/num0, seed=42)
-train = train1.union(train0)
-### Training
-lr = LogisticRegression(featuresCol='features', labelCol='instrumental')
-model = lr.fit(train)
-### Testing
-result = model.transform(validate)
-predictionAndLabels = result.select("prediction", "instrumental")
-evaluator = MulticlassClassificationEvaluator(metricName="accuracy",predictionCol='prediction', labelCol='instrumental')
-print("LOGISTIC REGRESSION - INSTRUMENTAL Test set accuracy = " + str(evaluator.evaluate(predictionAndLabels)))
-print("Predicted 1s: " + str(result.filter(result["prediction"]==1).count()))
-print("Predicted 0s: " + str(result.filter(result["prediction"]==0).count()))
+# ############### LOGISTIC REGRESSION - INSTRUMENTAL #####################
+# from pyspark.ml.classification import LogisticRegression
+# from pyspark.ml.evaluation import MulticlassClassificationEvaluator
+# ### Data splitting
+# filter_data = data.select(instrumental_column)
+# train, validate, test = filter_data.randomSplit([0.7, 0.2, 0.1], seed=42)
+# train1 = train.filter(train['instrumental'] == 1)
+# num1 = float(train1.count())
+# train0 = train.filter(train['instrumental'] == 0)
+# num0 = float(train0.count())
+# train0 = train0.sample(fraction=num1/num0, seed=42)
+# train = train1.union(train0)
+# ### Training
+# lr = LogisticRegression(featuresCol='features', labelCol='instrumental')
+# model = lr.fit(train)
+# ### Testing
+# result = model.transform(validate)
+# predictionAndLabels = result.select("prediction", "instrumental")
+# evaluator = MulticlassClassificationEvaluator(metricName="accuracy",predictionCol='prediction', labelCol='instrumental')
+# print("LOGISTIC REGRESSION - INSTRUMENTAL Test set accuracy = " + str(evaluator.evaluate(predictionAndLabels)))
+# print("Predicted 1s: " + str(result.filter(result["prediction"]==1).count()))
+# print("Predicted 0s: " + str(result.filter(result["prediction"]==0).count()))
 
-############### LOGISTIC REGRESSION - JAZZ #####################
-from pyspark.ml.classification import LogisticRegression
-from pyspark.ml.evaluation import MulticlassClassificationEvaluator
-### Data splitting
-filter_data = data.select(jazz_column)
-train, validate, test = filter_data.randomSplit([0.7, 0.2, 0.1], seed=42)
-train1 = train.filter(train['jazz'] == 1)
-num1 = float(train1.count())
-train0 = train.filter(train['jazz'] == 0)
-num0 = float(train0.count())
-train0 = train0.sample(fraction=num1/num0, seed=42)
-train = train1.union(train0)
-### Training
-lr = LogisticRegression(featuresCol='features', labelCol='jazz')
-model = lr.fit(train)
-### Testing
-result = model.transform(validate)
-predictionAndLabels = result.select("prediction", "jazz")
-evaluator = MulticlassClassificationEvaluator(metricName="accuracy",predictionCol='prediction', labelCol='jazz')
-print("LOGISTIC REGRESSION - JAZZ Test set accuracy = " + str(evaluator.evaluate(predictionAndLabels)))
-print("Predicted 1s: " + str(result.filter(result["prediction"]==1).count()))
-print("Predicted 0s: " + str(result.filter(result["prediction"]==0).count()))
+# ############### LOGISTIC REGRESSION - JAZZ #####################
+# from pyspark.ml.classification import LogisticRegression
+# from pyspark.ml.evaluation import MulticlassClassificationEvaluator
+# ### Data splitting
+# filter_data = data.select(jazz_column)
+# train, validate, test = filter_data.randomSplit([0.7, 0.2, 0.1], seed=42)
+# train1 = train.filter(train['jazz'] == 1)
+# num1 = float(train1.count())
+# train0 = train.filter(train['jazz'] == 0)
+# num0 = float(train0.count())
+# train0 = train0.sample(fraction=num1/num0, seed=42)
+# train = train1.union(train0)
+# ### Training
+# lr = LogisticRegression(featuresCol='features', labelCol='jazz')
+# model = lr.fit(train)
+# ### Testing
+# result = model.transform(validate)
+# predictionAndLabels = result.select("prediction", "jazz")
+# evaluator = MulticlassClassificationEvaluator(metricName="accuracy",predictionCol='prediction', labelCol='jazz')
+# print("LOGISTIC REGRESSION - JAZZ Test set accuracy = " + str(evaluator.evaluate(predictionAndLabels)))
+# print("Predicted 1s: " + str(result.filter(result["prediction"]==1).count()))
+# print("Predicted 0s: " + str(result.filter(result["prediction"]==0).count()))
 
-############### LOGISTIC REGRESSION - METAL #####################
-from pyspark.ml.classification import LogisticRegression
-from pyspark.ml.evaluation import MulticlassClassificationEvaluator
-### Data splitting
-filter_data = data.select(metal_column)
-train, validate, test = filter_data.randomSplit([0.7, 0.2, 0.1], seed=42)
-train1 = train.filter(train['metal'] == 1)
-num1 = float(train1.count())
-train0 = train.filter(train['metal'] == 0)
-num0 = float(train0.count())
-train0 = train0.sample(fraction=num1/num0, seed=42)
-train = train1.union(train0)
-### Training
-lr = LogisticRegression(featuresCol='features', labelCol='metal')
-model = lr.fit(train)
-### Testing
-result = model.transform(validate)
-predictionAndLabels = result.select("prediction", "metal")
-evaluator = MulticlassClassificationEvaluator(metricName="accuracy",predictionCol='prediction', labelCol='metal')
-print("LOGISTIC REGRESSION - METAL Test set accuracy = " + str(evaluator.evaluate(predictionAndLabels)))
-print("Predicted 1s: " + str(result.filter(result["prediction"]==1).count()))
-print("Predicted 0s: " + str(result.filter(result["prediction"]==0).count()))
+# ############### LOGISTIC REGRESSION - METAL #####################
+# from pyspark.ml.classification import LogisticRegression
+# from pyspark.ml.evaluation import MulticlassClassificationEvaluator
+# ### Data splitting
+# filter_data = data.select(metal_column)
+# train, validate, test = filter_data.randomSplit([0.7, 0.2, 0.1], seed=42)
+# train1 = train.filter(train['metal'] == 1)
+# num1 = float(train1.count())
+# train0 = train.filter(train['metal'] == 0)
+# num0 = float(train0.count())
+# train0 = train0.sample(fraction=num1/num0, seed=42)
+# train = train1.union(train0)
+# ### Training
+# lr = LogisticRegression(featuresCol='features', labelCol='metal')
+# model = lr.fit(train)
+# ### Testing
+# result = model.transform(validate)
+# predictionAndLabels = result.select("prediction", "metal")
+# evaluator = MulticlassClassificationEvaluator(metricName="accuracy",predictionCol='prediction', labelCol='metal')
+# print("LOGISTIC REGRESSION - METAL Test set accuracy = " + str(evaluator.evaluate(predictionAndLabels)))
+# print("Predicted 1s: " + str(result.filter(result["prediction"]==1).count()))
+# print("Predicted 0s: " + str(result.filter(result["prediction"]==0).count()))
 
-############## LOGISTIC REGRESSION - POP #####################
-from pyspark.ml.classification import LogisticRegression
-from pyspark.ml.evaluation import MulticlassClassificationEvaluator
-### Data splitting
-filter_data = data.select(pop_column)
-train, validate, test = filter_data.randomSplit([0.7, 0.2, 0.1], seed=42)
-train1 = train.filter(train['pop'] == 1)
-num1 = float(train1.count())
-train0 = train.filter(train['pop'] == 0)
-num0 = float(train0.count())
-train0 = train0.sample(fraction=num1/num0, seed=42)
-train = train1.union(train0)
-### Training
-lr = LogisticRegression(featuresCol='features', labelCol='pop')
-model = lr.fit(train)
-### Testing
-result = model.transform(validate)
-predictionAndLabels = result.select("prediction", "pop")
-evaluator = MulticlassClassificationEvaluator(metricName="accuracy",predictionCol='prediction', labelCol='pop')
-print("LOGISTIC REGRESSION - POP Test set accuracy = " + str(evaluator.evaluate(predictionAndLabels)))
-print("Predicted 1s: " + str(result.filter(result["prediction"]==1).count()))
-print("Predicted 0s: " + str(result.filter(result["prediction"]==0).count()))
-
-
-############### LOGISTIC REGRESSION - ROCK #####################
-from pyspark.ml.classification import LogisticRegression
-from pyspark.ml.evaluation import MulticlassClassificationEvaluator
-### Data splitting
-data_rock = data.select(rock_column)
-train, validate, test = data_rock.randomSplit([0.7, 0.2, 0.1], seed=42)
-train1 = train.filter(train['rock'] == 1)
-num1 = float(train1.count())
-train0 = train.filter(train['rock'] == 0)
-num0 = float(train0.count())
-train0 = train0.sample(fraction=num1/num0, seed=42)
-train = train1.union(train0)
-### Training
-lr = LogisticRegression(featuresCol='features', labelCol='rock')
-model = lr.fit(train)
-### Testing
-result = model.transform(validate)
-predictionAndLabels = result.select("prediction", "rock")
-evaluator = MulticlassClassificationEvaluator(metricName="accuracy",predictionCol='prediction', labelCol='rock')
-print("LOGISTIC REGRESSION - ROCK Test set accuracy = " + str(evaluator.evaluate(predictionAndLabels)))
-print("Predicted 1s: " + str(result.filter(result["prediction"]==1).count()))
-print("Predicted 0s: " + str(result.filter(result["prediction"]==0).count()))
+# ############## LOGISTIC REGRESSION - POP #####################
+# from pyspark.ml.classification import LogisticRegression
+# from pyspark.ml.evaluation import MulticlassClassificationEvaluator
+# ### Data splitting
+# filter_data = data.select(pop_column)
+# train, validate, test = filter_data.randomSplit([0.7, 0.2, 0.1], seed=42)
+# train1 = train.filter(train['pop'] == 1)
+# num1 = float(train1.count())
+# train0 = train.filter(train['pop'] == 0)
+# num0 = float(train0.count())
+# train0 = train0.sample(fraction=num1/num0, seed=42)
+# train = train1.union(train0)
+# ### Training
+# lr = LogisticRegression(featuresCol='features', labelCol='pop')
+# model = lr.fit(train)
+# ### Testing
+# result = model.transform(validate)
+# predictionAndLabels = result.select("prediction", "pop")
+# evaluator = MulticlassClassificationEvaluator(metricName="accuracy",predictionCol='prediction', labelCol='pop')
+# print("LOGISTIC REGRESSION - POP Test set accuracy = " + str(evaluator.evaluate(predictionAndLabels)))
+# print("Predicted 1s: " + str(result.filter(result["prediction"]==1).count()))
+# print("Predicted 0s: " + str(result.filter(result["prediction"]==0).count()))
 
 
-############### LOGISTIC REGRESSION - SOUL #####################
-from pyspark.ml.classification import LogisticRegression
-from pyspark.ml.evaluation import MulticlassClassificationEvaluator
-### Data splitting
-filter_data = data.select(soul_column)
-train, validate, test = filter_data.randomSplit([0.7, 0.2, 0.1], seed=42)
-train1 = train.filter(train['soul'] == 1)
-num1 = float(train1.count())
-train0 = train.filter(train['soul'] == 0)
-num0 = float(train0.count())
-train0 = train0.sample(fraction=num1/num0, seed=42)
-train = train1.union(train0)
-### Training
-lr = LogisticRegression(featuresCol='features', labelCol='soul')
-model = lr.fit(train)
-### Testing
-result = model.transform(validate)
-predictionAndLabels = result.select("prediction", "soul")
-evaluator = MulticlassClassificationEvaluator(metricName="accuracy",predictionCol='prediction', labelCol='soul')
-print("LOGISTIC REGRESSION - SOUL Test set accuracy = " + str(evaluator.evaluate(predictionAndLabels)))
-print("Predicted 1s: " + str(result.filter(result["prediction"]==1).count()))
-print("Predicted 0s: " + str(result.filter(result["prediction"]==0).count()))
+# ############### LOGISTIC REGRESSION - ROCK #####################
+# from pyspark.ml.classification import LogisticRegression
+# from pyspark.ml.evaluation import MulticlassClassificationEvaluator
+# ### Data splitting
+# data_rock = data.select(rock_column)
+# train, validate, test = data_rock.randomSplit([0.7, 0.2, 0.1], seed=42)
+# train1 = train.filter(train['rock'] == 1)
+# num1 = float(train1.count())
+# train0 = train.filter(train['rock'] == 0)
+# num0 = float(train0.count())
+# train0 = train0.sample(fraction=num1/num0, seed=42)
+# train = train1.union(train0)
+# ### Training
+# lr = LogisticRegression(featuresCol='features', labelCol='rock')
+# model = lr.fit(train)
+# ### Testing
+# result = model.transform(validate)
+# predictionAndLabels = result.select("prediction", "rock")
+# evaluator = MulticlassClassificationEvaluator(metricName="accuracy",predictionCol='prediction', labelCol='rock')
+# print("LOGISTIC REGRESSION - ROCK Test set accuracy = " + str(evaluator.evaluate(predictionAndLabels)))
+# print("Predicted 1s: " + str(result.filter(result["prediction"]==1).count()))
+# print("Predicted 0s: " + str(result.filter(result["prediction"]==0).count()))
+
+
+# ############### LOGISTIC REGRESSION - SOUL #####################
+# from pyspark.ml.classification import LogisticRegression
+# from pyspark.ml.evaluation import MulticlassClassificationEvaluator
+# ### Data splitting
+# filter_data = data.select(soul_column)
+# train, validate, test = filter_data.randomSplit([0.7, 0.2, 0.1], seed=42)
+# train1 = train.filter(train['soul'] == 1)
+# num1 = float(train1.count())
+# train0 = train.filter(train['soul'] == 0)
+# num0 = float(train0.count())
+# train0 = train0.sample(fraction=num1/num0, seed=42)
+# train = train1.union(train0)
+# ### Training
+# lr = LogisticRegression(featuresCol='features', labelCol='soul')
+# model = lr.fit(train)
+# ### Testing
+# result = model.transform(validate)
+# predictionAndLabels = result.select("prediction", "soul")
+# evaluator = MulticlassClassificationEvaluator(metricName="accuracy",predictionCol='prediction', labelCol='soul')
+# print("LOGISTIC REGRESSION - SOUL Test set accuracy = " + str(evaluator.evaluate(predictionAndLabels)))
+# print("Predicted 1s: " + str(result.filter(result["prediction"]==1).count()))
+# print("Predicted 0s: " + str(result.filter(result["prediction"]==0).count()))
 
 
 
@@ -379,8 +379,8 @@ result = model.transform(validate)
 predictionAndLabels = result.select("prediction", "alternative")
 evaluator = MulticlassClassificationEvaluator(metricName="accuracy",predictionCol='prediction', labelCol='alternative')
 print("LINEAR SVC - ALTERNATIVE Test set accuracy = " + str(evaluator.evaluate(predictionAndLabels)))
-print("Predicted 1s: " + str(result.filter(result["prediction"]==1).count()))
-print("Predicted 0s: " + str(result.filter(result["prediction"]==0).count()))
+# print("Predicted 1s: " + str(result.filter(result["prediction"]==1).count()))
+# print("Predicted 0s: " + str(result.filter(result["prediction"]==0).count()))
 
 ############### LINEAR SVC - DANCE #####################
 from pyspark.ml.classification import LinearSVC
@@ -400,10 +400,10 @@ model = svm.fit(train)
 ### Testing
 result = model.transform(validate)
 predictionAndLabels = result.select("prediction", "dance")
-evaluator = MulticlassClassificationEvaluator(metricName="weightedFalsePositiveRate",predictionCol='prediction', labelCol='dance')
+evaluator = MulticlassClassificationEvaluator(metricName="accuracy",predictionCol='prediction', labelCol='dance')
 print("LINEAR SVC - DANCE Test set accuracy = " + str(evaluator.evaluate(predictionAndLabels)))
-print("Predicted 1s: " + str(result.filter(result["prediction"]==1).count()))
-print("Predicted 0s: " + str(result.filter(result["prediction"]==0).count()))
+# print("Predicted 1s: " + str(result.filter(result["prediction"]==1).count()))
+# print("Predicted 0s: " + str(result.filter(result["prediction"]==0).count()))
 
 
 ############### LINEAR SVC - ELECTRONIC #####################
@@ -426,8 +426,8 @@ result = model.transform(validate)
 predictionAndLabels = result.select("prediction", "electronic")
 evaluator = MulticlassClassificationEvaluator(metricName="accuracy",predictionCol='prediction', labelCol='electronic')
 print("LINEAR SVC - ELECTRONIC Test set accuracy = " + str(evaluator.evaluate(predictionAndLabels)))
-print("Predicted 1s: " + str(result.filter(result["prediction"]==1).count()))
-print("Predicted 0s: " + str(result.filter(result["prediction"]==0).count()))
+# print("Predicted 1s: " + str(result.filter(result["prediction"]==1).count()))
+# print("Predicted 0s: " + str(result.filter(result["prediction"]==0).count()))
 
 
 ############### LINEAR SVC - INDIE #####################
@@ -450,8 +450,8 @@ result = model.transform(validate)
 predictionAndLabels = result.select("prediction", "indie")
 evaluator = MulticlassClassificationEvaluator(metricName="accuracy",predictionCol='prediction', labelCol='indie')
 print("LINEAR SVC - INDIE Test set accuracy = " + str(evaluator.evaluate(predictionAndLabels)))
-print("Predicted 1s: " + str(result.filter(result["prediction"]==1).count()))
-print("Predicted 0s: " + str(result.filter(result["prediction"]==0).count()))
+# print("Predicted 1s: " + str(result.filter(result["prediction"]==1).count()))
+# print("Predicted 0s: " + str(result.filter(result["prediction"]==0).count()))
 
 
 ############### LINEAR SVC - INSTRUMENTAL #####################
@@ -474,8 +474,8 @@ result = model.transform(validate)
 predictionAndLabels = result.select("prediction", "instrumental")
 evaluator = MulticlassClassificationEvaluator(metricName="accuracy",predictionCol='prediction', labelCol='instrumental')
 print("LINEAR SVC - INSTRUMENTAL Test set accuracy = " + str(evaluator.evaluate(predictionAndLabels)))
-print("Predicted 1s: " + str(result.filter(result["prediction"]==1).count()))
-print("Predicted 0s: " + str(result.filter(result["prediction"]==0).count()))
+# print("Predicted 1s: " + str(result.filter(result["prediction"]==1).count()))
+# print("Predicted 0s: " + str(result.filter(result["prediction"]==0).count()))
 
 ############### LINEAR SVC - JAZZ #####################
 from pyspark.ml.classification import LinearSVC
@@ -497,8 +497,8 @@ result = model.transform(validate)
 predictionAndLabels = result.select("prediction", "jazz")
 evaluator = MulticlassClassificationEvaluator(metricName="accuracy",predictionCol='prediction', labelCol='jazz')
 print("LINEAR SVC - JAZZ Test set accuracy = " + str(evaluator.evaluate(predictionAndLabels)))
-print("Predicted 1s: " + str(result.filter(result["prediction"]==1).count()))
-print("Predicted 0s: " + str(result.filter(result["prediction"]==0).count()))
+# print("Predicted 1s: " + str(result.filter(result["prediction"]==1).count()))
+# print("Predicted 0s: " + str(result.filter(result["prediction"]==0).count()))
 
 ############### LINEAR SVC - METAL #####################
 from pyspark.ml.classification import LinearSVC
@@ -520,8 +520,8 @@ result = model.transform(validate)
 predictionAndLabels = result.select("prediction", "metal")
 evaluator = MulticlassClassificationEvaluator(metricName="accuracy",predictionCol='prediction', labelCol='metal')
 print("LINEAR SVC - METAL Test set accuracy = " + str(evaluator.evaluate(predictionAndLabels)))
-print("Predicted 1s: " + str(result.filter(result["prediction"]==1).count()))
-print("Predicted 0s: " + str(result.filter(result["prediction"]==0).count()))
+# print("Predicted 1s: " + str(result.filter(result["prediction"]==1).count()))
+# print("Predicted 0s: " + str(result.filter(result["prediction"]==0).count()))
 
 ############### LINEAR SVC - POP #####################
 from pyspark.ml.classification import LinearSVC
@@ -543,8 +543,8 @@ result = model.transform(validate)
 predictionAndLabels = result.select("prediction", "pop")
 evaluator = MulticlassClassificationEvaluator(metricName="accuracy",predictionCol='prediction', labelCol='pop')
 print("LINEAR SVC - POP Test set accuracy = " + str(evaluator.evaluate(predictionAndLabels)))
-print("Predicted 1s: " + str(result.filter(result["prediction"]==1).count()))
-print("Predicted 0s: " + str(result.filter(result["prediction"]==0).count()))
+# print("Predicted 1s: " + str(result.filter(result["prediction"]==1).count()))
+# print("Predicted 0s: " + str(result.filter(result["prediction"]==0).count()))
 
 
 ############### LINEAR SVC - ROCK #####################
@@ -567,8 +567,8 @@ result = model.transform(validate)
 predictionAndLabels = result.select("prediction", "rock")
 evaluator = MulticlassClassificationEvaluator(metricName="accuracy",predictionCol='prediction', labelCol='rock')
 print("LINEAR SVC - ROCK Test set accuracy = " + str(evaluator.evaluate(predictionAndLabels)))
-print("Predicted 1s: " + str(result.filter(result["prediction"]==1).count()))
-print("Predicted 0s: " + str(result.filter(result["prediction"]==0).count()))
+# print("Predicted 1s: " + str(result.filter(result["prediction"]==1).count()))
+# print("Predicted 0s: " + str(result.filter(result["prediction"]==0).count()))
 
 
 ############### LINEAR SVC - SOUL #####################
@@ -591,8 +591,8 @@ result = model.transform(validate)
 predictionAndLabels = result.select("prediction", "soul")
 evaluator = MulticlassClassificationEvaluator(metricName="accuracy",predictionCol='prediction', labelCol='soul')
 print("LINEAR SVC - SOUL Test set accuracy = " + str(evaluator.evaluate(predictionAndLabels)))
-print("Predicted 1s: " + str(result.filter(result["prediction"]==1).count()))
-print("Predicted 0s: " + str(result.filter(result["prediction"]==0).count()))
+# print("Predicted 1s: " + str(result.filter(result["prediction"]==1).count()))
+# print("Predicted 0s: " + str(result.filter(result["prediction"]==0).count()))
 
 
 
@@ -958,8 +958,8 @@ result = model.transform(validate)
 predictionAndLabels = result.select("prediction", "alternative")
 evaluator = MulticlassClassificationEvaluator(metricName="accuracy",predictionCol='prediction', labelCol='alternative')
 print("GBTC - ALTERNATIVE Test set accuracy = " + str(evaluator.evaluate(predictionAndLabels)))
-print("Predicted 1s: " + str(result.filter(result["prediction"]==1).count()))
-print("Predicted 0s: " + str(result.filter(result["prediction"]==0).count()))
+# print("Predicted 1s: " + str(result.filter(result["prediction"]==1).count()))
+# print("Predicted 0s: " + str(result.filter(result["prediction"]==0).count()))
 
 
 ############### GBTC - DANCE #####################
@@ -982,8 +982,8 @@ result = model.transform(validate)
 predictionAndLabels = result.select("prediction", "dance")
 evaluator = MulticlassClassificationEvaluator(metricName="accuracy",predictionCol='prediction', labelCol='dance')
 print("GBTC - DANCE Test set accuracy = " + str(evaluator.evaluate(predictionAndLabels)))
-print("Predicted 1s: " + str(result.filter(result["prediction"]==1).count()))
-print("Predicted 0s: " + str(result.filter(result["prediction"]==0).count()))
+# print("Predicted 1s: " + str(result.filter(result["prediction"]==1).count()))
+# print("Predicted 0s: " + str(result.filter(result["prediction"]==0).count()))
 
 ############### GBTC - ELECTRONIC #####################
 from pyspark.ml.classification import GBTClassifier
@@ -1005,8 +1005,8 @@ result = model.transform(validate)
 predictionAndLabels = result.select("prediction", "electronic")
 evaluator = MulticlassClassificationEvaluator(metricName="accuracy",predictionCol='prediction', labelCol='electronic')
 print("GBTC - ELECTRONIC Test set accuracy = " + str(evaluator.evaluate(predictionAndLabels)))
-print("Predicted 1s: " + str(result.filter(result["prediction"]==1).count()))
-print("Predicted 0s: " + str(result.filter(result["prediction"]==0).count()))
+# print("Predicted 1s: " + str(result.filter(result["prediction"]==1).count()))
+# print("Predicted 0s: " + str(result.filter(result["prediction"]==0).count()))
 
 
 ############### GBTC - INDIE #####################
@@ -1029,8 +1029,8 @@ result = model.transform(validate)
 predictionAndLabels = result.select("prediction", "indie")
 evaluator = MulticlassClassificationEvaluator(metricName="accuracy",predictionCol='prediction', labelCol='indie')
 print("GBTC - INDIE Test set accuracy = " + str(evaluator.evaluate(predictionAndLabels)))
-print("Predicted 1s: " + str(result.filter(result["prediction"]==1).count()))
-print("Predicted 0s: " + str(result.filter(result["prediction"]==0).count()))
+# print("Predicted 1s: " + str(result.filter(result["prediction"]==1).count()))
+# print("Predicted 0s: " + str(result.filter(result["prediction"]==0).count()))
 
 
 ############### GBTC - INSTRUMENTAL #####################
@@ -1053,8 +1053,8 @@ result = model.transform(validate)
 predictionAndLabels = result.select("prediction", "instrumental")
 evaluator = MulticlassClassificationEvaluator(metricName="accuracy",predictionCol='prediction', labelCol='instrumental')
 print("GBTC - INSTRUMENTAL Test set accuracy = " + str(evaluator.evaluate(predictionAndLabels)))
-print("Predicted 1s: " + str(result.filter(result["prediction"]==1).count()))
-print("Predicted 0s: " + str(result.filter(result["prediction"]==0).count()))
+# print("Predicted 1s: " + str(result.filter(result["prediction"]==1).count()))
+# print("Predicted 0s: " + str(result.filter(result["prediction"]==0).count()))
 
 ############### GBTC - JAZZ #####################
 from pyspark.ml.classification import GBTClassifier
@@ -1076,8 +1076,8 @@ result = model.transform(validate)
 predictionAndLabels = result.select("prediction", "jazz")
 evaluator = MulticlassClassificationEvaluator(metricName="accuracy",predictionCol='prediction', labelCol='jazz')
 print("GBTC - JAZZ Test set accuracy = " + str(evaluator.evaluate(predictionAndLabels)))
-print("Predicted 1s: " + str(result.filter(result["prediction"]==1).count()))
-print("Predicted 0s: " + str(result.filter(result["prediction"]==0).count()))
+# print("Predicted 1s: " + str(result.filter(result["prediction"]==1).count()))
+# print("Predicted 0s: " + str(result.filter(result["prediction"]==0).count()))
 
 ############### GBTC - METAL #####################
 from pyspark.ml.classification import GBTClassifier
@@ -1099,8 +1099,8 @@ result = model.transform(validate)
 predictionAndLabels = result.select("prediction", "metal")
 evaluator = MulticlassClassificationEvaluator(metricName="accuracy",predictionCol='prediction', labelCol='metal')
 print("GBTC - METAL Test set accuracy = " + str(evaluator.evaluate(predictionAndLabels)))
-print("Predicted 1s: " + str(result.filter(result["prediction"]==1).count()))
-print("Predicted 0s: " + str(result.filter(result["prediction"]==0).count()))
+# print("Predicted 1s: " + str(result.filter(result["prediction"]==1).count()))
+# print("Predicted 0s: " + str(result.filter(result["prediction"]==0).count()))
 
 ############### GBTC - POP #####################
 from pyspark.ml.classification import GBTClassifier
@@ -1122,8 +1122,8 @@ result = model.transform(validate)
 predictionAndLabels = result.select("prediction", "pop")
 evaluator = MulticlassClassificationEvaluator(metricName="accuracy",predictionCol='prediction', labelCol='pop')
 print("GBTC - POP Test set accuracy = " + str(evaluator.evaluate(predictionAndLabels)))
-print("Predicted 1s: " + str(result.filter(result["prediction"]==1).count()))
-print("Predicted 0s: " + str(result.filter(result["prediction"]==0).count()))
+# print("Predicted 1s: " + str(result.filter(result["prediction"]==1).count()))
+# print("Predicted 0s: " + str(result.filter(result["prediction"]==0).count()))
 
 
 ############### GBTC - ROCK #####################
@@ -1146,8 +1146,8 @@ result = model.transform(validate)
 predictionAndLabels = result.select("prediction", "rock")
 evaluator = MulticlassClassificationEvaluator(metricName="accuracy",predictionCol='prediction', labelCol='rock')
 print("GBTC - ROCK Test set accuracy = " + str(evaluator.evaluate(predictionAndLabels)))
-print("Predicted 1s: " + str(result.filter(result["prediction"]==1).count()))
-print("Predicted 0s: " + str(result.filter(result["prediction"]==0).count()))
+# print("Predicted 1s: " + str(result.filter(result["prediction"]==1).count()))
+# print("Predicted 0s: " + str(result.filter(result["prediction"]==0).count()))
 
 ############### GBTC - SOUL #####################
 from pyspark.ml.classification import GBTClassifier
@@ -1169,7 +1169,7 @@ result = model.transform(validate)
 predictionAndLabels = result.select("prediction", "soul")
 evaluator = MulticlassClassificationEvaluator(metricName="accuracy",predictionCol='prediction', labelCol='soul')
 print("GBTC - SOUL Test set accuracy = " + str(evaluator.evaluate(predictionAndLabels)))
-print("Predicted 1s: " + str(result.filter(result["prediction"]==1).count()))
-print("Predicted 0s: " + str(result.filter(result["prediction"]==0).count()))
+# print("Predicted 1s: " + str(result.filter(result["prediction"]==1).count()))
+# print("Predicted 0s: " + str(result.filter(result["prediction"]==0).count()))
 
 
