@@ -907,28 +907,28 @@ print("Predicted 0s: " + str(result.filter(result["prediction"]==0).count()))
 
 
 
-############### DECISION TREE - SOUL #####################
-from pyspark.ml.classification import DecisionTreeClassifier
-from pyspark.ml.evaluation import MulticlassClassificationEvaluator
-### Data splitting
-filter_data = data.select(soul_column)
-train, validate, test = filter_data.randomSplit([0.7, 0.2, 0.1], seed=42)
-### Training
-dt = DecisionTreeClassifier(maxDepth=20, labelCol="soul", featuresCol='features')
-model = dt.fit(train)
-train1 = train.filter(train['electronic'] == 1)
-num1 = float(train1.count())
-train0 = train.filter(train['electronic'] == 0)
-num0 = float(train0.count())
-train0 = train0.sample(fraction=num1/num0, seed=42)
-train = train1.union(train0)
-### Testing
-result = model.transform(validate)
-predictionAndLabels = result.select("prediction", "soul")
-evaluator = MulticlassClassificationEvaluator(metricName="accuracy",predictionCol='prediction', labelCol='soul')
-print("DECISION TREE - SOUL Test set accuracy = " + str(evaluator.evaluate(predictionAndLabels)))
-print("Predicted 1s: " + str(result.filter(result["prediction"]==1).count()))
-print("Predicted 0s: " + str(result.filter(result["prediction"]==0).count()))
+# ############### DECISION TREE - SOUL #####################
+# from pyspark.ml.classification import DecisionTreeClassifier
+# from pyspark.ml.evaluation import MulticlassClassificationEvaluator
+# ### Data splitting
+# filter_data = data.select(soul_column)
+# train, validate, test = filter_data.randomSplit([0.7, 0.2, 0.1], seed=42)
+# ### Training
+# dt = DecisionTreeClassifier(maxDepth=20, labelCol="soul", featuresCol='features')
+# model = dt.fit(train)
+# train1 = train.filter(train['electronic'] == 1)
+# num1 = float(train1.count())
+# train0 = train.filter(train['electronic'] == 0)
+# num0 = float(train0.count())
+# train0 = train0.sample(fraction=num1/num0, seed=42)
+# train = train1.union(train0)
+# ### Testing
+# result = model.transform(validate)
+# predictionAndLabels = result.select("prediction", "soul")
+# evaluator = MulticlassClassificationEvaluator(metricName="accuracy",predictionCol='prediction', labelCol='soul')
+# print("DECISION TREE - SOUL Test set accuracy = " + str(evaluator.evaluate(predictionAndLabels)))
+# print("Predicted 1s: " + str(result.filter(result["prediction"]==1).count()))
+# print("Predicted 0s: " + str(result.filter(result["prediction"]==0).count()))
 
 
 
