@@ -123,6 +123,12 @@ from pyspark.ml.evaluation import MulticlassClassificationEvaluator
 ### Data splitting
 filter_data = data.select(alternative_column)
 train, validate, test = filter_data.randomSplit([0.7, 0.2, 0.1], seed=42)
+train1 = train.filter(train['alternative'] == 1)
+num1 = float(train1.count())
+train0 = train.filter(train['alternative'] == 0)
+num0 = float(train0.count())
+train0 = train0.sample(fraction=num1/num0, seed=42)
+train = train1.union(train0)
 ### Training
 lr = LogisticRegression(featuresCol='features', labelCol='alternative')
 model = lr.fit(train)
@@ -141,9 +147,9 @@ from pyspark.ml.evaluation import MulticlassClassificationEvaluator
 ### Data splitting
 filter_data = data.select(dance_column)
 train, validate, test = filter_data.randomSplit([0.7, 0.2, 0.1], seed=42)
-train1 = train.filter(train['electronic'] == 1)
+train1 = train.filter(train['dance'] == 1)
 num1 = float(train1.count())
-train0 = train.filter(train['electronic'] == 0)
+train0 = train.filter(train['dance'] == 0)
 num0 = float(train0.count())
 train0 = train0.sample(fraction=num1/num0, seed=42)
 train = train1.union(train0)
@@ -189,15 +195,15 @@ from pyspark.ml.evaluation import MulticlassClassificationEvaluator
 ### Data splitting
 filter_data = data.select(indie_column)
 train, validate, test = filter_data.randomSplit([0.7, 0.2, 0.1], seed=42)
-### Training
-lr = LogisticRegression(featuresCol='features', labelCol='indie')
-model = lr.fit(train)
-train1 = train.filter(train['electronic'] == 1)
+train1 = train.filter(train['indie'] == 1)
 num1 = float(train1.count())
-train0 = train.filter(train['electronic'] == 0)
+train0 = train.filter(train['indie'] == 0)
 num0 = float(train0.count())
 train0 = train0.sample(fraction=num1/num0, seed=42)
 train = train1.union(train0)
+### Training
+lr = LogisticRegression(featuresCol='features', labelCol='indie')
+model = lr.fit(train)
 ### Testing
 result = model.transform(validate)
 predictionAndLabels = result.select("prediction", "indie")
@@ -213,15 +219,15 @@ from pyspark.ml.evaluation import MulticlassClassificationEvaluator
 ### Data splitting
 filter_data = data.select(instrumental_column)
 train, validate, test = filter_data.randomSplit([0.7, 0.2, 0.1], seed=42)
-### Training
-lr = LogisticRegression(featuresCol='features', labelCol='instrumental')
-model = lr.fit(train)
-train1 = train.filter(train['electronic'] == 1)
+train1 = train.filter(train['instrumental'] == 1)
 num1 = float(train1.count())
-train0 = train.filter(train['electronic'] == 0)
+train0 = train.filter(train['instrumental'] == 0)
 num0 = float(train0.count())
 train0 = train0.sample(fraction=num1/num0, seed=42)
 train = train1.union(train0)
+### Training
+lr = LogisticRegression(featuresCol='features', labelCol='instrumental')
+model = lr.fit(train)
 ### Testing
 result = model.transform(validate)
 predictionAndLabels = result.select("prediction", "instrumental")
@@ -236,15 +242,15 @@ from pyspark.ml.evaluation import MulticlassClassificationEvaluator
 ### Data splitting
 filter_data = data.select(jazz_column)
 train, validate, test = filter_data.randomSplit([0.7, 0.2, 0.1], seed=42)
-### Training
-lr = LogisticRegression(featuresCol='features', labelCol='jazz')
-model = lr.fit(train)
-train1 = train.filter(train['electronic'] == 1)
+train1 = train.filter(train['jazz'] == 1)
 num1 = float(train1.count())
-train0 = train.filter(train['electronic'] == 0)
+train0 = train.filter(train['jazz'] == 0)
 num0 = float(train0.count())
 train0 = train0.sample(fraction=num1/num0, seed=42)
 train = train1.union(train0)
+### Training
+lr = LogisticRegression(featuresCol='features', labelCol='jazz')
+model = lr.fit(train)
 ### Testing
 result = model.transform(validate)
 predictionAndLabels = result.select("prediction", "jazz")
@@ -259,15 +265,15 @@ from pyspark.ml.evaluation import MulticlassClassificationEvaluator
 ### Data splitting
 filter_data = data.select(metal_column)
 train, validate, test = filter_data.randomSplit([0.7, 0.2, 0.1], seed=42)
-### Training
-lr = LogisticRegression(featuresCol='features', labelCol='metal')
-model = lr.fit(train)
-train1 = train.filter(train['electronic'] == 1)
+train1 = train.filter(train['metal'] == 1)
 num1 = float(train1.count())
-train0 = train.filter(train['electronic'] == 0)
+train0 = train.filter(train['metal'] == 0)
 num0 = float(train0.count())
 train0 = train0.sample(fraction=num1/num0, seed=42)
 train = train1.union(train0)
+### Training
+lr = LogisticRegression(featuresCol='features', labelCol='metal')
+model = lr.fit(train)
 ### Testing
 result = model.transform(validate)
 predictionAndLabels = result.select("prediction", "metal")
@@ -330,15 +336,15 @@ from pyspark.ml.evaluation import MulticlassClassificationEvaluator
 ### Data splitting
 filter_data = data.select(soul_column)
 train, validate, test = filter_data.randomSplit([0.7, 0.2, 0.1], seed=42)
-### Training
-lr = LogisticRegression(featuresCol='features', labelCol='soul')
-model = lr.fit(train)
-train1 = train.filter(train['electronic'] == 1)
+train1 = train.filter(train['soul'] == 1)
 num1 = float(train1.count())
-train0 = train.filter(train['electronic'] == 0)
+train0 = train.filter(train['soul'] == 0)
 num0 = float(train0.count())
 train0 = train0.sample(fraction=num1/num0, seed=42)
 train = train1.union(train0)
+### Training
+lr = LogisticRegression(featuresCol='features', labelCol='soul')
+model = lr.fit(train)
 ### Testing
 result = model.transform(validate)
 predictionAndLabels = result.select("prediction", "soul")
@@ -359,15 +365,15 @@ from pyspark.ml.evaluation import MulticlassClassificationEvaluator
 ### Data splitting
 filter_data = data.select(alternative_column)
 train, validate, test = filter_data.randomSplit([0.7, 0.2, 0.1], seed=42)
-### Training
-svm = LinearSVC(maxIter=5, featuresCol='features', labelCol='alternative')
-model = svm.fit(train)
-train1 = train.filter(train['electronic'] == 1)
+train1 = train.filter(train['alternative'] == 1)
 num1 = float(train1.count())
-train0 = train.filter(train['electronic'] == 0)
+train0 = train.filter(train['alternative'] == 0)
 num0 = float(train0.count())
 train0 = train0.sample(fraction=num1/num0, seed=42)
 train = train1.union(train0)
+### Training
+svm = LinearSVC(maxIter=5, featuresCol='features', labelCol='alternative')
+model = svm.fit(train)
 ### Testing
 result = model.transform(validate)
 predictionAndLabels = result.select("prediction", "alternative")
@@ -382,15 +388,15 @@ from pyspark.ml.evaluation import MulticlassClassificationEvaluator
 ### Data splitting
 filter_data = data.select(dance_column)
 train, validate, test = filter_data.randomSplit([0.7, 0.2, 0.1], seed=42)
-### Training
-svm = LinearSVC(maxIter=5, featuresCol='features', labelCol='dance')
-model = svm.fit(train)
-train1 = train.filter(train['electronic'] == 1)
+train1 = train.filter(train['dance'] == 1)
 num1 = float(train1.count())
-train0 = train.filter(train['electronic'] == 0)
+train0 = train.filter(train['dance'] == 0)
 num0 = float(train0.count())
 train0 = train0.sample(fraction=num1/num0, seed=42)
 train = train1.union(train0)
+### Training
+svm = LinearSVC(maxIter=5, featuresCol='features', labelCol='dance')
+model = svm.fit(train)
 ### Testing
 result = model.transform(validate)
 predictionAndLabels = result.select("prediction", "dance")
@@ -406,15 +412,15 @@ from pyspark.ml.evaluation import MulticlassClassificationEvaluator
 ### Data splitting
 filter_data = data.select(electronic_column)
 train, validate, test = filter_data.randomSplit([0.7, 0.2, 0.1], seed=42)
-### Training
-svm = LinearSVC(maxIter=5, featuresCol='features', labelCol='electronic')
-model = svm.fit(train)
 train1 = train.filter(train['electronic'] == 1)
 num1 = float(train1.count())
 train0 = train.filter(train['electronic'] == 0)
 num0 = float(train0.count())
 train0 = train0.sample(fraction=num1/num0, seed=42)
 train = train1.union(train0)
+### Training
+svm = LinearSVC(maxIter=5, featuresCol='features', labelCol='electronic')
+model = svm.fit(train)
 ### Testing
 result = model.transform(validate)
 predictionAndLabels = result.select("prediction", "electronic")
@@ -430,15 +436,15 @@ from pyspark.ml.evaluation import MulticlassClassificationEvaluator
 ### Data splitting
 filter_data = data.select(indie_column)
 train, validate, test = filter_data.randomSplit([0.7, 0.2, 0.1], seed=42)
-### Training
-svm = LinearSVC(maxIter=5, featuresCol='features', labelCol='indie')
-model = svm.fit(train)
-train1 = train.filter(train['electronic'] == 1)
+train1 = train.filter(train['indie'] == 1)
 num1 = float(train1.count())
-train0 = train.filter(train['electronic'] == 0)
+train0 = train.filter(train['indie'] == 0)
 num0 = float(train0.count())
 train0 = train0.sample(fraction=num1/num0, seed=42)
 train = train1.union(train0)
+### Training
+svm = LinearSVC(maxIter=5, featuresCol='features', labelCol='indie')
+model = svm.fit(train)
 ### Testing
 result = model.transform(validate)
 predictionAndLabels = result.select("prediction", "indie")
@@ -454,15 +460,15 @@ from pyspark.ml.evaluation import MulticlassClassificationEvaluator
 ### Data splitting
 filter_data = data.select(instrumental_column)
 train, validate, test = filter_data.randomSplit([0.7, 0.2, 0.1], seed=42)
-### Training
-svm = LinearSVC(maxIter=5, featuresCol='features', labelCol='instrumental')
-model = svm.fit(train)
-train1 = train.filter(train['electronic'] == 1)
+train1 = train.filter(train['instrumental'] == 1)
 num1 = float(train1.count())
-train0 = train.filter(train['electronic'] == 0)
+train0 = train.filter(train['instrumental'] == 0)
 num0 = float(train0.count())
 train0 = train0.sample(fraction=num1/num0, seed=42)
 train = train1.union(train0)
+### Training
+svm = LinearSVC(maxIter=5, featuresCol='features', labelCol='instrumental')
+model = svm.fit(train)
 ### Testing
 result = model.transform(validate)
 predictionAndLabels = result.select("prediction", "instrumental")
@@ -477,15 +483,15 @@ from pyspark.ml.evaluation import MulticlassClassificationEvaluator
 ### Data splitting
 filter_data = data.select(jazz_column)
 train, validate, test = filter_data.randomSplit([0.7, 0.2, 0.1], seed=42)
-### Training
-svm = LinearSVC(maxIter=5, featuresCol='features', labelCol='jazz')
-model = svm.fit(train)
-train1 = train.filter(train['electronic'] == 1)
+train1 = train.filter(train['jazz'] == 1)
 num1 = float(train1.count())
-train0 = train.filter(train['electronic'] == 0)
+train0 = train.filter(train['jazz'] == 0)
 num0 = float(train0.count())
 train0 = train0.sample(fraction=num1/num0, seed=42)
 train = train1.union(train0)
+### Training
+svm = LinearSVC(maxIter=5, featuresCol='features', labelCol='jazz')
+model = svm.fit(train)
 ### Testing
 result = model.transform(validate)
 predictionAndLabels = result.select("prediction", "jazz")
@@ -500,15 +506,15 @@ from pyspark.ml.evaluation import MulticlassClassificationEvaluator
 ### Data splitting
 filter_data = data.select(metal_column)
 train, validate, test = filter_data.randomSplit([0.7, 0.2, 0.1], seed=42)
-### Training
-svm = LinearSVC(maxIter=5, featuresCol='features', labelCol='metal')
-model = svm.fit(train)
-train1 = train.filter(train['electronic'] == 1)
+train1 = train.filter(train['metal'] == 1)
 num1 = float(train1.count())
-train0 = train.filter(train['electronic'] == 0)
+train0 = train.filter(train['metal'] == 0)
 num0 = float(train0.count())
 train0 = train0.sample(fraction=num1/num0, seed=42)
 train = train1.union(train0)
+### Training
+svm = LinearSVC(maxIter=5, featuresCol='features', labelCol='metal')
+model = svm.fit(train)
 ### Testing
 result = model.transform(validate)
 predictionAndLabels = result.select("prediction", "metal")
@@ -523,15 +529,15 @@ from pyspark.ml.evaluation import MulticlassClassificationEvaluator
 ### Data splitting
 filter_data = data.select(pop_column)
 train, validate, test = filter_data.randomSplit([0.7, 0.2, 0.1], seed=42)
-### Training
-svm = LinearSVC(maxIter=5, featuresCol='features', labelCol='pop')
-model = svm.fit(train)
-train1 = train.filter(train['electronic'] == 1)
+train1 = train.filter(train['pop'] == 1)
 num1 = float(train1.count())
-train0 = train.filter(train['electronic'] == 0)
+train0 = train.filter(train['pop'] == 0)
 num0 = float(train0.count())
 train0 = train0.sample(fraction=num1/num0, seed=42)
 train = train1.union(train0)
+### Training
+svm = LinearSVC(maxIter=5, featuresCol='features', labelCol='pop')
+model = svm.fit(train)
 ### Testing
 result = model.transform(validate)
 predictionAndLabels = result.select("prediction", "pop")
@@ -547,15 +553,15 @@ from pyspark.ml.evaluation import MulticlassClassificationEvaluator
 ### Data splitting
 data_rock = data.select(rock_column)
 train, validate, test = data_rock.randomSplit([0.7, 0.2, 0.1], seed=42)
-### Training
-svm = LinearSVC(maxIter=5, featuresCol='features', labelCol='rock')
-model = svm.fit(train)
-train1 = train.filter(train['electronic'] == 1)
+train1 = train.filter(train['rock'] == 1)
 num1 = float(train1.count())
-train0 = train.filter(train['electronic'] == 0)
+train0 = train.filter(train['rock'] == 0)
 num0 = float(train0.count())
 train0 = train0.sample(fraction=num1/num0, seed=42)
 train = train1.union(train0)
+### Training
+svm = LinearSVC(maxIter=5, featuresCol='features', labelCol='rock')
+model = svm.fit(train)
 ### Testing
 result = model.transform(validate)
 predictionAndLabels = result.select("prediction", "rock")
@@ -571,15 +577,15 @@ from pyspark.ml.evaluation import MulticlassClassificationEvaluator
 ### Data splitting
 filter_data = data.select(soul_column)
 train, validate, test = filter_data.randomSplit([0.7, 0.2, 0.1], seed=42)
-### Training
-svm = LinearSVC(maxIter=5, featuresCol='features', labelCol='soul')
-model = svm.fit(train)
-train1 = train.filter(train['electronic'] == 1)
+train1 = train.filter(train['soul'] == 1)
 num1 = float(train1.count())
-train0 = train.filter(train['electronic'] == 0)
+train0 = train.filter(train['soul'] == 0)
 num0 = float(train0.count())
 train0 = train0.sample(fraction=num1/num0, seed=42)
 train = train1.union(train0)
+### Training
+svm = LinearSVC(maxIter=5, featuresCol='features', labelCol='soul')
+model = svm.fit(train)
 ### Testing
 result = model.transform(validate)
 predictionAndLabels = result.select("prediction", "soul")
@@ -938,15 +944,15 @@ from pyspark.ml.evaluation import MulticlassClassificationEvaluator
 ### Data splitting
 filter_data = data.select(alternative_column)
 train, validate, test = filter_data.randomSplit([0.7, 0.2, 0.1], seed=42)
-### Training
-dt = GBTClassifier(maxDepth=10, labelCol="alternative", featuresCol='features')
-model = dt.fit(train)
-train1 = train.filter(train['electronic'] == 1)
+train1 = train.filter(train['alternative'] == 1)
 num1 = float(train1.count())
-train0 = train.filter(train['electronic'] == 0)
+train0 = train.filter(train['alternative'] == 0)
 num0 = float(train0.count())
 train0 = train0.sample(fraction=num1/num0, seed=42)
 train = train1.union(train0)
+### Training
+dt = GBTClassifier(maxDepth=10, labelCol="alternative", featuresCol='features')
+model = dt.fit(train)
 ### Testing
 result = model.transform(validate)
 predictionAndLabels = result.select("prediction", "alternative")
@@ -962,15 +968,15 @@ from pyspark.ml.evaluation import MulticlassClassificationEvaluator
 ### Data splitting
 filter_data = data.select(dance_column)
 train, validate, test = filter_data.randomSplit([0.7, 0.2, 0.1], seed=42)
-### Training
-dt = GBTClassifier(maxDepth=10, labelCol="dance", featuresCol='features')
-model = dt.fit(train)
-train1 = train.filter(train['electronic'] == 1)
+train1 = train.filter(train['dance'] == 1)
 num1 = float(train1.count())
-train0 = train.filter(train['electronic'] == 0)
+train0 = train.filter(train['dance'] == 0)
 num0 = float(train0.count())
 train0 = train0.sample(fraction=num1/num0, seed=42)
 train = train1.union(train0)
+### Training
+dt = GBTClassifier(maxDepth=10, labelCol="dance", featuresCol='features')
+model = dt.fit(train)
 ### Testing
 result = model.transform(validate)
 predictionAndLabels = result.select("prediction", "dance")
@@ -985,15 +991,15 @@ from pyspark.ml.evaluation import MulticlassClassificationEvaluator
 ### Data splitting
 filter_data = data.select(electronic_column)
 train, validate, test = filter_data.randomSplit([0.7, 0.2, 0.1], seed=42)
-### Training
-dt = GBTClassifier(maxDepth=10, labelCol="electronic", featuresCol='features')
-model = dt.fit(train)
 train1 = train.filter(train['electronic'] == 1)
 num1 = float(train1.count())
 train0 = train.filter(train['electronic'] == 0)
 num0 = float(train0.count())
 train0 = train0.sample(fraction=num1/num0, seed=42)
 train = train1.union(train0)
+### Training
+dt = GBTClassifier(maxDepth=10, labelCol="electronic", featuresCol='features')
+model = dt.fit(train)
 ### Testing
 result = model.transform(validate)
 predictionAndLabels = result.select("prediction", "electronic")
@@ -1009,15 +1015,15 @@ from pyspark.ml.evaluation import MulticlassClassificationEvaluator
 ### Data splitting
 filter_data = data.select(indie_column)
 train, validate, test = filter_data.randomSplit([0.7, 0.2, 0.1], seed=42)
-### Training
-dt = GBTClassifier(maxDepth=10, labelCol="indie", featuresCol='features')
-model = dt.fit(train)
-train1 = train.filter(train['electronic'] == 1)
+train1 = train.filter(train['indie'] == 1)
 num1 = float(train1.count())
-train0 = train.filter(train['electronic'] == 0)
+train0 = train.filter(train['indie'] == 0)
 num0 = float(train0.count())
 train0 = train0.sample(fraction=num1/num0, seed=42)
 train = train1.union(train0)
+### Training
+dt = GBTClassifier(maxDepth=10, labelCol="indie", featuresCol='features')
+model = dt.fit(train)
 ### Testing
 result = model.transform(validate)
 predictionAndLabels = result.select("prediction", "indie")
@@ -1033,15 +1039,15 @@ from pyspark.ml.evaluation import MulticlassClassificationEvaluator
 ### Data splitting
 filter_data = data.select(instrumental_column)
 train, validate, test = filter_data.randomSplit([0.7, 0.2, 0.1], seed=42)
-### Training
-dt = GBTClassifier(maxDepth=10, labelCol="instrumental", featuresCol='features')
-model = dt.fit(train)
-train1 = train.filter(train['electronic'] == 1)
+train1 = train.filter(train['instrumental'] == 1)
 num1 = float(train1.count())
-train0 = train.filter(train['electronic'] == 0)
+train0 = train.filter(train['instrumental'] == 0)
 num0 = float(train0.count())
 train0 = train0.sample(fraction=num1/num0, seed=42)
 train = train1.union(train0)
+### Training
+dt = GBTClassifier(maxDepth=10, labelCol="instrumental", featuresCol='features')
+model = dt.fit(train)
 ### Testing
 result = model.transform(validate)
 predictionAndLabels = result.select("prediction", "instrumental")
@@ -1056,15 +1062,15 @@ from pyspark.ml.evaluation import MulticlassClassificationEvaluator
 ### Data splitting
 filter_data = data.select(jazz_column)
 train, validate, test = filter_data.randomSplit([0.7, 0.2, 0.1], seed=42)
-### Training
-dt = GBTClassifier(maxDepth=10, labelCol="jazz", featuresCol='features')
-model = dt.fit(train)
-train1 = train.filter(train['electronic'] == 1)
+train1 = train.filter(train['jazz'] == 1)
 num1 = float(train1.count())
-train0 = train.filter(train['electronic'] == 0)
+train0 = train.filter(train['jazz'] == 0)
 num0 = float(train0.count())
 train0 = train0.sample(fraction=num1/num0, seed=42)
 train = train1.union(train0)
+### Training
+dt = GBTClassifier(maxDepth=10, labelCol="jazz", featuresCol='features')
+model = dt.fit(train)
 ### Testing
 result = model.transform(validate)
 predictionAndLabels = result.select("prediction", "jazz")
@@ -1079,15 +1085,15 @@ from pyspark.ml.evaluation import MulticlassClassificationEvaluator
 ### Data splitting
 filter_data = data.select(metal_column)
 train, validate, test = filter_data.randomSplit([0.7, 0.2, 0.1], seed=42)
-### Training
-dt = GBTClassifier(maxDepth=10, labelCol="metal", featuresCol='features')
-model = dt.fit(train)
-train1 = train.filter(train['electronic'] == 1)
+train1 = train.filter(train['metal'] == 1)
 num1 = float(train1.count())
-train0 = train.filter(train['electronic'] == 0)
+train0 = train.filter(train['metal'] == 0)
 num0 = float(train0.count())
 train0 = train0.sample(fraction=num1/num0, seed=42)
 train = train1.union(train0)
+### Training
+dt = GBTClassifier(maxDepth=10, labelCol="metal", featuresCol='features')
+model = dt.fit(train)
 ### Testing
 result = model.transform(validate)
 predictionAndLabels = result.select("prediction", "metal")
@@ -1102,15 +1108,15 @@ from pyspark.ml.evaluation import MulticlassClassificationEvaluator
 ### Data splitting
 filter_data = data.select(pop_column)
 train, validate, test = filter_data.randomSplit([0.7, 0.2, 0.1], seed=42)
-### Training
-dt = GBTClassifier(maxDepth=10, labelCol="pop", featuresCol='features')
-model = dt.fit(train)
-train1 = train.filter(train['electronic'] == 1)
+train1 = train.filter(train['pop'] == 1)
 num1 = float(train1.count())
-train0 = train.filter(train['electronic'] == 0)
+train0 = train.filter(train['pop'] == 0)
 num0 = float(train0.count())
 train0 = train0.sample(fraction=num1/num0, seed=42)
 train = train1.union(train0)
+### Training
+dt = GBTClassifier(maxDepth=10, labelCol="pop", featuresCol='features')
+model = dt.fit(train)
 ### Testing
 result = model.transform(validate)
 predictionAndLabels = result.select("prediction", "pop")
@@ -1126,15 +1132,15 @@ from pyspark.ml.evaluation import MulticlassClassificationEvaluator
 ### Data splitting
 data_rock = data.select(rock_column)
 train, validate, test = data_rock.randomSplit([0.7, 0.2, 0.1], seed=42)
-### Training
-dt = GBTClassifier(maxDepth=10, labelCol="rock", featuresCol='features')
-model = dt.fit(train)
-train1 = train.filter(train['electronic'] == 1)
+train1 = train.filter(train['rock'] == 1)
 num1 = float(train1.count())
-train0 = train.filter(train['electronic'] == 0)
+train0 = train.filter(train['rock'] == 0)
 num0 = float(train0.count())
 train0 = train0.sample(fraction=num1/num0, seed=42)
 train = train1.union(train0)
+### Training
+dt = GBTClassifier(maxDepth=10, labelCol="rock", featuresCol='features')
+model = dt.fit(train)
 ### Testing
 result = model.transform(validate)
 predictionAndLabels = result.select("prediction", "rock")
@@ -1149,15 +1155,15 @@ from pyspark.ml.evaluation import MulticlassClassificationEvaluator
 ### Data splitting
 filter_data = data.select(soul_column)
 train, validate, test = filter_data.randomSplit([0.7, 0.2, 0.1], seed=42)
-### Training
-dt = GBTClassifier(maxDepth=10, labelCol="soul", featuresCol='features')
-model = dt.fit(train)
-train1 = train.filter(train['electronic'] == 1)
+train1 = train.filter(train['soul'] == 1)
 num1 = float(train1.count())
-train0 = train.filter(train['electronic'] == 0)
+train0 = train.filter(train['soul'] == 0)
 num0 = float(train0.count())
 train0 = train0.sample(fraction=num1/num0, seed=42)
 train = train1.union(train0)
+### Training
+dt = GBTClassifier(maxDepth=10, labelCol="soul", featuresCol='features')
+model = dt.fit(train)
 ### Testing
 result = model.transform(validate)
 predictionAndLabels = result.select("prediction", "soul")
